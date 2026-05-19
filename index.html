@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mystic Shop | Produtos Digitais</title>
+  <meta name="description" content="Mystic Shop — loja online de produtos digitais com contas Steam Full Acesso, chaves de software e assinaturas de IA." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;800&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
+
+  <div class="background-grid" aria-hidden="true"></div>
+  <div class="background-glow background-glow-1" aria-hidden="true"></div>
+  <div class="background-glow background-glow-2" aria-hidden="true"></div>
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="#home" class="brand" aria-label="Mystic Shop, início">
+        <svg class="brand-logo" viewBox="0 0 64 64" role="img" aria-label="Logo Mystic Shop" fill="none">
+          <path d="M10 32 32 10l22 22-22 22L10 32Z" stroke="currentColor" stroke-width="3"/>
+          <path d="M22 32h20M32 22v20" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
+        </svg>
+        <span>
+          <strong>Mystic</strong> Shop
+        </span>
+      </a>
+
+      <nav class="main-nav" aria-label="Principal">
+        <a href="#home">Home</a>
+        <a href="#catalogo">Catálogo</a>
+        <a href="#sobre">Sobre</a>
+        <a href="#pagamentos">Pagamentos</a>
+        <a href="#compras">Minhas Compras</a>
+        <a href="#contato">Suporte</a>
+      </nav>
+
+      <div class="header-actions">
+        <button class="theme-toggle" data-theme-toggle aria-label="Alternar tema">
+          <span>◐</span>
+        </button>
+        <button class="cart-button" id="cartButton" aria-label="Abrir carrinho">
+          <span>Carrinho</span>
+          <span class="cart-count" id="cartCount">0</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main id="conteudo">
+    <section class="hero section" id="home">
+      <div class="container hero-grid">
+        <div class="hero-copy reveal">
+          <span class="eyebrow">Entrega em minutos • Garantia de funcionamento • Suporte 24h</span>
+          <h1>Ative agora seus produtos digitais com visual premium, entrega rápida e checkout direto.</h1>
+          <p>
+            A Mystic Shop reúne contas Steam Full Acesso, chaves de software, assinaturas de IA e outros digitais com atendimento profissional,
+            pagamento flexível e processo pensado para conversão.
+          </p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#catalogo">Ver catálogo</a>
+            <a class="btn btn-secondary" href="#pagamentos">Formas de pagamento</a>
+          </div>
+          <div class="hero-stats">
+            <article class="stat-card">
+              <strong data-counter="500">0</strong>
+              <span>Clientes satisfeitos</span>
+            </article>
+            <article class="stat-card">
+              <strong data-counter="1200">0</strong>
+              <span>Pedidos entregues</span>
+            </article>
+            <article class="stat-card">
+              <strong data-counter="24">0</strong>
+              <span>Suporte em horas</span>
+            </article>
+          </div>
+        </div>
+
+        <aside class="hero-panel reveal delay-1" aria-label="Resumo da loja">
+          <div class="panel-screen">
+            <div class="screen-top">
+              <span></span><span></span><span></span>
+            </div>
+            <div class="screen-body">
+              <div class="screen-line"><span>Status</span><strong>Online</strong></div>
+              <div class="screen-line"><span>Entrega</span><strong>Imediata</strong></div>
+              <div class="screen-line"><span>Produtos</span><strong>Digitais</strong></div>
+              <div class="screen-line"><span>Pagamentos</span><strong>PIX • Cartão • Cripto</strong></div>
+            </div>
+          </div>
+          <div class="floating-card">
+            <span class="badge">Mais vendido</span>
+            <h2>Perplexity Pro</h2>
+            <p>Acesso premium com ativação rápida e suporte dedicado.</p>
+            <button class="btn btn-primary add-to-cart" data-name="Perplexity Pro" data-price="39.90">Comprar agora</button>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section class="section" id="destaques">
+      <div class="container">
+        <div class="section-heading reveal">
+          <span class="eyebrow">Destaques</span>
+          <h2>Produtos com saída rápida e confiança visual</h2>
+        </div>
+        <div class="feature-grid">
+          <article class="feature-card reveal">
+            <h3>Entrega imediata</h3>
+            <p>Fluxo pensado para envio rápido das credenciais ou instruções logo após a confirmação do pagamento.</p>
+          </article>
+          <article class="feature-card reveal delay-1">
+            <h3>Checkout visível</h3>
+            <p>Botões de compra claros, carrinho integrado e área pronta para expansão com gateways reais.</p>
+          </article>
+          <article class="feature-card reveal delay-2">
+            <h3>Tom profissional</h3>
+            <p>Layout sombrio, premium e confiável para passar mais seriedade nas ofertas digitais.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="catalogo">
+      <div class="container">
+        <div class="section-heading reveal">
+          <span class="eyebrow">Loja / Catálogo</span>
+          <h2>Catálogo organizado por tipo de produto</h2>
+          <p>Use estes cards como base e depois edite nomes, preços, links e imagens conforme os produtos reais da sua loja.</p>
+        </div>
+
+        <div class="catalog-toolbar reveal">
+          <span class="filter-chip active">Todos</span>
+          <span class="filter-chip">Steam</span>
+          <span class="filter-chip">Software</span>
+          <span class="filter-chip">IA</span>
+          <span class="filter-chip">Streaming</span>
+        </div>
+
+        <div class="product-grid">
+          <article class="product-card reveal">
+            <div class="product-media steam">
+              <span class="product-tag">Steam</span>
+            </div>
+            <div class="product-body">
+              <div class="seal-row">
+                <span class="seal">Entrega Imediata</span>
+                <span class="seal">Garantido</span>
+              </div>
+              <h3>Conta Steam Full Acesso</h3>
+              <p>Conta com acesso completo ao e-mail vinculado, troca de dados e controle total da licença entregue.</p>
+              <ul>
+                <li>Jogos variados sob consulta</li>
+                <li>Acesso total à conta</li>
+                <li>Suporte pós-entrega</li>
+              </ul>
+              <div class="product-footer">
+                <strong>R$ 29,90</strong>
+                <button class="btn btn-primary add-to-cart" data-name="Conta Steam Full Acesso" data-price="29.90">Comprar</button>
+              </div>
+            </div>
+          </article>
+
+          <article class="product-card reveal delay-1">
+            <div class="product-media software">
+              <span class="product-tag">Software</span>
+            </div>
+            <div class="product-body">
+              <div class="seal-row">
+                <span class="seal">Entrega Imediata</span>
+                <span class="seal">Garantido</span>
+              </div>
+              <h3>Chave de Software Premium</h3>
+              <p>Licenças digitais para produtividade, segurança e ferramentas populares com ativação orientada.</p>
+              <ul>
+                <li>Ativação rápida</li>
+                <li>Instruções incluídas</li>
+                <li>Modelos sob demanda</li>
+              </ul>
+              <div class="product-footer">
+                <strong>R$ 19,90</strong>
+                <button class="btn btn-primary add-to-cart" data-name="Chave de Software Premium" data-price="19.90">Comprar</button>
+              </div>
+            </div>
+          </article>
+
+          <article class="product-card reveal delay-2">
+            <div class="product-media ai">
+              <span class="product-tag">IA</span>
+            </div>
+            <div class="product-body">
+              <div class="seal-row">
+                <span class="seal">Entrega Imediata</span>
+                <span class="seal">Garantido</span>
+              </div>
+              <h3>Assinatura de IA</h3>
+              <p>Planos com acesso a Perplexity, ChatGPT, Google AI Pro, Copilot e outras ferramentas compatíveis.</p>
+              <ul>
+                <li>Perplexity Pro</li>
+                <li>ChatGPT / Gemini / Copilot</li>
+                <li>Atualização de catálogo</li>
+              </ul>
+              <div class="product-footer">
+                <strong>R$ 39,90</strong>
+                <button class="btn btn-primary add-to-cart" data-name="Assinatura de IA" data-price="39.90">Comprar</button>
+              </div>
+            </div>
+          </article>
+
+          <article class="product-card reveal">
+            <div class="product-media streaming">
+              <span class="product-tag">Streaming</span>
+            </div>
+            <div class="product-body">
+              <div class="seal-row">
+                <span class="seal">Entrega Imediata</span>
+                <span class="seal">Garantido</span>
+              </div>
+              <h3>Conta de Streaming</h3>
+              <p>Opções adicionais para entretenimento digital com entrega rápida e instruções de acesso.</p>
+              <ul>
+                <li>Catálogo flexível</li>
+                <li>Planos sob disponibilidade</li>
+                <li>Suporte via chat</li>
+              </ul>
+              <div class="product-footer">
+                <strong>R$ 14,90</strong>
+                <button class="btn btn-primary add-to-cart" data-name="Conta de Streaming" data-price="14.90">Comprar</button>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="sobre">
+      <div class="container about-grid">
+        <div class="section-heading reveal">
+          <span class="eyebrow">Sobre</span>
+          <h2>Loja digital com foco em velocidade, clareza e suporte</h2>
+          <p>
+            A Mystic Shop foi estruturada para apresentar produtos digitais com aparência confiável, descrição objetiva e experiência de compra simples.
+            O objetivo é destacar entrega rápida, garantia de funcionamento e atendimento contínuo para cada pedido.
+          </p>
+        </div>
+        <div class="about-panel reveal delay-1">
+          <div class="about-item">
+            <strong>Entrega em minutos</strong>
+            <span>Fluxo orientado para confirmação rápida</span>
+          </div>
+          <div class="about-item">
+            <strong>Suporte 24h</strong>
+            <span>Contato por WhatsApp, Telegram e formulário</span>
+          </div>
+          <div class="about-item">
+            <strong>Produtos garantidos</strong>
+            <span>Informações claras e destaque para segurança</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="pagamentos">
+      <div class="container">
+        <div class="section-heading reveal">
+          <span class="eyebrow">Formas de pagamento</span>
+          <h2>Métodos aceitos</h2>
+        </div>
+        <div class="payment-grid">
+          <article class="payment-card reveal"><h3>PIX</h3><p>Pagamento instantâneo com confirmação rápida para liberar a entrega.</p></article>
+          <article class="payment-card reveal delay-1"><h3>Cartão de crédito</h3><p>Checkout adaptável para parcelamento e compras imediatas.</p></article>
+          <article class="payment-card reveal delay-2"><h3>Boleto bancário</h3><p>Opção adicional para clientes que preferem pagamento tradicional.</p></article>
+          <article class="payment-card reveal"><h3>Bitcoin & Litecoin</h3><p>Compatibilidade com cripto para pedidos específicos e público digital.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="depoimentos">
+      <div class="container">
+        <div class="section-heading reveal">
+          <span class="eyebrow">Depoimentos</span>
+          <h2>Exemplos de prova social</h2>
+        </div>
+        <div class="testimonial-grid">
+          <article class="testimonial-card reveal">
+            <p>“Entrega em minutos e ativação simples. Experiência direta e profissional.”</p>
+            <strong>Cliente verificado</strong>
+          </article>
+          <article class="testimonial-card reveal delay-1">
+            <p>“Visual confiável e suporte rápido no pós-compra. Processo bem organizado.”</p>
+            <strong>Cliente recorrente</strong>
+          </article>
+          <article class="testimonial-card reveal delay-2">
+            <p>“O catálogo ficou claro e os botões de compra ajudam muito na decisão.”</p>
+            <strong>Cliente satisfeito</strong>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="compras">
+      <div class="container purchases-grid">
+        <div class="section-heading reveal">
+          <span class="eyebrow">Minhas Compras</span>
+          <h2>Área pronta para histórico de pedidos</h2>
+          <p>Esta seção já deixa reservado um espaço visual para futuramente integrar login, pedidos e entregas digitais após o checkout.</p>
+        </div>
+        <div class="purchase-card reveal delay-1">
+          <h3>Acesso do cliente</h3>
+          <form class="purchase-form">
+            <label for="email">E-mail</label>
+            <input id="email" type="email" placeholder="cliente@email.com" />
+            <label for="pedido">Número do pedido</label>
+            <input id="pedido" type="text" placeholder="MS-000123" />
+            <button type="button" class="btn btn-primary">Consultar compra</button>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="termos">
+      <div class="container legal-grid">
+        <div class="section-heading reveal">
+          <span class="eyebrow">Termos e Condições</span>
+          <h2>Regras da entrega digital</h2>
+        </div>
+        <div class="legal-card reveal delay-1">
+          <ul>
+            <li>Todos os produtos comercializados são digitais.</li>
+            <li>Os prazos de entrega dependem da confirmação do pagamento.</li>
+            <li>O uso correto das credenciais é responsabilidade do comprador.</li>
+            <li>Recomenda-se personalizar esta seção com políticas reais antes de publicar a loja oficialmente.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="contato">
+      <div class="container contact-grid">
+        <div class="section-heading reveal">
+          <span class="eyebrow">Contato / Suporte</span>
+          <h2>Fale com a loja pelos canais principais</h2>
+          <p>Você pode trocar os links abaixo pelos seus contatos reais de WhatsApp, Telegram ou outro canal oficial.</p>
+          <div class="contact-actions">
+            <a class="btn btn-primary" href="https://wa.me/5500000000000" target="_blank" rel="noopener noreferrer">WhatsApp</a>
+            <a class="btn btn-secondary" href="https://t.me/seucanal" target="_blank" rel="noopener noreferrer">Telegram</a>
+          </div>
+        </div>
+        <form class="contact-form reveal delay-1">
+          <label for="nome">Nome</label>
+          <input id="nome" type="text" placeholder="Seu nome" />
+          <label for="email-contato">E-mail</label>
+          <input id="email-contato" type="email" placeholder="voce@email.com" />
+          <label for="mensagem">Mensagem</label>
+          <textarea id="mensagem" rows="5" placeholder="Descreva sua dúvida"></textarea>
+          <button type="button" class="btn btn-primary">Enviar mensagem</button>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div>
+        <div class="brand footer-brand">
+          <svg class="brand-logo" viewBox="0 0 64 64" role="img" aria-hidden="true" fill="none">
+            <path d="M10 32 32 10l22 22-22 22L10 32Z" stroke="currentColor" stroke-width="3"/>
+            <path d="M22 32h20M32 22v20" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
+          </svg>
+          <span><strong>Mystic</strong> Shop</span>
+        </div>
+        <p>Todos os produtos são digitais. Personalize preços, links e políticas antes de publicar a loja em produção.</p>
+      </div>
+      <div>
+        <h3>Links úteis</h3>
+        <ul>
+          <li><a href="#catalogo">Catálogo</a></li>
+          <li><a href="#pagamentos">Pagamentos</a></li>
+          <li><a href="#termos">Termos</a></li>
+          <li><a href="#compras">Minhas Compras</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3>Redes / suporte</h3>
+        <ul>
+          <li><a href="https://wa.me/5500000000000" target="_blank" rel="noopener noreferrer">WhatsApp</a></li>
+          <li><a href="https://t.me/seucanal" target="_blank" rel="noopener noreferrer">Telegram</a></li>
+          <li><a href="mailto:contato@mysticshop.com">E-mail</a></li>
+        </ul>
+      </div>
+    </div>
+  </footer>
+
+  <aside class="cart-drawer" id="cartDrawer" aria-hidden="true">
+    <div class="cart-header">
+      <h2>Carrinho</h2>
+      <button id="closeCart" aria-label="Fechar carrinho">✕</button>
+    </div>
+    <div id="cartItems" class="cart-items">
+      <p class="empty-cart">Seu carrinho está vazio.</p>
+    </div>
+    <div class="cart-footer">
+      <div class="cart-total">
+        <span>Total</span>
+        <strong id="cartTotal">R$ 0,00</strong>
+      </div>
+      <button class="btn btn-primary btn-block">Ir para checkout</button>
+    </div>
+  </aside>
+
+  <button class="live-chat" id="liveChatButton" aria-label="Abrir chat ao vivo">
+    <span>Chat ao vivo</span>
+  </button>
+
+  <div class="chat-widget hidden" id="chatWidget" aria-hidden="true">
+    <div class="chat-header">
+      <strong>Suporte Mystic Shop</strong>
+      <button id="closeChat" aria-label="Fechar chat">✕</button>
+    </div>
+    <div class="chat-body">
+      <div class="chat-message support">Olá. Este é um modelo visual de chat ao vivo. Troque por WhatsApp, Telegram ou integração real depois.</div>
+      <div class="chat-message user">Quero ativar agora.</div>
+      <div class="chat-message support">Use os botões de compra no catálogo ou personalize este widget com seu canal oficial.</div>
+    </div>
+    <div class="chat-input-row">
+      <input type="text" placeholder="Digite sua mensagem" />
+      <button class="btn btn-primary">Enviar</button>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
