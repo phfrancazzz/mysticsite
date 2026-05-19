@@ -1,0 +1,941 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mystic Shop | Produtos Digitais</title>
+  <meta name="description" content="Mystic Shop — loja online de produtos digitais com catálogo por categorias, carrinho, suporte e checkout rápido." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;800&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root, [data-theme="light"] {
+      --font-display: 'Orbitron', 'Inter', sans-serif;
+      --font-body: 'Inter', sans-serif;
+      --text-xs: clamp(0.75rem, 0.72rem + 0.2vw, 0.875rem);
+      --text-sm: clamp(0.875rem, 0.82rem + 0.25vw, 1rem);
+      --text-base: clamp(1rem, 0.96rem + 0.2vw, 1.125rem);
+      --text-lg: clamp(1.125rem, 1rem + 0.6vw, 1.45rem);
+      --text-xl: clamp(1.5rem, 1.2rem + 1.2vw, 2.2rem);
+      --text-2xl: clamp(2rem, 1.2rem + 2.4vw, 3.6rem);
+      --space-1: .25rem; --space-2: .5rem; --space-3: .75rem; --space-4: 1rem; --space-5: 1.25rem; --space-6: 1.5rem; --space-8: 2rem; --space-10: 2.5rem; --space-12: 3rem; --space-16: 4rem; --space-20: 5rem;
+      --radius-sm: .45rem; --radius-md: .8rem; --radius-lg: 1.1rem; --radius-xl: 1.4rem; --radius-full: 999px;
+      --color-bg: #f5f8f6;
+      --color-surface: #ffffff;
+      --color-surface-2: #edf4ef;
+      --color-surface-offset: #e4efe7;
+      --color-border: rgba(10, 39, 22, 0.12);
+      --color-text: #0b1710;
+      --color-text-muted: #365042;
+      --color-text-faint: #6b8477;
+      --color-primary: #0cd95f;
+      --color-primary-hover: #08b74e;
+      --color-primary-active: #069944;
+      --color-primary-ghost: rgba(12, 217, 95, 0.14);
+      --color-inverse: #041109;
+      --shadow-sm: 0 8px 24px rgba(6, 22, 13, 0.08);
+      --shadow-md: 0 18px 40px rgba(6, 22, 13, 0.13);
+      --shadow-glow: 0 0 0 1px rgba(12, 217, 95, 0.24), 0 0 22px rgba(12, 217, 95, 0.18);
+    }
+    [data-theme="dark"] {
+      --color-bg: #060b08;
+      --color-surface: #0b120f;
+      --color-surface-2: #101a15;
+      --color-surface-offset: #132019;
+      --color-border: rgba(125, 255, 180, 0.12);
+      --color-text: #effff5;
+      --color-text-muted: #a1c7ad;
+      --color-text-faint: #6d8f79;
+      --color-primary: #2cff81;
+      --color-primary-hover: #57ff9b;
+      --color-primary-active: #16d967;
+      --color-primary-ghost: rgba(44, 255, 129, 0.12);
+      --color-inverse: #05110a;
+      --shadow-sm: 0 10px 24px rgba(0, 0, 0, 0.26);
+      --shadow-md: 0 18px 42px rgba(0, 0, 0, 0.34);
+      --shadow-glow: 0 0 0 1px rgba(44, 255, 129, 0.18), 0 0 30px rgba(44, 255, 129, 0.13);
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      min-height: 100vh; background: var(--color-bg); color: var(--color-text);
+      font: 400 var(--text-base)/1.65 var(--font-body); overflow-x: hidden;
+    }
+    body::before {
+      content: ""; position: fixed; inset: 0; pointer-events: none;
+      background:
+        linear-gradient(rgba(44,255,129,.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(44,255,129,.05) 1px, transparent 1px);
+      background-size: 44px 44px; mask-image: linear-gradient(to bottom, rgba(0,0,0,.65), transparent 80%);
+      z-index: -3;
+    }
+    body::after {
+      content: ""; position: fixed; inset: -10% auto auto -10%; width: 34rem; height: 34rem; border-radius: 50%;
+      background: radial-gradient(circle, rgba(44,255,129,.14), transparent 68%); filter: blur(20px); z-index: -2;
+    }
+    a { color: inherit; text-decoration: none; }
+    img, svg { display: block; max-width: 100%; }
+    button, input, textarea, select { font: inherit; color: inherit; }
+    button { cursor: pointer; border: none; background: none; }
+    :focus-visible { outline: 2px solid var(--color-primary); outline-offset: 3px; }
+    .container { width: min(1180px, calc(100% - 2rem)); margin: 0 auto; }
+    .section { padding: clamp(var(--space-10), 8vw, var(--space-20)) 0; }
+    .skip-link { position: absolute; left: -9999px; }
+    .skip-link:focus { left: 1rem; top: 1rem; background: var(--color-surface); padding: .75rem 1rem; z-index: 99; border-radius: var(--radius-md); }
+
+    .site-header {
+      position: sticky; top: 0; z-index: 50;
+      backdrop-filter: blur(18px);
+      background: color-mix(in srgb, var(--color-bg) 82%, transparent);
+      border-bottom: 1px solid var(--color-border);
+    }
+    .header-inner { display: flex; align-items: center; justify-content: space-between; gap: var(--space-4); min-height: 76px; }
+    .brand { display: inline-flex; align-items: center; gap: .8rem; font-weight: 800; }
+    .brand-logo {
+      width: 44px; height: 44px; padding: .55rem; border-radius: .9rem;
+      color: var(--color-primary); background: linear-gradient(180deg, color-mix(in srgb, var(--color-primary) 12%, var(--color-surface)), var(--color-surface));
+      box-shadow: var(--shadow-glow);
+    }
+    .brand strong, h1, h2, h3, .stat-number, .catalog-tab { font-family: var(--font-display); letter-spacing: .02em; }
+    .main-nav { display: flex; align-items: center; gap: 1.1rem; flex-wrap: wrap; }
+    .main-nav a { color: var(--color-text-muted); font-size: var(--text-sm); }
+    .main-nav a:hover, .main-nav a.active { color: var(--color-primary); }
+    .header-actions { display: flex; align-items: center; gap: .8rem; }
+
+    .theme-toggle, .cart-button {
+      min-height: 46px; padding: .8rem 1rem; border: 1px solid var(--color-border);
+      border-radius: var(--radius-full); background: var(--color-surface); display: inline-flex; align-items: center; gap: .65rem;
+      box-shadow: var(--shadow-sm);
+    }
+    .theme-toggle:hover, .cart-button:hover { box-shadow: var(--shadow-glow); border-color: color-mix(in srgb, var(--color-primary) 45%, var(--color-border)); }
+    .cart-count {
+      min-width: 24px; height: 24px; display: inline-grid; place-items: center; border-radius: 50%; background: var(--color-primary); color: var(--color-inverse); font-size: .8rem; font-weight: 800;
+    }
+
+    .hero-grid { display: grid; grid-template-columns: 1.2fr .9fr; gap: clamp(1.5rem, 3vw, 4rem); align-items: center; }
+    .eyebrow {
+      display: inline-flex; gap: .5rem; flex-wrap: wrap; align-items: center; padding: .45rem .8rem;
+      border: 1px solid var(--color-border); border-radius: var(--radius-full); background: var(--color-primary-ghost);
+      color: var(--color-primary); font-size: var(--text-xs); text-transform: uppercase; letter-spacing: .15em;
+    }
+    h1 { font-size: clamp(2.4rem, 5vw, 5.1rem); line-height: 1.02; margin: 1rem 0 1rem; max-width: 11ch; }
+    .hero-copy p { color: var(--color-text-muted); max-width: 62ch; }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: .9rem; margin-top: 1.5rem; }
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center; gap: .6rem;
+      min-height: 50px; padding: .95rem 1.15rem; border-radius: var(--radius-full); font-weight: 700; font-size: var(--text-sm);
+      transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease, background .2s ease;
+    }
+    .btn:hover { transform: translateY(-2px); }
+    .btn-primary { background: var(--color-primary); color: var(--color-inverse); box-shadow: 0 0 0 1px rgba(44,255,129,.18), 0 0 26px rgba(44,255,129,.28); }
+    .btn-primary:hover { background: var(--color-primary-hover); }
+    .btn-secondary { background: var(--color-surface); border: 1px solid var(--color-border); }
+    .btn-secondary:hover { box-shadow: var(--shadow-glow); }
+    .btn-ghost { background: transparent; border: 1px solid var(--color-border); }
+
+    .hero-panel {
+      position: relative; padding: 1.4rem; border-radius: 1.6rem; border: 1px solid var(--color-border);
+      background: linear-gradient(180deg, color-mix(in srgb, var(--color-surface) 88%, transparent), var(--color-surface-2));
+      box-shadow: var(--shadow-md); overflow: hidden;
+    }
+    .hero-panel::before {
+      content: ""; position: absolute; inset: 1rem; border-radius: 1.25rem; border: 1px solid rgba(44,255,129,.18); pointer-events: none;
+    }
+    .terminal { padding: 1rem; border-radius: 1rem; background: #07110c; border: 1px solid rgba(44,255,129,.14); min-height: 320px; box-shadow: inset 0 0 0 1px rgba(44,255,129,.06); }
+    .terminal-top { display: flex; align-items: center; gap: .45rem; margin-bottom: 1rem; }
+    .dot { width: 10px; height: 10px; border-radius: 50%; background: rgba(255,255,255,.18); }
+    .dot:nth-child(1) { background: #18d962; } .dot:nth-child(2) { background: #42ff9a; } .dot:nth-child(3) { background: #87ffc0; }
+    .terminal-line { color: #97f1b7; font-size: .95rem; margin-bottom: .75rem; opacity: .95; }
+    .hero-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: .9rem; margin-top: 1rem; }
+    .stat-card { padding: 1rem; border-radius: 1rem; background: color-mix(in srgb, var(--color-surface-2) 82%, transparent); border: 1px solid var(--color-border); }
+    .stat-number { font-size: 1.55rem; color: var(--color-primary); }
+    .stat-label { font-size: var(--text-sm); color: var(--color-text-muted); }
+
+    .section-heading { display: flex; align-items: end; justify-content: space-between; gap: 1rem; margin-bottom: 1.4rem; }
+    .section-heading h2 { font-size: clamp(1.8rem, 2.6vw, 2.9rem); }
+    .section-heading p { color: var(--color-text-muted); max-width: 60ch; }
+
+    .category-switcher {
+      display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: .8rem; margin: 1.5rem 0 1.2rem;
+    }
+    .catalog-tab {
+      text-align: left; min-height: 84px; padding: 1rem; border-radius: 1rem; border: 1px solid var(--color-border);
+      background: linear-gradient(180deg, var(--color-surface), var(--color-surface-2)); color: var(--color-text); box-shadow: var(--shadow-sm);
+    }
+    .catalog-tab span { display: block; color: var(--color-text-muted); font-family: var(--font-body); font-size: var(--text-xs); margin-top: .35rem; letter-spacing: .04em; text-transform: uppercase; }
+    .catalog-tab.active, .catalog-tab:hover { border-color: rgba(44,255,129,.35); box-shadow: var(--shadow-glow); transform: translateY(-2px); }
+
+    .catalog-status {
+      display: inline-flex; align-items: center; gap: .6rem; padding: .65rem 1rem; border-radius: var(--radius-full);
+      background: var(--color-primary-ghost); color: var(--color-primary); margin-bottom: 1.2rem; border: 1px solid var(--color-border); font-size: var(--text-sm);
+    }
+
+    .product-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.2rem; }
+    .product-card {
+      position: relative; display: flex; flex-direction: column; gap: 1rem; padding: 1.2rem; min-height: 100%;
+      border-radius: 1.35rem; background: linear-gradient(180deg, var(--color-surface), var(--color-surface-2)); border: 1px solid var(--color-border);
+      box-shadow: var(--shadow-sm); overflow: hidden;
+    }
+    .product-card::before {
+      content: ""; position: absolute; inset: auto -20% -40% auto; width: 180px; height: 180px; border-radius: 50%;
+      background: radial-gradient(circle, rgba(44,255,129,.14), transparent 72%); pointer-events: none;
+    }
+    .product-head { display: flex; align-items: start; justify-content: space-between; gap: .8rem; }
+    .badge-row { display: flex; flex-wrap: wrap; gap: .5rem; }
+    .badge {
+      display: inline-flex; align-items: center; gap: .4rem; padding: .35rem .65rem; border-radius: var(--radius-full);
+      font-size: .78rem; font-weight: 700; letter-spacing: .04em; text-transform: uppercase; border: 1px solid rgba(44,255,129,.18);
+      background: rgba(44,255,129,.08); color: var(--color-primary);
+    }
+    .product-card h3 { font-size: 1.28rem; max-width: 18ch; }
+    .product-price { font-size: 1.9rem; font-weight: 800; color: var(--color-primary); }
+    .product-meta { color: var(--color-text-muted); font-size: var(--text-sm); }
+    .product-copy {
+      position: relative; padding: 1rem; border-radius: 1rem; background: color-mix(in srgb, var(--color-surface-offset) 88%, transparent);
+      border: 1px solid var(--color-border); color: var(--color-text-muted);
+    }
+    .product-copy::before {
+      content: "DATA SHEET"; position: absolute; top: .75rem; right: .85rem; font-size: .72rem; letter-spacing: .18em; color: var(--color-text-faint);
+    }
+    .product-features { display: grid; gap: .55rem; }
+    .product-features li { list-style: none; color: var(--color-text); font-size: var(--text-sm); }
+    .product-features li::before { content: "▸ "; color: var(--color-primary); }
+    .product-actions { display: flex; flex-wrap: wrap; gap: .75rem; margin-top: auto; }
+
+    .support-grid, .about-grid, .payments-grid, .testimonials-grid, .footer-grid { display: grid; gap: 1.2rem; }
+    .about-grid { grid-template-columns: 1.1fr .9fr; }
+    .panel {
+      padding: 1.3rem; border-radius: 1.2rem; border: 1px solid var(--color-border); background: linear-gradient(180deg, var(--color-surface), var(--color-surface-2)); box-shadow: var(--shadow-sm);
+    }
+    .list-clean { display: grid; gap: .7rem; }
+    .list-clean li { list-style: none; color: var(--color-text-muted); }
+    .list-clean li strong { color: var(--color-text); }
+    .payments-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+    .payment-card { text-align: left; }
+    .payment-icon { font-size: 1.6rem; margin-bottom: .8rem; color: var(--color-primary); }
+
+    .testimonials-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .quote { color: var(--color-text-muted); }
+    .quote strong { display: block; margin-top: .75rem; color: var(--color-text); }
+
+    .support-grid { grid-template-columns: 1fr 1fr; }
+    .support-cta { display: flex; flex-wrap: wrap; gap: .75rem; margin-top: 1rem; }
+    .contact-form { display: grid; gap: .9rem; }
+    .field { display: grid; gap: .4rem; }
+    .field input, .field textarea {
+      width: 100%; border-radius: .95rem; padding: .95rem 1rem; border: 1px solid var(--color-border); background: var(--color-surface-offset);
+    }
+    .field textarea { min-height: 120px; resize: vertical; }
+
+    .site-footer { padding: 2rem 0 3rem; border-top: 1px solid var(--color-border); }
+    .footer-grid { grid-template-columns: 1.1fr .8fr .8fr; }
+    .footer-note { color: var(--color-text-faint); margin-top: .8rem; font-size: var(--text-sm); }
+
+    .drawer, .modal, .chat-widget { position: fixed; z-index: 70; }
+    .drawer-backdrop, .modal-backdrop { position: fixed; inset: 0; background: rgba(2, 8, 5, .72); backdrop-filter: blur(10px); z-index: 65; display: none; }
+    .drawer {
+      top: 0; right: 0; width: min(420px, 100%); height: 100dvh; background: var(--color-surface);
+      border-left: 1px solid var(--color-border); transform: translateX(100%); transition: transform .28s ease; padding: 1rem; overflow-y: auto;
+    }
+    .drawer.open { transform: translateX(0); }
+    .drawer-backdrop.show, .modal-backdrop.show { display: block; }
+    .drawer-head, .modal-head { display: flex; align-items: center; justify-content: space-between; gap: 1rem; margin-bottom: 1rem; }
+    .cart-items { display: grid; gap: .8rem; }
+    .cart-item {
+      padding: .95rem; border-radius: 1rem; border: 1px solid var(--color-border); background: var(--color-surface-2); display: grid; gap: .6rem;
+    }
+    .cart-line { display: flex; justify-content: space-between; gap: .6rem; }
+    .qty-controls { display: flex; align-items: center; gap: .5rem; }
+    .qty-controls button { width: 32px; height: 32px; border-radius: 50%; background: var(--color-primary-ghost); }
+    .cart-summary { margin-top: 1rem; padding-top: 1rem; border-top: 1px solid var(--color-border); display: grid; gap: .8rem; }
+
+    .modal {
+      left: 50%; top: 50%; transform: translate(-50%, -50%) scale(.96); width: min(860px, calc(100% - 1.4rem)); max-height: 88dvh; overflow: auto;
+      background: var(--color-surface); border: 1px solid var(--color-border); border-radius: 1.4rem; padding: 1.2rem; box-shadow: var(--shadow-md); display: none;
+    }
+    .modal.show { display: block; transform: translate(-50%, -50%) scale(1); }
+    .modal-grid { display: grid; grid-template-columns: .9fr 1.1fr; gap: 1.1rem; }
+    .product-visual {
+      min-height: 320px; border-radius: 1.2rem; border: 1px solid var(--color-border); background:
+        radial-gradient(circle at top right, rgba(44,255,129,.18), transparent 30%),
+        linear-gradient(160deg, #08140d, #0f1f17 60%, #0b120f);
+      position: relative; overflow: hidden;
+    }
+    .product-visual::before, .product-visual::after {
+      content: ""; position: absolute; border-radius: 50%; border: 1px solid rgba(44,255,129,.18);
+    }
+    .product-visual::before { width: 220px; height: 220px; top: 18%; left: 14%; }
+    .product-visual::after { width: 120px; height: 120px; bottom: 12%; right: 14%; }
+    .visual-chip {
+      position: absolute; left: 1rem; top: 1rem; padding: .45rem .7rem; border-radius: var(--radius-full); background: rgba(44,255,129,.13); color: #a8ffc8; border: 1px solid rgba(44,255,129,.22); font-size: .8rem; letter-spacing: .08em; text-transform: uppercase;
+    }
+    .visual-title {
+      position: absolute; left: 1rem; right: 1rem; bottom: 1rem; font-family: var(--font-display); font-size: clamp(1.6rem, 3vw, 2.6rem); line-height: 1.05;
+    }
+    .product-description { color: var(--color-text-muted); white-space: pre-line; }
+
+    .chat-toggle {
+      position: fixed; right: 1rem; bottom: 1rem; z-index: 75; width: 60px; height: 60px; border-radius: 50%; background: var(--color-primary);
+      color: var(--color-inverse); box-shadow: 0 0 28px rgba(44,255,129,.35); font-size: 1.3rem;
+    }
+    .chat-widget {
+      right: 1rem; bottom: 5.5rem; width: min(360px, calc(100% - 1rem)); border-radius: 1.25rem; border: 1px solid var(--color-border);
+      background: var(--color-surface); box-shadow: var(--shadow-md); overflow: hidden; display: none;
+    }
+    .chat-widget.show { display: block; }
+    .chat-header { padding: .95rem 1rem; background: linear-gradient(180deg, var(--color-surface-offset), var(--color-surface)); border-bottom: 1px solid var(--color-border); }
+    .chat-log { padding: 1rem; display: grid; gap: .75rem; max-height: 330px; overflow: auto; }
+    .bubble { padding: .8rem .9rem; border-radius: 1rem; max-width: 88%; }
+    .bubble.ai { background: var(--color-surface-offset); color: var(--color-text); }
+    .bubble.user { margin-left: auto; background: var(--color-primary); color: var(--color-inverse); }
+    .chat-options, .chat-input-row { padding: 0 1rem 1rem; display: grid; gap: .7rem; }
+    .chat-option {
+      text-align: left; padding: .85rem .95rem; border-radius: .9rem; border: 1px solid var(--color-border); background: var(--color-surface-2);
+    }
+    .chat-option:hover { border-color: rgba(44,255,129,.35); box-shadow: var(--shadow-glow); }
+
+    .muted { color: var(--color-text-muted); }
+    .hidden { display: none !important; }
+    .reveal { opacity: 0; transform: translateY(24px); transition: opacity .65s ease, transform .65s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    @media (max-width: 1024px) {
+      .hero-grid, .about-grid, .support-grid, .modal-grid { grid-template-columns: 1fr; }
+      .payments-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .testimonials-grid { grid-template-columns: 1fr; }
+      .category-switcher { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .product-grid { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: 1fr; }
+      .main-nav { display: none; }
+    }
+    @media (max-width: 640px) {
+      .container { width: min(100% - 1rem, 1180px); }
+      .header-inner { min-height: 70px; }
+      .header-actions { gap: .5rem; }
+      .theme-toggle, .cart-button { padding: .75rem .9rem; }
+      .hero-stats { grid-template-columns: 1fr; }
+      .payments-grid, .category-switcher { grid-template-columns: 1fr; }
+      .btn { width: 100%; }
+      .product-actions { flex-direction: column; }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="#home" class="brand" aria-label="Mystic Shop, início">
+        <svg class="brand-logo" viewBox="0 0 64 64" role="img" aria-label="Logo Mystic Shop" fill="none">
+          <path d="M10 32 32 10l22 22-22 22L10 32Z" stroke="currentColor" stroke-width="3"/>
+          <path d="M20 32h24M32 20v24" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
+        </svg>
+        <span><strong>Mystic</strong> Shop</span>
+      </a>
+
+      <nav class="main-nav" aria-label="Principal">
+        <a href="#home">Home</a>
+        <a href="#catalogo">Catálogo</a>
+        <a href="#sobre">Sobre</a>
+        <a href="#pagamentos">Pagamentos</a>
+        <a href="#compras">Compras</a>
+        <a href="#contato">Suporte</a>
+      </nav>
+
+      <div class="header-actions">
+        <button class="theme-toggle" data-theme-toggle aria-label="Alternar tema">🌗</button>
+        <button class="cart-button" id="cartButton" aria-label="Abrir carrinho">
+          <span>Carrinho</span>
+          <span class="cart-count" id="cartCount">0</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main id="conteudo">
+    <section class="section" id="home">
+      <div class="container hero-grid">
+        <div class="hero-copy reveal">
+          <span class="eyebrow">Entrega em minutos • Garantia de funcionamento • Suporte 24h</span>
+          <h1>Produtos digitais premium com checkout rápido, visual tech e catálogo inteligente.</h1>
+          <p>
+            A Mystic Shop foi projetada para vender com mais clareza e mais autoridade. Escolha a categoria desejada, visualize os produtos corretos,
+            adicione ao carrinho e finalize o pedido com atendimento profissional e opções de pagamento flexíveis.
+          </p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#catalogo">Ver catálogo</a>
+            <a class="btn btn-secondary" href="#contato">Falar com suporte</a>
+          </div>
+          <div class="hero-stats">
+            <article class="stat-card">
+              <div class="stat-number" data-counter="500">0+</div>
+              <div class="stat-label">Clientes satisfeitos</div>
+            </article>
+            <article class="stat-card">
+              <div class="stat-number" data-counter="1200">0+</div>
+              <div class="stat-label">Produtos entregues</div>
+            </article>
+            <article class="stat-card">
+              <div class="stat-number" data-counter="24">0h</div>
+              <div class="stat-label">Suporte contínuo</div>
+            </article>
+          </div>
+        </div>
+
+        <div class="hero-panel reveal">
+          <div class="terminal" aria-hidden="true">
+            <div class="terminal-top"><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
+            <div class="terminal-line">&gt; inicializando catálogo inteligente</div>
+            <div class="terminal-line">&gt; gateways ativos: PIX, Cartão, Boleto, Cripto</div>
+            <div class="terminal-line">&gt; suporte pronto via Telegram, email e chat ao vivo</div>
+            <div class="terminal-line">&gt; categoria atual: Assinaturas e Softwares</div>
+            <div class="terminal-line">&gt; status: produtos digitais com entrega online</div>
+            <div class="terminal-line">&gt; comando: selecione sua categoria e ative agora</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="catalogo">
+      <div class="container">
+        <div class="section-heading reveal">
+          <div>
+            <h2>Catálogo por categoria</h2>
+            <p>Selecione a categoria desejada para trocar instantaneamente os produtos exibidos. As categorias sem itens no momento permanecem visíveis para preparar a expansão futura da loja.</p>
+          </div>
+        </div>
+
+        <div class="category-switcher reveal" id="categoryTabs"></div>
+        <div class="catalog-status reveal" id="catalogStatus">Categoria ativa: Assinaturas e Softwares</div>
+        <div class="product-grid" id="productGrid"></div>
+      </div>
+    </section>
+
+    <section class="section" id="sobre">
+      <div class="container about-grid">
+        <article class="panel reveal">
+          <div class="section-heading" style="margin-bottom:1rem;">
+            <div>
+              <h2>Sobre a Mystic Shop</h2>
+            </div>
+          </div>
+          <p class="muted">A Mystic Shop atua com produtos digitais selecionados para clientes que buscam preço competitivo, ativação clara e suporte rápido. O foco do site é passar confiança, facilitar a escolha por categoria e conduzir o cliente até a compra com menos atrito.</p>
+          <ul class="list-clean" style="margin-top:1rem;">
+            <li><strong>Entrega online:</strong> envio de licença, link, código ou orientação após a confirmação.</li>
+            <li><strong>Atendimento profissional:</strong> suporte por Telegram, email e chat ao vivo.</li>
+            <li><strong>Estrutura de venda:</strong> catálogo dinâmico, carrinho funcional e compra direta.</li>
+          </ul>
+        </article>
+        <article class="panel reveal" id="compras">
+          <h3 style="margin-bottom:.8rem;">Fluxo de compra</h3>
+          <ul class="list-clean">
+            <li><strong>1.</strong> Selecione a categoria e abra o produto desejado.</li>
+            <li><strong>2.</strong> Adicione ao carrinho ou clique em Comprar Agora.</li>
+            <li><strong>3.</strong> Finalize com o checkout do Mercado Pago ou fale com suporte.</li>
+            <li><strong>4.</strong> Receba a ativação digital com instruções correspondentes.</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" id="pagamentos">
+      <div class="container">
+        <div class="section-heading reveal">
+          <div>
+            <h2>Formas de pagamento</h2>
+            <p>Você pode deixar o site sem gastar nada usando links de pagamento do Mercado Pago, além de botões de contato para suporte e confirmação manual quando necessário.</p>
+          </div>
+        </div>
+        <div class="payments-grid">
+          <article class="panel payment-card reveal"><div class="payment-icon">◉</div><h3>PIX</h3><p class="muted">Pagamento instantâneo com confirmação rápida.</p></article>
+          <article class="panel payment-card reveal"><div class="payment-icon">▣</div><h3>Cartão</h3><p class="muted">Pagamento por crédito via checkout do Mercado Pago.</p></article>
+          <article class="panel payment-card reveal"><div class="payment-icon">◫</div><h3>Boleto</h3><p class="muted">Opção tradicional para clientes que preferem compensação bancária.</p></article>
+          <article class="panel payment-card reveal"><div class="payment-icon">₿</div><h3>Criptomoedas</h3><p class="muted">Atendimento manual por suporte para combinar pagamento em cripto.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="section-heading reveal">
+          <div>
+            <h2>Depoimentos</h2>
+            <p>Os textos abaixo são exemplos visuais para fortalecer a confiança da página até você substituir por feedbacks reais.</p>
+          </div>
+        </div>
+        <div class="testimonials-grid">
+          <article class="panel reveal"><p class="quote">“Recebi a ativação muito rápido e o suporte respondeu com clareza no processo.” <strong>Cliente verificado</strong></p></article>
+          <article class="panel reveal"><p class="quote">“Layout profissional, compra simples e instruções organizadas no pós-venda.” <strong>Comprador recorrente</strong></p></article>
+          <article class="panel reveal"><p class="quote">“Gostei da separação por categorias, ficou fácil encontrar exatamente o produto que eu queria.” <strong>Usuário atendido</strong></p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="contato">
+      <div class="container support-grid">
+        <article class="panel reveal">
+          <div class="section-heading" style="margin-bottom:1rem;">
+            <div>
+              <h2>Contato e suporte</h2>
+            </div>
+          </div>
+          <p class="muted">Você consegue manter tudo sem custo usando botão direto para Telegram, email clicável e um chat ao vivo local no próprio site para triagem inicial.</p>
+          <div class="support-cta">
+            <a class="btn btn-primary" id="telegramLink" href="https://t.me/SEU_USUARIO_AQUI" target="_blank" rel="noopener noreferrer">Telegram</a>
+            <a class="btn btn-secondary" href="mailto:contato@mysticshop.site">Email</a>
+            <button class="btn btn-ghost" id="openChatSupport">Chat ao vivo</button>
+          </div>
+          <p class="footer-note">Troque o link do Telegram pelo seu usuário real. Exemplo: https://t.me/seuusuario</p>
+        </article>
+        <article class="panel reveal">
+          <h3 style="margin-bottom:.8rem;">Formulário rápido</h3>
+          <form class="contact-form" onsubmit="event.preventDefault(); alert('Mensagem registrada. Você pode integrar este formulário a Formsubmit ou Basin depois.');">
+            <label class="field"><span>Nome</span><input type="text" placeholder="Seu nome" required></label>
+            <label class="field"><span>Email</span><input type="email" placeholder="voce@email.com" required></label>
+            <label class="field"><span>Mensagem</span><textarea placeholder="Explique o suporte desejado" required></textarea></label>
+            <button class="btn btn-primary" type="submit">Enviar solicitação</button>
+          </form>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div>
+        <a href="#home" class="brand" aria-label="Mystic Shop, início">
+          <svg class="brand-logo" viewBox="0 0 64 64" role="img" aria-label="Logo Mystic Shop" fill="none">
+            <path d="M10 32 32 10l22 22-22 22L10 32Z" stroke="currentColor" stroke-width="3"/>
+            <path d="M20 32h24M32 20v24" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
+          </svg>
+          <span><strong>Mystic</strong> Shop</span>
+        </a>
+        <p class="footer-note">Todos os produtos são digitais. Ativações, códigos, links ou instruções são enviados após a confirmação do pagamento.</p>
+      </div>
+      <div>
+        <h3 style="margin-bottom:.8rem;">Links úteis</h3>
+        <ul class="list-clean">
+          <li><a href="#catalogo">Catálogo</a></li>
+          <li><a href="#pagamentos">Pagamentos</a></li>
+          <li><a href="#contato">Suporte</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3 style="margin-bottom:.8rem;">Redes e contato</h3>
+        <ul class="list-clean">
+          <li><a href="https://t.me/SEU_USUARIO_AQUI" target="_blank" rel="noopener noreferrer">Telegram</a></li>
+          <li><a href="mailto:contato@mysticshop.site">contato@mysticshop.site</a></li>
+          <li><span class="muted">Atendimento com retorno rápido</span></li>
+        </ul>
+      </div>
+    </div>
+  </footer>
+
+  <div class="drawer-backdrop" id="drawerBackdrop"></div>
+  <aside class="drawer" id="cartDrawer" aria-label="Carrinho">
+    <div class="drawer-head">
+      <div>
+        <h2 style="font-size:1.4rem;">Carrinho</h2>
+        <p class="muted">Revise os itens antes de seguir para o pagamento.</p>
+      </div>
+      <button class="theme-toggle" id="closeCart" aria-label="Fechar carrinho">✕</button>
+    </div>
+    <div class="cart-items" id="cartItems"></div>
+    <div class="cart-summary">
+      <div class="cart-line"><strong>Total</strong><strong id="cartTotal">R$0,00</strong></div>
+      <button class="btn btn-primary" id="checkoutCart">Finalizar no Mercado Pago</button>
+      <button class="btn btn-secondary" id="clearCart">Limpar carrinho</button>
+      <p class="footer-note">Você pode usar um link geral de pagamento do Mercado Pago ou criar links individuais por produto.</p>
+    </div>
+  </aside>
+
+  <div class="modal-backdrop" id="modalBackdrop"></div>
+  <section class="modal" id="productModal" aria-label="Detalhes do produto">
+    <div class="modal-head">
+      <div>
+        <h2 id="modalTitle" style="font-size:1.6rem;"></h2>
+        <p class="muted" id="modalCategory"></p>
+      </div>
+      <button class="theme-toggle" id="closeModal" aria-label="Fechar produto">✕</button>
+    </div>
+    <div class="modal-grid">
+      <div class="product-visual">
+        <div class="visual-chip" id="modalChip">Digital</div>
+        <div class="visual-title" id="modalVisualTitle"></div>
+      </div>
+      <div>
+        <div class="badge-row" id="modalBadges" style="margin-bottom:.8rem;"></div>
+        <div class="product-price" id="modalPrice"></div>
+        <p class="product-description" id="modalDescription"></p>
+        <ul class="product-features" id="modalFeatures" style="margin:1rem 0 1.1rem;"></ul>
+        <div class="product-actions">
+          <button class="btn btn-secondary" id="modalAddCart">Adicionar ao carrinho</button>
+          <button class="btn btn-primary" id="modalBuyNow">Comprar agora</button>
+        </div>
+        <p class="footer-note">Para o botão Comprar Agora funcionar no pagamento real, substitua o link padrão pelo seu link individual do Mercado Pago.</p>
+      </div>
+    </div>
+  </section>
+
+  <button class="chat-toggle" id="chatToggle" aria-label="Abrir chat">💬</button>
+  <aside class="chat-widget" id="chatWidget" aria-label="Chat ao vivo">
+    <div class="chat-header">
+      <strong>Chat ao vivo</strong>
+      <p class="muted" style="font-size:.9rem;">Triagem automática inicial</p>
+    </div>
+    <div class="chat-log" id="chatLog">
+      <div class="bubble ai">Olá. Bem-vindo à Mystic Shop. Informe o que deseja no atendimento.</div>
+    </div>
+    <div class="chat-options">
+      <button class="chat-option" id="talkHuman">1. Falar com um atendente</button>
+    </div>
+  </aside>
+
+  <script>
+    const categories = [
+      { id: 'assinaturas-softwares', name: 'Assinaturas e Softwares', note: 'Produtos ativos nesta categoria.' },
+      { id: 'contas-ia', name: 'Contas de IA', note: 'Categoria visível, mas sem itens por enquanto.' },
+      { id: 'codigos-ativacao-ia', name: 'Códigos de Ativação IA', note: 'Produtos ativos nesta categoria.' },
+      { id: 'conta-jogos-fa', name: 'Conta de Jogos FA', note: 'Categoria visível, sem itens cadastrados no momento.' },
+      { id: 'streaming', name: 'Streaming', note: 'Categoria visível, sem itens por enquanto.' }
+    ];
+
+    const defaultCheckout = 'https://www.mercadopago.com.br/';
+
+    const products = [
+      {
+        id: 'picsart-pro-12m',
+        category: 'assinaturas-softwares',
+        name: 'PicsArt Pro 12 Meses',
+        price: 37.90,
+        short: 'Licença digital de 12 meses com ativação por chave na própria conta.',
+        description: `O Picsart Pro é uma das ferramentas mais completas para edição de fotos, criação de artes e produção de conteúdos visuais com acabamento profissional. Com ele, você desbloqueia recursos premium que deixam suas edições muito mais rápidas, práticas e criativas.\n\nEste anúncio é referente à licença de 12 meses, com ativação feita por chave enviada após a compra. A chave é inserida diretamente na conta da própria pessoa, garantindo acesso ao plano Pro durante todo o período contratado.\n\nIMPORTANTE\n• Plano válido por 12 meses\n• Ativação por chave na sua própria conta\n• Verifique a compatibilidade antes da compra\n• Suporte para dúvidas sobre ativação\n\nENTREGA\nApós a confirmação do pagamento, a chave será enviada conforme as instruções de ativação.`,
+        features: ['Plano válido por 12 meses', 'Ativação por chave na própria conta', 'Suporte para dúvidas sobre ativação', 'Entrega digital após confirmação'],
+        badges: ['Entrega Imediata', 'Garantido'],
+        checkout: defaultCheckout
+      },
+      {
+        id: 'avg-ultimate-1-ano',
+        category: 'assinaturas-softwares',
+        name: 'AVG Ultimate Antivírus — 1 Dispositivo / 1 Ano',
+        price: 55.90,
+        short: 'Licença digital com ativação por chave e uso em 1 dispositivo.',
+        description: `Produto digital com plano válido por 12 meses, com ativação por chave na sua própria conta.\n\nIMPORTANTE\n• Plano válido por 12 meses\n• Ativação por chave na sua própria conta\n• Suporte para dúvidas sobre ativação\n• Compatível com Windows, Android e iOS\n\nENTREGA\nApós a confirmação do pagamento, a chave será enviada conforme as instruções de ativação.`,
+        features: ['1 dispositivo', '12 meses de validade', 'Compatível com Windows, Android e iOS', 'Suporte para ativação'],
+        badges: ['Entrega Imediata', 'Garantido'],
+        checkout: defaultCheckout
+      },
+      {
+        id: 'avast-ultimate-1-ano',
+        category: 'assinaturas-softwares',
+        name: 'Avast Ultimate Antivírus — 1 Dispositivo / 1 Ano',
+        price: 47.00,
+        short: 'Proteção digital para uso em Windows, Linux e Mac.',
+        description: `Produto digital com foco em proteção, uso individual e ativação clara.\n\nIMPORTANTE\n• Plano válido por 12 meses\n• Ativação por chave na sua própria conta\n• Suporte para dúvidas sobre ativação\n• Compatível com Windows, Linux e Mac\n\nENTREGA\nApós a confirmação do pagamento, a chave será enviada conforme as instruções de ativação.`,
+        features: ['1 dispositivo', 'Compatível com Windows, Linux e Mac', 'Licença de 12 meses', 'Suporte para ativação'],
+        badges: ['Entrega Imediata', 'Garantido'],
+        checkout: defaultCheckout
+      },
+      {
+        id: 'ccleaner-profissional-1-ano',
+        category: 'assinaturas-softwares',
+        name: 'CCleaner Professional — 1 Dispositivo / 1 Ano',
+        price: 52.90,
+        short: 'Solução para otimização, limpeza e privacidade do computador.',
+        description: `O CCleaner Professional é uma solução completa para manter seu computador mais rápido, organizado e protegido. Ideal para quem deseja melhorar o desempenho do PC com praticidade, ele faz a limpeza de arquivos desnecessários, otimiza o sistema e ajuda a manter sua privacidade ao navegar.\n\nIMPORTANTE\n• Licença digital com ativação\n• Uso em 1 dispositivo\n• Compatível com Windows\n• Produto enviado de forma online\n• Verifique a compatibilidade antes da compra\n\nENTREGA\nApós a confirmação do pagamento, você recebe sua licença digital com as orientações para ativação.`,
+        features: ['1 dispositivo', 'Compatível com Windows', 'Licença digital com ativação', 'Entrega online com instruções'],
+        badges: ['Entrega Imediata', 'Garantido'],
+        checkout: defaultCheckout
+      },
+      {
+        id: 'google-one-ai-pro-12m',
+        category: 'codigos-ativacao-ia',
+        name: 'Google One AI Pro / Gemini 3.1 — 12 Meses (Link/Código)',
+        price: 48.90,
+        short: 'Acesso com link ou código para recursos avançados do ecossistema Google AI.',
+        description: `Serviços disponíveis:\n\n✅ Gemini 3.1 + Veo 3.1\n✅ DeepResearch\n✅ NotebookLM\n✅ Armazenamento de 5TB\n✅ Google Home Premium\n✅ Fitbit Premium\n\nO que vem incluso:\n✅ Suporte antigravidade\n✅ 1000 créditos mensais de vídeo VEO AI\n✅ Para uso pessoal\n✅ 30 dias de garantia\n\nENTREGA\nApós a confirmação do pagamento, você recebe sua licença digital com as orientações para ativação.`,
+        features: ['Gemini 3.1 + Veo 3.1', '5TB de armazenamento', 'NotebookLM e DeepResearch', '30 dias de garantia'],
+        badges: ['Entrega Imediata', 'Garantido'],
+        checkout: defaultCheckout
+      },
+      {
+        id: 'perplexity-ai-pro-12m',
+        category: 'codigos-ativacao-ia',
+        name: 'Perplexity AI Pro — 12 Meses (Código)',
+        price: 79.90,
+        short: 'Código de ativação para sua própria conta com recursos premium desbloqueados.',
+        description: `É código de ativação para sua própria conta.\n\nVantagens premium que você desbloqueia:\n- Perplexity Labs para criar relatórios completos, planilhas, painéis e miniaplicativos da web\n- Acesso a modelos avançados de IA, incluindo GPT-5.4, Gemini 3.1 Pro, Claude 4.6 Sonnet, Grok 3 Beta, Kimi K2.6 e Nemotron 3 Super\n- Análise de arquivos para PDFs, imagens e CSVs\n- Suporte prioritário e canais exclusivos\n- 300+ Buscas Pro por dia além de pesquisas básicas ilimitadas\n\nENTREGA\nApós a confirmação do pagamento, a ativação é orientada com suporte correspondente.`,
+        features: ['Código para conta própria', 'Perplexity Labs', 'Modelos avançados de IA', 'Análise de PDFs, imagens e CSVs'],
+        badges: ['Entrega Imediata', 'Garantido'],
+        checkout: defaultCheckout
+      }
+    ];
+
+    let activeCategory = categories[0].id;
+    let cart = [];
+    let selectedProduct = null;
+
+    const categoryTabs = document.getElementById('categoryTabs');
+    const productGrid = document.getElementById('productGrid');
+    const catalogStatus = document.getElementById('catalogStatus');
+    const cartCount = document.getElementById('cartCount');
+    const cartItems = document.getElementById('cartItems');
+    const cartTotal = document.getElementById('cartTotal');
+    const cartDrawer = document.getElementById('cartDrawer');
+    const drawerBackdrop = document.getElementById('drawerBackdrop');
+    const productModal = document.getElementById('productModal');
+    const modalBackdrop = document.getElementById('modalBackdrop');
+    const themeToggle = document.querySelector('[data-theme-toggle]');
+    const root = document.documentElement;
+
+    function formatBRL(value) {
+      return value.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+    }
+
+    function renderTabs() {
+      categoryTabs.innerHTML = categories.map(cat => `
+        <button class="catalog-tab ${cat.id === activeCategory ? 'active' : ''}" data-category="${cat.id}">
+          ${cat.name}
+          <span>${products.filter(p => p.category === cat.id).length} item(ns)</span>
+        </button>
+      `).join('');
+    }
+
+    function renderProducts() {
+      const currentCategory = categories.find(cat => cat.id === activeCategory);
+      const filtered = products.filter(product => product.category === activeCategory);
+      catalogStatus.textContent = `Categoria ativa: ${currentCategory.name} — ${currentCategory.note}`;
+
+      if (!filtered.length) {
+        productGrid.innerHTML = `
+          <article class="panel reveal visible">
+            <h3>Categoria preparada</h3>
+            <p class="muted">Ainda não existem produtos publicados nesta seção. A estrutura já está pronta para você inserir novos itens futuramente sem refazer o layout.</p>
+          </article>
+        `;
+        return;
+      }
+
+      productGrid.innerHTML = filtered.map(product => `
+        <article class="product-card reveal visible">
+          <div class="product-head">
+            <div>
+              <div class="badge-row">${product.badges.map(b => `<span class="badge">${b}</span>`).join('')}</div>
+              <h3 style="margin-top:.9rem;">${product.name}</h3>
+            </div>
+            <div class="product-price">${formatBRL(product.price)}</div>
+          </div>
+          <p class="product-meta">${product.short}</p>
+          <div class="product-copy">
+            <p>${product.description.split('\n\n')[0]}</p>
+          </div>
+          <ul class="product-features">
+            ${product.features.slice(0, 4).map(item => `<li>${item}</li>`).join('')}
+          </ul>
+          <div class="product-actions">
+            <button class="btn btn-secondary" data-view="${product.id}">Ver produto</button>
+            <button class="btn btn-ghost" data-add="${product.id}">Carrinho</button>
+            <button class="btn btn-primary" data-buy="${product.id}">Comprar agora</button>
+          </div>
+        </article>
+      `).join('');
+    }
+
+    function updateCart() {
+      cartCount.textContent = cart.reduce((sum, item) => sum + item.qty, 0);
+      if (!cart.length) {
+        cartItems.innerHTML = '<div class="panel"><p class="muted">Seu carrinho está vazio no momento.</p></div>';
+        cartTotal.textContent = formatBRL(0);
+        return;
+      }
+
+      cartItems.innerHTML = cart.map(item => `
+        <article class="cart-item">
+          <div class="cart-line"><strong>${item.name}</strong><button data-remove="${item.id}">Remover</button></div>
+          <div class="cart-line"><span>${formatBRL(item.price)}</span><span>${formatBRL(item.price * item.qty)}</span></div>
+          <div class="qty-controls">
+            <button data-minus="${item.id}">−</button>
+            <strong>${item.qty}</strong>
+            <button data-plus="${item.id}">+</button>
+          </div>
+        </article>
+      `).join('');
+
+      const total = cart.reduce((sum, item) => sum + item.price * item.qty, 0);
+      cartTotal.textContent = formatBRL(total);
+    }
+
+    function addToCart(productId) {
+      const product = products.find(item => item.id === productId);
+      if (!product) return;
+      const existing = cart.find(item => item.id === productId);
+      if (existing) existing.qty += 1;
+      else cart.push({ id: product.id, name: product.name, price: product.price, qty: 1, checkout: product.checkout });
+      updateCart();
+      openCart();
+    }
+
+    function openCart() {
+      cartDrawer.classList.add('open');
+      drawerBackdrop.classList.add('show');
+    }
+    function closeCart() {
+      cartDrawer.classList.remove('open');
+      drawerBackdrop.classList.remove('show');
+    }
+
+    function openModal(productId) {
+      const product = products.find(item => item.id === productId);
+      if (!product) return;
+      selectedProduct = product;
+      document.getElementById('modalTitle').textContent = product.name;
+      document.getElementById('modalCategory').textContent = categories.find(c => c.id === product.category)?.name || '';
+      document.getElementById('modalVisualTitle').textContent = product.name;
+      document.getElementById('modalChip').textContent = 'Produto digital';
+      document.getElementById('modalPrice').textContent = formatBRL(product.price);
+      document.getElementById('modalDescription').textContent = product.description;
+      document.getElementById('modalBadges').innerHTML = product.badges.map(b => `<span class="badge">${b}</span>`).join('');
+      document.getElementById('modalFeatures').innerHTML = product.features.map(item => `<li>${item}</li>`).join('');
+      productModal.classList.add('show');
+      modalBackdrop.classList.add('show');
+    }
+    function closeModal() {
+      productModal.classList.remove('show');
+      modalBackdrop.classList.remove('show');
+    }
+
+    function triggerBuyNow(productId) {
+      const product = products.find(item => item.id === productId);
+      if (!product) return;
+      window.open(product.checkout || defaultCheckout, '_blank', 'noopener,noreferrer');
+    }
+
+    function setupTheme() {
+      let currentTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+      root.setAttribute('data-theme', currentTheme);
+      themeToggle.innerHTML = currentTheme === 'dark' ? '🌙' : '☀️';
+      themeToggle.setAttribute('aria-label', currentTheme === 'dark' ? 'Alternar para tema claro' : 'Alternar para tema escuro');
+      themeToggle.addEventListener('click', () => {
+        currentTheme = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+        root.setAttribute('data-theme', currentTheme);
+        themeToggle.innerHTML = currentTheme === 'dark' ? '🌙' : '☀️';
+        themeToggle.setAttribute('aria-label', currentTheme === 'dark' ? 'Alternar para tema claro' : 'Alternar para tema escuro');
+      });
+    }
+
+    function setupReveal() {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) entry.target.classList.add('visible');
+        });
+      }, { threshold: 0.12 });
+      document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+    }
+
+    function setupCounters() {
+      const counters = document.querySelectorAll('[data-counter]');
+      const obs = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (!entry.isIntersecting) return;
+          const el = entry.target;
+          const target = Number(el.dataset.counter);
+          const suffix = el.textContent.includes('h') ? 'h' : '+';
+          let value = 0;
+          const step = Math.max(1, Math.ceil(target / 40));
+          const timer = setInterval(() => {
+            value += step;
+            if (value >= target) {
+              value = target;
+              clearInterval(timer);
+            }
+            el.textContent = value + suffix;
+          }, 30);
+          obs.unobserve(el);
+        });
+      }, { threshold: .45 });
+      counters.forEach(c => obs.observe(c));
+    }
+
+    function setupEvents() {
+      categoryTabs.addEventListener('click', (event) => {
+        const button = event.target.closest('[data-category]');
+        if (!button) return;
+        activeCategory = button.dataset.category;
+        renderTabs();
+        renderProducts();
+      });
+
+      productGrid.addEventListener('click', (event) => {
+        const view = event.target.closest('[data-view]');
+        const add = event.target.closest('[data-add]');
+        const buy = event.target.closest('[data-buy]');
+        if (view) openModal(view.dataset.view);
+        if (add) addToCart(add.dataset.add);
+        if (buy) triggerBuyNow(buy.dataset.buy);
+      });
+
+      document.getElementById('cartButton').addEventListener('click', openCart);
+      document.getElementById('closeCart').addEventListener('click', closeCart);
+      drawerBackdrop.addEventListener('click', closeCart);
+      document.getElementById('closeModal').addEventListener('click', closeModal);
+      modalBackdrop.addEventListener('click', closeModal);
+      document.getElementById('modalAddCart').addEventListener('click', () => selectedProduct && addToCart(selectedProduct.id));
+      document.getElementById('modalBuyNow').addEventListener('click', () => selectedProduct && triggerBuyNow(selectedProduct.id));
+
+      cartItems.addEventListener('click', (event) => {
+        const plus = event.target.closest('[data-plus]');
+        const minus = event.target.closest('[data-minus]');
+        const remove = event.target.closest('[data-remove]');
+        if (plus) {
+          const item = cart.find(i => i.id === plus.dataset.plus);
+          if (item) item.qty += 1;
+        }
+        if (minus) {
+          const item = cart.find(i => i.id === minus.dataset.minus);
+          if (item) item.qty = Math.max(1, item.qty - 1);
+        }
+        if (remove) cart = cart.filter(i => i.id !== remove.dataset.remove);
+        updateCart();
+      });
+
+      document.getElementById('clearCart').addEventListener('click', () => {
+        cart = [];
+        updateCart();
+      });
+
+      document.getElementById('checkoutCart').addEventListener('click', () => {
+        const checkout = cart[0]?.checkout || defaultCheckout;
+        window.open(checkout, '_blank', 'noopener,noreferrer');
+      });
+
+      const chatWidget = document.getElementById('chatWidget');
+      const chatToggle = document.getElementById('chatToggle');
+      const openChatSupport = document.getElementById('openChatSupport');
+      const chatLog = document.getElementById('chatLog');
+      const talkHuman = document.getElementById('talkHuman');
+
+      function toggleChat(force) {
+        const shouldShow = typeof force === 'boolean' ? force : !chatWidget.classList.contains('show');
+        chatWidget.classList.toggle('show', shouldShow);
+      }
+      chatToggle.addEventListener('click', () => toggleChat());
+      openChatSupport.addEventListener('click', () => toggleChat(true));
+      talkHuman.addEventListener('click', () => {
+        chatLog.insertAdjacentHTML('beforeend', '<div class="bubble user">Falar com um atendente</div>');
+        setTimeout(() => {
+          chatLog.insertAdjacentHTML('beforeend', '<div class="bubble ai">Perfeito. Um atendente entrará em contato com você por meio do chat em alguns instantes.</div>');
+          chatLog.scrollTop = chatLog.scrollHeight;
+        }, 600);
+      });
+    }
+
+    setupTheme();
+    renderTabs();
+    renderProducts();
+    updateCart();
+    setupReveal();
+    setupCounters();
+    setupEvents();
+  </script>
+</body>
+</html>
