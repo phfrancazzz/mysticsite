@@ -326,10 +326,7 @@
   <header class="site-header">
     <div class="container header-inner">
       <a href="#home" class="brand" aria-label="Mystic Shop, início">
-        <svg class="brand-logo" viewBox="0 0 64 64" role="img" aria-label="Logo Mystic Shop" fill="none">
-          <path d="M10 32 32 10l22 22-22 22L10 32Z" stroke="currentColor" stroke-width="3"/>
-          <path d="M20 32h24M32 20v24" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
-        </svg>
+        <img src="./logo-mystic.jpg" alt="Logo Mystic Shop" class="brand-logo-img" width="44" height="44" loading="lazy">
         <span><strong>Mystic</strong> Shop</span>
       </a>
 
@@ -490,8 +487,8 @@
         <article class="panel reveal">
           <h3 style="margin-bottom:.8rem;">Formulário rápido</h3>
           <form class="contact-form" onsubmit="event.preventDefault(); alert('Mensagem registrada. Você pode integrar este formulário a Formsubmit ou Basin depois.');">
-            <label class="field"><span>Nome</span><input type="text" placeholder="Paulo" required></label>
-            <label class="field"><span>✉️ Enviar Email</span><input type="email" placeholder="mysticsuporte1@email.com" required></label>
+            <label class="field"><span>Nome</span><input type="text" placeholder="Seu Nome" required></label>
+            <label class="field"><span>✉️ Enviar Email</span><input type="email" placeholder="Seu email" required></label>
             <label class="field"><span>Mensagem</span><textarea placeholder="Explique o suporte desejado" required></textarea></label>
             <button class="btn btn-primary" type="submit">Enviar solicitação</button>
           </form>
@@ -600,6 +597,7 @@
         description: `O Picsart Pro é uma das ferramentas mais completas para edição de fotos, criação de artes e produção de conteúdos visuais com acabamento profissional. Com ele, você desbloqueia recursos premium que deixam suas edições muito mais rápidas, práticas e criativas.\n\nEste anúncio é referente à licença de 12 meses, com ativação feita por chave enviada após a compra. A chave é inserida diretamente na conta da própria pessoa, garantindo acesso ao plano Pro durante todo o período contratado.\n\nIMPORTANTE\n• Plano válido por 12 meses\n• Ativação por chave na sua própria conta\n• Verifique a compatibilidade antes da compra\n• Suporte para dúvidas sobre ativação\n\nENTREGA\nApós a confirmação do pagamento, a chave será enviada conforme as instruções de ativação.`,
         features: ['Plano válido por 12 meses', 'Ativação por chave na própria conta', 'Suporte para dúvidas sobre ativação', 'Entrega digital após confirmação'],
         badges: ['Entrega Imediata', 'Garantido'],
+        image: './picsart-pro.jpg',
         checkout: 'https://mpago.la/22ZM6kk'
       },
       {
@@ -611,6 +609,7 @@
         description: `Produto digital com plano válido por 12 meses, com ativação por chave na sua própria conta.\n\nIMPORTANTE\n• Plano válido por 12 meses\n• Ativação por chave na sua própria conta\n• Suporte para dúvidas sobre ativação\n• Compatível com Windows, Android e iOS\n\nENTREGA\nApós a confirmação do pagamento, a chave será enviada conforme as instruções de ativação.`,
         features: ['1 dispositivo', '12 meses de validade', 'Compatível com Windows, Android e iOS', 'Suporte para ativação'],
         badges: ['Entrega Imediata', 'Garantido'],
+        image: './avg-ultimate.jpg',
         checkout: 'https://mpago.la/1YjhKRa'
       },
       {
@@ -622,6 +621,7 @@
         description: `Produto digital com foco em proteção, uso individual e ativação clara.\n\nIMPORTANTE\n• Plano válido por 12 meses\n• Ativação por chave na sua própria conta\n• Suporte para dúvidas sobre ativação\n• Compatível com Windows, Linux e Mac\n\nENTREGA\nApós a confirmação do pagamento, a chave será enviada conforme as instruções de ativação.`,
         features: ['1 dispositivo', 'Compatível com Windows, Linux e Mac', 'Licença de 12 meses', 'Suporte para ativação'],
         badges: ['Entrega Imediata', 'Garantido'],
+        image: './avast-ultimate.jpg',
         checkout: 'https://mpago.la/22G8EuH'
       },
       {
@@ -633,6 +633,7 @@
         description: `O CCleaner Professional é uma solução completa para manter seu computador mais rápido, organizado e protegido. Ideal para quem deseja melhorar o desempenho do PC com praticidade, ele faz a limpeza de arquivos desnecessários, otimiza o sistema e ajuda a manter sua privacidade ao navegar.\n\nIMPORTANTE\n• Licença digital com ativação\n• Uso em 1 dispositivo\n• Compatível com Windows\n• Produto enviado de forma online\n• Verifique a compatibilidade antes da compra\n\nENTREGA\nApós a confirmação do pagamento, você recebe sua licença digital com as orientações para ativação.`,
         features: ['1 dispositivo', 'Compatível com Windows', 'Licença digital com ativação', 'Entrega online com instruções'],
         badges: ['Entrega Imediata', 'Garantido'],
+        image: './ccleaner-pro.jpg',
         checkout: 'https://mpago.la/33onW89'
       },
       {
@@ -644,6 +645,7 @@
         description: `Serviços disponíveis:\n\n✅ Gemini 3.1 + Veo 3.1\n✅ DeepResearch\n✅ NotebookLM\n✅ Armazenamento de 5TB\n✅ Google Home Premium\n✅ Fitbit Premium\n\nO que vem incluso:\n✅ Suporte antigravidade\n✅ 1000 créditos mensais de vídeo VEO AI\n✅ Para uso pessoal\n✅ 30 dias de garantia\n\nENTREGA\nApós a confirmação do pagamento, você recebe sua licença digital com as orientações para ativação.`,
         features: ['Gemini 3.1 + Veo 3.1', '5TB de armazenamento', 'NotebookLM e DeepResearch', '30 dias de garantia'],
         badges: ['Entrega Imediata', 'Garantido'],
+        image: './gemini-pro.jpg',
         checkout: 'https://mpago.la/2igiQVA'
       },
       {
@@ -655,6 +657,7 @@
         description: `É código de ativação para sua própria conta.\n\nVantagens premium que você desbloqueia:\n- Perplexity Labs para criar relatórios completos, planilhas, painéis e miniaplicativos da web\n- Acesso a modelos avançados de IA, incluindo GPT-5.4, Gemini 3.1 Pro, Claude 4.6 Sonnet, Grok 3 Beta, Kimi K2.6 e Nemotron 3 Super\n- Análise de arquivos para PDFs, imagens e CSVs\n- Suporte prioritário e canais exclusivos\n- 300+ Buscas Pro por dia além de pesquisas básicas ilimitadas\n\nENTREGA\nApós a confirmação do pagamento, a ativação é orientada com suporte correspondente.`,
         features: ['Código para conta própria', 'Perplexity Labs', 'Modelos avançados de IA', 'Análise de PDFs, imagens e CSVs'],
         badges: ['Entrega Imediata', 'Garantido'],
+        image: './perplexity-pro.jpg',
         checkout: 'https://mpago.la/1HoQTr7'
       }
     ];
