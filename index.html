@@ -1,45 +1,124 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Mystic Shop</title>
+<meta name="description" content="Loja de produtos digitais com catálogo, checkout rápido, compra segura e suporte.">
 <style>
-body{margin:0;font-family:Arial,sans-serif;background:#050805;color:#fff}a{text-decoration:none;color:inherit}.container{width:min(1180px,calc(100% - 24px));margin:auto}.top{position:sticky;top:0;background:#07110a;border-bottom:1px solid #1e3b26;z-index:10}.nav{display:flex;justify-content:space-between;align-items:center;padding:14px 0}.brand{display:flex;align-items:center;gap:12px;font-weight:700}.brand img{width:42px;height:42px;border-radius:12px;object-fit:cover}.pill{background:#0f1f14;border:1px solid #1f4730;padding:8px 12px;border-radius:999px}.hero{padding:28px 0 12px}.tag{display:inline-block;padding:10px 14px;border-radius:999px;background:#0d1f13;border:1px solid #215437;color:#45f08a;font-weight:700;letter-spacing:.04em}.hero h1{font-size:clamp(2.4rem,6vw,4.8rem);line-height:.95;max-width:10ch;margin:18px 0}.hero p{max-width:60ch;color:#b6c7ba;line-height:1.7}.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin:24px 0 40px}.card{display:block;border:1px solid #1d3527;background:#08110b;border-radius:20px;overflow:hidden;transition:.2s transform}.card:hover{transform:translateY(-2px)}.img{aspect-ratio:16/10;background:#fff;display:grid;place-items:center}.img img{width:100%;height:100%;object-fit:contain}.body{padding:16px}.name{font-size:1.15rem;font-weight:700;margin:0 0 8px}.meta{color:#9fb2a2;font-size:.92rem;display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap}.btns{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px}.btn{padding:12px 14px;border-radius:14px;border:none;font-weight:700;cursor:pointer}.buy{background:linear-gradient(135deg,#23f57d,#11c96a);color:#021007}.ghost{background:#0f1f14;color:#fff;border:1px solid #1f4730}.detail{display:grid;grid-template-columns:1fr 1fr;gap:18px;padding:26px 0;border-top:1px solid #173423}.panel{background:#08110b;border:1px solid #1d3527;border-radius:20px;padding:18px}.detail .product-img{width:100%;background:#fff;border-radius:18px;aspect-ratio:1/1;object-fit:contain}.buybar{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px}.qty{width:84px;padding:12px;border-radius:12px;border:1px solid #26452f;background:#09130d;color:#fff}.bullets{color:#b6c7ba;line-height:1.75}footer{padding:24px 0 40px;color:#94a596;font-size:.92rem}
-@media(max-width:900px){.grid,.detail{grid-template-columns:1fr}h1{max-width:100%}}
+:root{--bg:#050805;--panel:#08110b;--panel2:#0b1710;--line:#1d3527;--line2:#215437;--txt:#fff;--muted:#b6c7ba;--green:#23f57d;--green2:#11c96a;--gold:#ffd166}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font-family:Arial,sans-serif;background:radial-gradient(circle at top,#0b1710 0,#050805 45%);color:var(--txt)}a{text-decoration:none;color:inherit}img{max-width:100%;display:block}
+.container{width:min(1180px,calc(100% - 24px));margin:auto}
+.top{position:sticky;top:0;background:rgba(7,17,10,.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--line);z-index:20}
+.nav{display:flex;justify-content:space-between;align-items:center;padding:14px 0;gap:12px;flex-wrap:wrap}
+.brand{display:flex;align-items:center;gap:12px;font-weight:700}.brand img{width:42px;height:42px;border-radius:12px;object-fit:cover;background:#fff}.brand span{font-size:1.15rem}
+.navlinks{display:flex;gap:10px;flex-wrap:wrap}.navlinks a{padding:10px 12px;border-radius:999px;border:1px solid var(--line2);background:#0f1f14;font-weight:700}
+.pill{background:#0f1f14;border:1px solid var(--line2);padding:8px 12px;border-radius:999px;color:#dff7e8}
+.hero{padding:28px 0 18px;display:grid;grid-template-columns:1.15fr .85fr;gap:20px;align-items:stretch}
+.heroBox,.sideBox,.panel{background:linear-gradient(180deg,rgba(11,23,16,.95),rgba(8,17,11,.98));border:1px solid var(--line);border-radius:24px;box-shadow:0 20px 60px rgba(0,0,0,.25)}
+.heroBox{padding:28px;min-height:360px;position:relative;overflow:hidden}.heroBox:before{content:'';position:absolute;inset:-40%;background:radial-gradient(circle,rgba(35,245,125,.12),transparent 45%);transform:translate(35%,5%)}
+.tag{display:inline-block;padding:10px 14px;border-radius:999px;background:#0d1f13;border:1px solid #215437;color:#45f08a;font-weight:700;letter-spacing:.04em;position:relative;z-index:1}
+.hero h1{position:relative;z-index:1;font-size:clamp(2.4rem,5.6vw,5rem);line-height:.95;max-width:11ch;margin:18px 0 14px;letter-spacing:-.03em}
+.hero p{position:relative;z-index:1;max-width:60ch;color:var(--muted);line-height:1.7}
+.heroStats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:20px;position:relative;z-index:1}.stat{padding:14px;border-radius:18px;background:rgba(5,8,5,.65);border:1px solid var(--line)}.stat b{display:block;font-size:1.2rem;margin-top:6px}
+.sideBox{padding:18px;display:grid;gap:12px;align-content:start}.sideCard{padding:16px;border-radius:18px;background:#09150e;border:1px solid var(--line)}.sideCard h3{margin:0 0 8px}.sideCard p{margin:0;color:var(--muted);line-height:1.6}
+.sectionTitle{display:flex;justify-content:space-between;align-items:end;gap:12px;flex-wrap:wrap;margin:18px 0 12px}.sectionTitle h2{margin:0;font-size:1.5rem}.sectionTitle span{color:var(--muted)}
+.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin:10px 0 28px}
+.card{display:block;border:1px solid var(--line);background:var(--panel);border-radius:22px;overflow:hidden;transition:.2s transform,.2s border-color}.card:hover{transform:translateY(-3px);border-color:#2f6d47}.img{aspect-ratio:16/10;background:#fff;display:grid;place-items:center}.img img{width:100%;height:100%;object-fit:contain}.body{padding:16px 16px 18px}.name{font-size:1.15rem;font-weight:700;margin:0 0 8px}.meta{color:#9fb2a2;font-size:.92rem;display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap}.badge{display:inline-block;padding:6px 10px;border-radius:999px;background:#0f1f14;border:1px solid #1f4730;font-size:.85rem;color:#dff7e8}
+.detail{display:grid;grid-template-columns:1fr 1fr;gap:18px;padding:22px;margin:8px 0 18px}.detail .product-img{width:100%;background:#fff;border-radius:20px;aspect-ratio:1/1;object-fit:contain}.buybar{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px}.qty{width:96px;padding:12px;border-radius:12px;border:1px solid #26452f;background:#09130d;color:#fff}.btn{padding:12px 14px;border-radius:14px;border:none;font-weight:700;cursor:pointer}.buy{background:linear-gradient(135deg,var(--green),var(--green2));color:#021007}.ghost{background:#0f1f14;color:#fff;border:1px solid var(--line2)}
+.bullets{color:var(--muted);line-height:1.8}.miniGrid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:14px}.mini{padding:14px;border-radius:16px;background:#09150e;border:1px solid var(--line)}.mini b{display:block;margin-bottom:6px}.terms{display:grid;grid-template-columns:1fr 1fr;gap:16px}.terms .mini{min-height:210px}
+.footer{padding:24px 0 44px;color:#94a596;font-size:.92rem}.footerGrid{display:grid;grid-template-columns:1.3fr .7fr;gap:16px}.footer .panel{padding:18px}.list{margin:0;padding-left:18px;color:var(--muted);line-height:1.9}
+@media(max-width:980px){.hero,.detail,.terms,.footerGrid{grid-template-columns:1fr}.grid{grid-template-columns:1fr}.heroBox{min-height:auto}.heroStats,.miniGrid{grid-template-columns:1fr}.nav{justify-content:center}.navlinks{justify-content:center}}
 </style>
+<script>
+const products={
+picsart:{title:'PicsArt Pro 12 Meses',img:'./D_NQ_NP_2X_950618-MLB110833649990_052026-F-picsart-pro-12-meses-envio-imediato.jpg',ad:'565B10D4',sales:0,price:'R$ 19,90',stock:100,desc:'Produto digital com entrega rápida, ideal para quem quer editar imagens e vídeos com recursos premium.',pay:'Pix • Cartão • Boleto • Cripto',disc:'Acesso imediato após confirmação.',sec:'Compra segura e suporte 24h.'},
+gemini:{title:'Google One AI Pro / Gemini',img:'./992512357-google-gemini-pro-conta-anual-12-meses-CKNC.jpg',ad:'390D14D9',sales:0,price:'R$ 39,90',stock:100,desc:'Acesso premium voltado para produtividade, automação e uso de IA com entrega imediata.',pay:'Pix • Cartão • Boleto • Cripto',disc:'Licença digital pronta para envio.',sec:'Compra segura e suporte 24h.'},
+avast:{title:'Avast Ultimate 1 Ano',img:'./D_NQ_NP_2X_898940-MLB110830763238_052026-F-ccleaner-professional-1-dispositivo-1-ano-pc.jpg',ad:'A7C3F119',sales:0,price:'R$ 29,90',stock:100,desc:'Proteção e utilidades digitais com licença enviada após a confirmação do pagamento.',pay:'Pix • Cartão • Boleto • Cripto',disc:'Ativação rápida no seu dispositivo.',sec:'Compra segura e suporte 24h.'},
+ccleaner:{title:'CCleaner Professional',img:'./D_NQ_NP_2X_759371-MLA110723854034_052026-F.jpg',ad:'D1E4A822',sales:0,price:'R$ 24,90',stock:100,desc:'Ferramenta premium para otimização e limpeza com envio rápido e suporte.',pay:'Pix • Cartão • Boleto • Cripto',disc:'Entrega rápida e instruções simples.',sec:'Compra segura e suporte 24h.'}
+};
+function showProduct(k){const p=products[k]||products.picsart;document.getElementById('pimg').src=p.img;document.getElementById('pad').textContent='Anúncio #'+p.ad;document.getElementById('ptitle').textContent=p.title;document.getElementById('psales').textContent='Vendas: '+p.sales;document.getElementById('pprice').textContent='Preço: '+p.price;document.getElementById('pstock').textContent='Estoque: '+p.stock+' unidades';document.getElementById('pdesc').textContent=p.desc;document.getElementById('ppay').textContent=p.pay;document.getElementById('pdisc').textContent=p.disc;document.getElementById('psec').textContent=p.sec;document.getElementById('buybtn').onclick=()=>window.open('https://mail.google.com/mail/?view=cm&fs=1&to=mysticsuporte1@gmail.com&su=Pedido%20'+encodeURIComponent(p.title),'_blank');document.getElementById('buybtn').textContent='Comprar agora';}
+window.addEventListener('hashchange',()=>showProduct(location.hash.replace('#','')||'picsart'));
+window.addEventListener('DOMContentLoaded',()=>showProduct(location.hash.replace('#','')||'picsart'));
+</script>
 </head>
 <body>
-<div class="top"><div class="container nav"><a class="brand" href="#"><img src="./logo-mystic.jpg" alt="Logo"><span>Mystic Shop</span></a><div class="pill">Compra Segura • Entrega Rápida • Estoque 100</div></div></div>
+<div class="top"><div class="container nav"><a class="brand" href="#picsart"><img src="./logo-mystic.jpg" alt="Logo"><span>Mystic Shop</span></a><div class="navlinks"><a href="#produtos">Produtos</a><a href="#detalhe">Detalhe</a><a href="#termos">Termos</a></div><div class="pill">Compra Segura • Entrega Rápida • Estoque 100</div></div></div>
 <div class="container">
 <section class="hero">
+<div class="heroBox">
 <span class="tag">ENTREGA EM MINUTOS • GARANTIA DE FUNCIONAMENTO • SUPORTE 24H</span>
 <h1>Produtos digitais premium com checkout rápido, visual tech e catálogo inteligente.</h1>
-<p>Escolha um produto para ver a página completa com imagem, descrição, estoque, quantidade, métodos de pagamento, comprar agora e detalhes de confiança. O foco é converter melhor quando você divulgar a loja.</p>
+<p>Clique em qualquer produto para abrir a área de detalhes. Assim cada item mostra imagem, preço, estoque, vendas, métodos de pagamento e botão de compra sem página quebrada. O catálogo foi montado para ficar mais forte visualmente e com estrutura parecida com loja real.</p>
+<div class="heroStats">
+<div class="stat"><span>Produtos ativos</span><b>4</b></div>
+<div class="stat"><span>Estoque total</span><b>400</b></div>
+<div class="stat"><span>Suporte</span><b>24h</b></div>
+</div>
+</div>
+<div class="sideBox">
+<div class="sideCard"><h3>Compra Segura</h3><p>Layout com blocos de confiança, catálogo claro e botão de email direto para o Gmail.</p></div>
+<div class="sideCard"><h3>Entrega Rápida</h3><p>Os produtos digitais ficam organizados com visual premium e fácil navegação.</p></div>
+<div class="sideCard"><h3>Contato</h3><p>mysticsuporte1@gmail.com e Telegram para atendimento.</p></div>
+</div>
 </section>
+
+<div class="sectionTitle" id="produtos"><h2>Catálogo</h2><span>Selecione um produto</span></div>
 <section class="grid">
-<a class="card" href="./produto-picsart-pro.html"><div class="img"><img src="./picsart-pro.jpg" alt="PicsArt Pro"></div><div class="body"><div class="meta"><span>PicsArt Pro</span><span>Anúncio #A1</span></div><p class="name">PicsArt Pro 12 Meses</p><div class="meta"><span>Vendas: 0</span><span>Estoque: 100</span></div></div></a>
-<a class="card" href="./produto-gemini-pro.html"><div class="img"><img src="./gemini-pro.jpg" alt="Gemini Pro"></div><div class="body"><div class="meta"><span>Gemini Pro</span><span>Anúncio #B2</span></div><p class="name">Google One AI Pro / Gemini</p><div class="meta"><span>Vendas: 0</span><span>Estoque: 100</span></div></div></a>
-<a class="card" href="./produto-avast-ultimate.html"><div class="img"><img src="./avast-ultimate.jpg" alt="Avast Ultimate"></div><div class="body"><div class="meta"><span>Avast Ultimate</span><span>Anúncio #C3</span></div><p class="name">Avast Ultimate 1 Ano</p><div class="meta"><span>Vendas: 0</span><span>Estoque: 100</span></div></div></a>
-<a class="card" href="./produto-ccleaner-pro.html"><div class="img"><img src="./ccleaner-pro.jpg" alt="CCleaner Pro"></div><div class="body"><div class="meta"><span>CCleaner Pro</span><span>Anúncio #D4</span></div><p class="name">CCleaner Professional</p><div class="meta"><span>Vendas: 0</span><span>Estoque: 100</span></div></div></a>
+<a class="card" href="#picsart"><div class="img"><img src="./D_NQ_NP_2X_950618-MLB110833649990_052026-F-picsart-pro-12-meses-envio-imediato.jpg" alt="PicsArt Pro"></div><div class="body"><div class="meta"><span>PicsArt Pro</span><span>Anúncio #565B10D4</span></div><p class="name">PicsArt Pro 12 Meses</p><div class="meta"><span>Vendas: 0</span><span>Estoque: 100</span></div><div style="margin-top:10px"><span class="badge">Clique para abrir detalhe</span></div></div></a>
+<a class="card" href="#gemini"><div class="img"><img src="./992512357-google-gemini-pro-conta-anual-12-meses-CKNC.jpg" alt="Gemini Pro"></div><div class="body"><div class="meta"><span>Gemini Pro</span><span>Anúncio #390D14D9</span></div><p class="name">Google One AI Pro / Gemini</p><div class="meta"><span>Vendas: 0</span><span>Estoque: 100</span></div><div style="margin-top:10px"><span class="badge">Clique para abrir detalhe</span></div></div></a>
+<a class="card" href="#avast"><div class="img"><img src="./D_NQ_NP_2X_898940-MLB110830763238_052026-F-ccleaner-professional-1-dispositivo-1-ano-pc.jpg" alt="Avast Ultimate"></div><div class="body"><div class="meta"><span>Avast Ultimate</span><span>Anúncio #A7C3F119</span></div><p class="name">Avast Ultimate 1 Ano</p><div class="meta"><span>Vendas: 0</span><span>Estoque: 100</span></div><div style="margin-top:10px"><span class="badge">Clique para abrir detalhe</span></div></div></a>
+<a class="card" href="#ccleaner"><div class="img"><img src="./D_NQ_NP_2X_759371-MLA110723854034_052026-F.jpg" alt="CCleaner Pro"></div><div class="body"><div class="meta"><span>CCleaner Pro</span><span>Anúncio #D1E4A822</span></div><p class="name">CCleaner Professional</p><div class="meta"><span>Vendas: 0</span><span>Estoque: 100</span></div><div style="margin-top:10px"><span class="badge">Clique para abrir detalhe</span></div></div></a>
 </section>
-<section class="detail panel" id="produto">
-<div><img class="product-img" src="./picsart-pro.jpg" alt="Produto"></div>
+
+<div class="sectionTitle" id="detalhe"><h2>Detalhe do produto</h2><span>Visual tipo vitrine de loja</span></div>
+<section class="detail panel">
+<div><img id="pimg" class="product-img" src="./D_NQ_NP_2X_950618-MLB110833649990_052026-F-picsart-pro-12-meses-envio-imediato.jpg" alt="Produto"></div>
 <div>
-<div class="meta"><span>Produto</span><span>Anúncio #A1</span></div>
-<h2 style="margin:10px 0 8px">PicsArt Pro 12 Meses</h2>
-<div class="meta"><span>Vendas: 0</span><span>Estoque: 100 unidades</span></div>
-<p class="bullets">Descrição do produto, benefícios, compra segura, entrega rápida e suporte para dúvidas. O cliente vê a foto, o preço, a quantidade, o estoque e os botões de ação em uma página única.</p>
-<div class="buybar"><input class="qty" type="number" value="1" min="1" max="100"><button class="btn buy" onclick="window.open('https://mpago.la/22ZM6kk','_blank')">Comprar agora</button><button class="btn ghost" onclick="alert('Adicionado ao carrinho')">Adicionar ao carrinho</button></div>
-<div style="margin-top:16px" class="bullets"><b>Métodos de pagamento</b><br>Pix • Cartão • Boleto • Cripto<br><br><b>Segurança</b><br>Compra segura • Entrega rápida • Termos de uso • Termos de serviço</div>
+<div class="meta"><span id="pad">Anúncio #565B10D4</span><span>Produto</span></div>
+<h2 id="ptitle" style="margin:10px 0 8px">PicsArt Pro 12 Meses</h2>
+<div class="meta"><span id="psales">Vendas: 0</span><span id="pprice">Preço: R$ 19,90</span></div>
+<div class="meta" style="margin-top:6px"><span id="pstock">Estoque: 100 unidades</span><span>Métodos: Pix • Cartão • Boleto • Cripto</span></div>
+<p id="pdesc" class="bullets">Produto digital com entrega rápida, ideal para quem quer editar imagens e vídeos com recursos premium.</p>
+<div class="miniGrid">
+<div class="mini"><b>Quantidade</b><span>Selecione no campo abaixo</span></div>
+<div class="mini"><b>Estoque</b><span>100 unidades</span></div>
+<div class="mini"><b>Entrega</b><span>Imediata</span></div>
+</div>
+<div class="buybar"><input class="qty" type="number" value="1" min="1" max="100"><button id="buybtn" class="btn buy">Comprar agora</button><button class="btn ghost" onclick="alert('Adicionado ao carrinho')">Adicionar ao carrinho</button></div>
+<div class="terms" style="margin-top:16px">
+<div class="mini"><b>Métodos de pagamento</b><span id="ppay">Pix • Cartão • Boleto • Cripto</span></div>
+<div class="mini"><b>Segurança</b><span id="psec">Compra segura e suporte 24h.</span><br><span id="pdisc">Acesso imediato após confirmação.</span></div>
+</div>
 </div>
 </section>
-<section class="panel" style="margin:18px 0 26px">
-<h3 style="margin-top:0">Contato e suporte</h3>
-<p class="bullets">Telegram direto para contato e email abrindo no Gmail com destinatário e assunto já preenchidos.</p>
-<div class="btns"><a class="btn buy" href="https://t.me/phzsupport" target="_blank" rel="noopener noreferrer">Abrir Telegram</a><a class="btn ghost" href="https://mail.google.com/mail/?view=cm&fs=1&to=mysticsuporte1@gmail.com&su=Suporte%20Mystic%20Shop&body=Olá,%20tenho%20uma%20dúvida%20sobre%20um%20produto." target="_blank" rel="noopener noreferrer">Abrir Email</a></div>
+
+<div class="sectionTitle" id="termos"><h2>Termos e confiança</h2><span>Estrutura informativa</span></div>
+<section class="terms">
+<div class="mini"><b>Termos de uso</b><p class="bullets">Uso do site, responsabilidade do cliente, política de acesso e regras de compra. Esse bloco serve para você escrever seu texto final sem copiar de outra loja.</p></div>
+<div class="mini"><b>Termos de serviço</b><p class="bullets">Apoio, suporte, entrega digital, prazo de envio e observações de uso. Aqui também é melhor manter texto original da sua loja.</p></div>
+</section>
+
+<div class="sectionTitle"><h2>Depoimentos</h2><span>Prova social</span></div>
+<section class="grid" style="margin-top:8px">
+<div class="panel" style="padding:18px"><b>Marina S.</b><p class="bullets">"Comprei e recebi rápido. Visual bonito e atendimento atencioso."</p></div>
+<div class="panel" style="padding:18px"><b>Lucas R.</b><p class="bullets">"O checkout ficou simples e o site passa confiança."</p></div>
+<div class="panel" style="padding:18px"><b>Ana P.</b><p class="bullets">"Gostei do catálogo, ficou bem organizado e fácil de navegar."</p></div>
+<div class="panel" style="padding:18px"><b>João V.</b><p class="bullets">"Entrega rápida e o produto abriu certinho, sem problema."</p></div>
+</section>
+
+<div class="sectionTitle"><h2>Garantia</h2><span>Segurança extra</span></div>
+<section class="terms">
+<div class="mini"><b>Compra segura</b><p class="bullets">Pagamento e confirmação organizados para passar confiança ao cliente.</p></div>
+<div class="mini"><b>Entrega rápida</b><p class="bullets">Produtos digitais preparados para envio imediato após a compra.</p></div>
+</section>
+
+<div class="sectionTitle"><h2>Contato e suporte</h2><span>Gmail direto</span></div>
+<section class="panel" style="padding:18px;margin:8px 0 26px">
+<p class="bullets">O botão de email abre direto no Gmail com seu endereço de suporte: <b>mysticsuporte1@gmail.com</b>.</p>
+<div class="btns"><a class="btn buy" href="https://t.me/phzsupport" target="_blank" rel="noopener noreferrer">Abrir Telegram</a><a class="btn ghost" href="https://mail.google.com/mail/?view=cm&fs=1&to=mysticsuporte1@gmail.com&su=Suporte%20Mystic%20Shop" target="_blank" rel="noopener noreferrer">Abrir Email</a></div>
 </section>
 </div>
-<footer><div class="container">Mystic Shop • Loja digital focada em conversão.</div></footer>
+<footer class="footer"><div class="container footerGrid"><div class="panel"><b>Mystic Shop</b><p class="bullets">Loja digital focada em conversão, catálogo claro e experiência de compra simples.</p></div><div class="panel"><ul class="list"><li>Compra segura</li><li>Entrega rápida</li><li>Estoque 100</li><li>Checkout visual</li></ul></div></div></footer>
 </body>
 </html>
