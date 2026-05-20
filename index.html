@@ -991,5 +991,28 @@
     setupCounters();
     setupEvents();
   </script>
+
+  <div class="modal-shell" id="authModal" style="display:none;">
+    <div class="auth-card">
+      <div class="auth-tabs">
+        <button class="btn btn-secondary" id="showLogin">Entrar</button>
+        <button class="btn btn-ghost" id="showRegister">Cadastre-se</button>
+      </div>
+      <div id="loginBox">
+        <input id="loginUser" placeholder="Usuário ou email" />
+        <input id="loginPass" type="password" placeholder="Senha" />
+        <button class="btn btn-primary" id="loginBtn">Entrar</button>
+        <button class="btn btn-secondary" id="googleBtn">Entrar com Google</button>
+      </div>
+      <div id="registerBox" style="display:none;">
+        <input id="regName" placeholder="Nome" />
+        <input id="regEmail" placeholder="Email" />
+        <input id="regUser" placeholder="Usuário" />
+        <input id="regPass" type="password" placeholder="Senha" />
+        <button class="btn btn-primary" id="registerBtn">Criar conta</button>
+      </div>
+    </div>
+  </div>
+
 </body>
 </html>
