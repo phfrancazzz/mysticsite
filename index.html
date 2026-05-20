@@ -231,7 +231,7 @@
     .footer-grid { grid-template-columns: 1.1fr .8fr .8fr; }
     .footer-note { color: var(--color-text-faint); margin-top: .8rem; font-size: var(--text-sm); }
 
-    .drawer, .modal, 
+    .drawer, .modal, .chat-widget { position: fixed; z-index: 70; }
     .drawer-backdrop, .modal-backdrop { position: fixed; inset: 0; background: rgba(2, 8, 5, .72); backdrop-filter: blur(10px); z-index: 65; display: none; }
     .drawer {
       top: 0; right: 0; width: min(420px, 100%); height: 100dvh; background: var(--color-surface);
@@ -274,17 +274,25 @@
     }
     .product-description { color: var(--color-text-muted); white-space: pre-line; }
 
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+    .chat-toggle {
+      position: fixed; right: 1rem; bottom: 1rem; z-index: 75; width: 60px; height: 60px; border-radius: 50%; background: var(--color-primary);
+      color: var(--color-inverse); box-shadow: 0 0 28px rgba(44,255,129,.35); font-size: 1.3rem;
+    }
+    .chat-widget {
+      right: 1rem; bottom: 5.5rem; width: min(360px, calc(100% - 1rem)); border-radius: 1.25rem; border: 1px solid var(--color-border);
+      background: var(--color-surface); box-shadow: var(--shadow-md); overflow: hidden; display: none;
+    }
+    .chat-widget.show { display: block; }
+    .chat-header { padding: .95rem 1rem; background: linear-gradient(180deg, var(--color-surface-offset), var(--color-surface)); border-bottom: 1px solid var(--color-border); }
+    .chat-log { padding: 1rem; display: grid; gap: .75rem; max-height: 330px; overflow: auto; }
+    .bubble { padding: .8rem .9rem; border-radius: 1rem; max-width: 88%; }
+    .bubble.ai { background: var(--color-surface-offset); color: var(--color-text); }
+    .bubble.user { margin-left: auto; background: var(--color-primary); color: var(--color-inverse); }
+    .chat-options, .chat-input-row { padding: 0 1rem 1rem; display: grid; gap: .7rem; }
+    .chat-option {
+      text-align: left; padding: .85rem .95rem; border-radius: .9rem; border: 1px solid var(--color-border); background: var(--color-surface-2);
+    }
+    .chat-option:hover { border-color: rgba(44,255,129,.35); box-shadow: var(--shadow-glow); }
 
     .muted { color: var(--color-text-muted); }
     .hidden { display: none !important; }
@@ -888,7 +896,34 @@
         window.open(checkout, '_blank', 'noopener,noreferrer');
       });
 
-      ;
+      const chatWidget = document.getElementById('chatWidget');
+      const chatToggle = document.getElementById('chatToggle');
+      const openChatSupport = document.getElementById('openChatSupport');
+      const chatLog = document.getElementById('chatLog');
+      const talkHuman = document.getElementById('talkHuman');
+
+      function toggleChat(force) {
+        const shouldShow = typeof force === 'boolean' ? force : !chatWidget.classList.contains('show');
+        chatWidget.classList.toggle('show', shouldShow);
+      }
+      chatToggle.addEventListener('click', () => toggleChat());
+      openChatSupport.addEventListener('click', () => toggleChat(true));
+      talkHuman.addEventListener('click', () => {
+        chatLog.insertAdjacentHTML('beforeend', '<div class="bubble user">Falar com um atendente</div>');
+        setTimeout(() => {
+          chatLog.insertAdjacentHTML('beforeend', '<div class="bubble ai">Perfeito. Um atendente entrará em contato com você por meio do chat em alguns instantes.</div>');
+          chatLog.scrollTop = chatLog.scrollHeight;
+        }, 600);
+      });
+    }
+
+    setupTheme();
+    renderTabs();
+    renderProducts();
+    updateCart();
+    setupReveal();
+    setupCounters();
+    setupEvents();
   </script>
 </body>
 </html>
