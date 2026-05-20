@@ -96,16 +96,6 @@
       color: var(--color-primary); background: linear-gradient(180deg, color-mix(in srgb, var(--color-primary) 12%, var(--color-surface)), var(--color-surface));
       box-shadow: var(--shadow-glow);
     }
-    .brand-logo-img {
-      width: 44px;
-      height: 44px;
-      object-fit: cover;
-      border-radius: .9rem;
-      box-shadow: var(--shadow-glow);
-      border: 1px solid color-mix(in srgb, var(--color-primary) 28%, var(--color-border));
-      flex-shrink: 0;
-    }
-    .nav-toggle { display: none; }
     .brand strong, h1, h2, h3, .stat-number, .catalog-tab { font-family: var(--font-display); letter-spacing: .02em; }
     .main-nav { display: flex; align-items: center; gap: 1.1rem; flex-wrap: wrap; }
     .main-nav a { color: var(--color-text-muted); font-size: var(--text-sm); }
@@ -182,7 +172,6 @@
 
     .product-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.2rem; }
     .product-card {
-      overflow: hidden;
       position: relative; display: flex; flex-direction: column; gap: 1rem; padding: 1.2rem; min-height: 100%;
       border-radius: 1.35rem; background: linear-gradient(180deg, var(--color-surface), var(--color-surface-2)); border: 1px solid var(--color-border);
       box-shadow: var(--shadow-sm); overflow: hidden;
@@ -190,24 +179,6 @@
     .product-card::before {
       content: ""; position: absolute; inset: auto -20% -40% auto; width: 180px; height: 180px; border-radius: 50%;
       background: radial-gradient(circle, rgba(44,255,129,.14), transparent 72%); pointer-events: none;
-    }
-    .product-thumb {
-      position: relative;
-      aspect-ratio: 4 / 3;
-      width: 100%;
-      overflow: hidden;
-      border-radius: 1rem;
-      margin-bottom: 1rem;
-      border: 1px solid var(--color-border);
-      background: linear-gradient(180deg, var(--color-surface-2), var(--color-surface-offset));
-      display: grid;
-      place-items: center;
-    }
-    .product-thumb img {
-      width: 100%;
-      height: 100%;
-      object-fit: contain;
-      background: #fff;
     }
     .product-head { display: flex; align-items: start; justify-content: space-between; gap: .8rem; }
     .badge-row { display: flex; flex-wrap: wrap; gap: .5rem; }
@@ -260,7 +231,7 @@
     .footer-grid { grid-template-columns: 1.1fr .8fr .8fr; }
     .footer-note { color: var(--color-text-faint); margin-top: .8rem; font-size: var(--text-sm); }
 
-    .drawer, .modal, .chat-widget { position: fixed; z-index: 70; }
+    .drawer, .modal, 
     .drawer-backdrop, .modal-backdrop { position: fixed; inset: 0; background: rgba(2, 8, 5, .72); backdrop-filter: blur(10px); z-index: 65; display: none; }
     .drawer {
       top: 0; right: 0; width: min(420px, 100%); height: 100dvh; background: var(--color-surface);
@@ -303,25 +274,17 @@
     }
     .product-description { color: var(--color-text-muted); white-space: pre-line; }
 
-    .chat-toggle {
-      position: fixed; right: 1rem; bottom: 1rem; z-index: 75; width: 60px; height: 60px; border-radius: 50%; background: var(--color-primary);
-      color: var(--color-inverse); box-shadow: 0 0 28px rgba(44,255,129,.35); font-size: 1.3rem;
-    }
-    .chat-widget {
-      right: 1rem; bottom: 5.5rem; width: min(360px, calc(100% - 1rem)); border-radius: 1.25rem; border: 1px solid var(--color-border);
-      background: var(--color-surface); box-shadow: var(--shadow-md); overflow: hidden; display: none;
-    }
-    .chat-widget.show { display: block; }
-    .chat-header { padding: .95rem 1rem; background: linear-gradient(180deg, var(--color-surface-offset), var(--color-surface)); border-bottom: 1px solid var(--color-border); }
-    .chat-log { padding: 1rem; display: grid; gap: .75rem; max-height: 330px; overflow: auto; }
-    .bubble { padding: .8rem .9rem; border-radius: 1rem; max-width: 88%; }
-    .bubble.ai { background: var(--color-surface-offset); color: var(--color-text); }
-    .bubble.user { margin-left: auto; background: var(--color-primary); color: var(--color-inverse); }
-    .chat-options, .chat-input-row { padding: 0 1rem 1rem; display: grid; gap: .7rem; }
-    .chat-option {
-      text-align: left; padding: .85rem .95rem; border-radius: .9rem; border: 1px solid var(--color-border); background: var(--color-surface-2);
-    }
-    .chat-option:hover { border-color: rgba(44,255,129,.35); box-shadow: var(--shadow-glow); }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
 
     .muted { color: var(--color-text-muted); }
     .hidden { display: none !important; }
@@ -355,7 +318,10 @@
   <header class="site-header">
     <div class="container header-inner">
       <a href="#home" class="brand" aria-label="Mystic Shop, início">
-        <img src="./logo-mystic.jpg" alt="Logo Mystic Shop" class="brand-logo-img" width="44" height="44" loading="lazy">
+        <svg class="brand-logo" viewBox="0 0 64 64" role="img" aria-label="Logo Mystic Shop" fill="none">
+          <path d="M10 32 32 10l22 22-22 22L10 32Z" stroke="currentColor" stroke-width="3"/>
+          <path d="M20 32h24M32 20v24" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
+        </svg>
         <span><strong>Mystic</strong> Shop</span>
       </a>
 
@@ -448,7 +414,7 @@
           <p class="muted">A Mystic Shop atua com produtos digitais selecionados para clientes que buscam preço competitivo, ativação clara e suporte rápido. O foco do site é passar confiança, facilitar a escolha por categoria e conduzir o cliente até a compra com menos atrito.</p>
           <ul class="list-clean" style="margin-top:1rem;">
             <li><strong>Entrega online:</strong> envio de licença, link, código ou orientação após a confirmação.</li>
-            <li><strong>Atendimento profissional:</strong> suporte por Telegram, email e chat ao vivo.</li>
+            <li><strong>Atendimento profissional:</strong> suporte direto por Telegram e email.</li>
             <li><strong>Estrutura de venda:</strong> catálogo dinâmico, carrinho funcional e compra direta.</li>
           </ul>
         </article>
@@ -507,17 +473,17 @@
           </div>
           <p class="muted">Você consegue manter tudo sem custo usando botão direto para Telegram, email clicável e um chat ao vivo local no próprio site para triagem inicial.</p>
           <div class="support-cta">
-            <a class="btn btn-primary" id="telegramLink" href="https://t.me/phzsupport" target="_blank" rel="noopener noreferrer">Telegram</a>
-            <a class="btn btn-secondary" href="mailto:mysticsuporte1@gmail.com">Email</a>
-            <button class="btn btn-ghost" id="openChatSupport">Chat ao vivo</button>
+            <a class="btn btn-primary" id="telegramLink" href="https://t.me/phzsupport" target="_blank" rel="noopener noreferrer">💬 Falar no Telegram</a>
+            <a class="btn btn-secondary" href="mysticsuporte1@gmail.com">✉️ Enviar Email</a>
+            
           </div>
           <p class="footer-note">https://t.me/phzsupport</p>
         </article>
         <article class="panel reveal">
           <h3 style="margin-bottom:.8rem;">Formulário rápido</h3>
           <form class="contact-form" onsubmit="event.preventDefault(); alert('Mensagem registrada. Você pode integrar este formulário a Formsubmit ou Basin depois.');">
-            <label class="field"><span>Nome</span><input type="text" placeholder="Seu Nome" required></label>
-            <label class="field"><span>Email</span><input type="email" placeholder="Seu email" required></label>
+            <label class="field"><span>Nome</span><input type="text" placeholder="Paulo" required></label>
+            <label class="field"><span>✉️ Enviar Email</span><input type="email" placeholder="mysticsuporte1@email.com" required></label>
             <label class="field"><span>Mensagem</span><textarea placeholder="Explique o suporte desejado" required></textarea></label>
             <button class="btn btn-primary" type="submit">Enviar solicitação</button>
           </form>
@@ -549,7 +515,7 @@
       <div>
         <h3 style="margin-bottom:.8rem;">Redes e contato</h3>
         <ul class="list-clean">
-          <li><a href="https://t.me/phzsupport" target="_blank" rel="noopener noreferrer">Telegram</a></li>
+          <li><a href="https://t.me/phzsupport" target="_blank" rel="noopener noreferrer">💬 Falar no Telegram</a></li>
           <li><a href="mailto:mysticsuporte1@gmail.com">mysticsuporte1@gmail.com</a></li>
           <li><span class="muted">Atendimento com retorno rápido</span></li>
         </ul>
@@ -603,19 +569,7 @@
     </div>
   </section>
 
-  <button class="chat-toggle" id="chatToggle" aria-label="Abrir chat">💬</button>
-  <aside class="chat-widget" id="chatWidget" aria-label="Chat ao vivo">
-    <div class="chat-header">
-      <strong>Chat ao vivo</strong>
-      <p class="muted" style="font-size:.9rem;">Triagem automática inicial</p>
-    </div>
-    <div class="chat-log" id="chatLog">
-      <div class="bubble ai">Olá. Bem-vindo à Mystic Shop. Informe o que deseja no atendimento.</div>
-    </div>
-    <div class="chat-options">
-      <button class="chat-option" id="talkHuman">1. Falar com um atendente</button>
-    </div>
-  </aside>
+  
 
   <script>
     const categories = [
@@ -638,7 +592,6 @@
         description: `O Picsart Pro é uma das ferramentas mais completas para edição de fotos, criação de artes e produção de conteúdos visuais com acabamento profissional. Com ele, você desbloqueia recursos premium que deixam suas edições muito mais rápidas, práticas e criativas.\n\nEste anúncio é referente à licença de 12 meses, com ativação feita por chave enviada após a compra. A chave é inserida diretamente na conta da própria pessoa, garantindo acesso ao plano Pro durante todo o período contratado.\n\nIMPORTANTE\n• Plano válido por 12 meses\n• Ativação por chave na sua própria conta\n• Verifique a compatibilidade antes da compra\n• Suporte para dúvidas sobre ativação\n\nENTREGA\nApós a confirmação do pagamento, a chave será enviada conforme as instruções de ativação.`,
         features: ['Plano válido por 12 meses', 'Ativação por chave na própria conta', 'Suporte para dúvidas sobre ativação', 'Entrega digital após confirmação'],
         badges: ['Entrega Imediata', 'Garantido'],
-        image: './picsart-pro.jpg',
         checkout: 'https://mpago.la/22ZM6kk'
       },
       {
@@ -650,7 +603,6 @@
         description: `Produto digital com plano válido por 12 meses, com ativação por chave na sua própria conta.\n\nIMPORTANTE\n• Plano válido por 12 meses\n• Ativação por chave na sua própria conta\n• Suporte para dúvidas sobre ativação\n• Compatível com Windows, Android e iOS\n\nENTREGA\nApós a confirmação do pagamento, a chave será enviada conforme as instruções de ativação.`,
         features: ['1 dispositivo', '12 meses de validade', 'Compatível com Windows, Android e iOS', 'Suporte para ativação'],
         badges: ['Entrega Imediata', 'Garantido'],
-        image: './avg-ultimate.jpg',
         checkout: 'https://mpago.la/1YjhKRa'
       },
       {
@@ -662,7 +614,6 @@
         description: `Produto digital com foco em proteção, uso individual e ativação clara.\n\nIMPORTANTE\n• Plano válido por 12 meses\n• Ativação por chave na sua própria conta\n• Suporte para dúvidas sobre ativação\n• Compatível com Windows, Linux e Mac\n\nENTREGA\nApós a confirmação do pagamento, a chave será enviada conforme as instruções de ativação.`,
         features: ['1 dispositivo', 'Compatível com Windows, Linux e Mac', 'Licença de 12 meses', 'Suporte para ativação'],
         badges: ['Entrega Imediata', 'Garantido'],
-        image: './avast-ultimate.jpg',
         checkout: 'https://mpago.la/22G8EuH'
       },
       {
@@ -674,7 +625,6 @@
         description: `O CCleaner Professional é uma solução completa para manter seu computador mais rápido, organizado e protegido. Ideal para quem deseja melhorar o desempenho do PC com praticidade, ele faz a limpeza de arquivos desnecessários, otimiza o sistema e ajuda a manter sua privacidade ao navegar.\n\nIMPORTANTE\n• Licença digital com ativação\n• Uso em 1 dispositivo\n• Compatível com Windows\n• Produto enviado de forma online\n• Verifique a compatibilidade antes da compra\n\nENTREGA\nApós a confirmação do pagamento, você recebe sua licença digital com as orientações para ativação.`,
         features: ['1 dispositivo', 'Compatível com Windows', 'Licença digital com ativação', 'Entrega online com instruções'],
         badges: ['Entrega Imediata', 'Garantido'],
-        image: './ccleaner-pro.jpg',
         checkout: 'https://mpago.la/33onW89'
       },
       {
@@ -686,7 +636,6 @@
         description: `Serviços disponíveis:\n\n✅ Gemini 3.1 + Veo 3.1\n✅ DeepResearch\n✅ NotebookLM\n✅ Armazenamento de 5TB\n✅ Google Home Premium\n✅ Fitbit Premium\n\nO que vem incluso:\n✅ Suporte antigravidade\n✅ 1000 créditos mensais de vídeo VEO AI\n✅ Para uso pessoal\n✅ 30 dias de garantia\n\nENTREGA\nApós a confirmação do pagamento, você recebe sua licença digital com as orientações para ativação.`,
         features: ['Gemini 3.1 + Veo 3.1', '5TB de armazenamento', 'NotebookLM e DeepResearch', '30 dias de garantia'],
         badges: ['Entrega Imediata', 'Garantido'],
-        image: './gemini-pro.jpg',
         checkout: 'https://mpago.la/2igiQVA'
       },
       {
@@ -698,7 +647,6 @@
         description: `É código de ativação para sua própria conta.\n\nVantagens premium que você desbloqueia:\n- Perplexity Labs para criar relatórios completos, planilhas, painéis e miniaplicativos da web\n- Acesso a modelos avançados de IA, incluindo GPT-5.4, Gemini 3.1 Pro, Claude 4.6 Sonnet, Grok 3 Beta, Kimi K2.6 e Nemotron 3 Super\n- Análise de arquivos para PDFs, imagens e CSVs\n- Suporte prioritário e canais exclusivos\n- 300+ Buscas Pro por dia além de pesquisas básicas ilimitadas\n\nENTREGA\nApós a confirmação do pagamento, a ativação é orientada com suporte correspondente.`,
         features: ['Código para conta própria', 'Perplexity Labs', 'Modelos avançados de IA', 'Análise de PDFs, imagens e CSVs'],
         badges: ['Entrega Imediata', 'Garantido'],
-        image: './perplexity-pro.jpg',
         checkout: 'https://mpago.la/1HoQTr7'
       }
     ];
@@ -719,8 +667,6 @@
     const modalBackdrop = document.getElementById('modalBackdrop');
     const themeToggle = document.querySelector('[data-theme-toggle]');
     const root = document.documentElement;
-    const navToggle = document.getElementById('navToggle');
-    const mainNav = document.getElementById('mainNav');
 
     function formatBRL(value) {
       return value.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
@@ -752,9 +698,6 @@
 
       productGrid.innerHTML = filtered.map(product => `
         <article class="product-card reveal visible">
-          <div class="product-thumb">
-            <img src="${product.image}" alt="${product.name}" width="640" height="480" loading="lazy">
-          </div>
           <div class="product-head">
             <div>
               <div class="badge-row">${product.badges.map(b => `<span class="badge">${b}</span>`).join('')}</div>
@@ -827,8 +770,7 @@
       selectedProduct = product;
       document.getElementById('modalTitle').textContent = product.name;
       document.getElementById('modalCategory').textContent = categories.find(c => c.id === product.category)?.name || '';
-      document.getElementById('modalImage').src = product.image;
-      document.getElementById('modalImage').alt = product.name;
+      document.getElementById('modalVisualTitle').textContent = product.name;
       document.getElementById('modalChip').textContent = 'Produto digital';
       document.getElementById('modalPrice').textContent = formatBRL(product.price);
       document.getElementById('modalDescription').textContent = product.description;
@@ -846,22 +788,6 @@
       const product = products.find(item => item.id === productId);
       if (!product) return;
       window.open(product.checkout || defaultCheckout, '_blank', 'noopener,noreferrer');
-    }
-
-    function setupNavMobile() {
-      if (!navToggle || !mainNav) return;
-      navToggle.addEventListener('click', () => {
-        const open = mainNav.classList.toggle('open');
-        navToggle.setAttribute('aria-expanded', String(open));
-        navToggle.textContent = open ? '✕' : '☰';
-      });
-      mainNav.querySelectorAll('a').forEach(link => {
-        link.addEventListener('click', () => {
-          mainNav.classList.remove('open');
-          navToggle.setAttribute('aria-expanded', 'false');
-          navToggle.textContent = '☰';
-        });
-      });
     }
 
     function setupTheme() {
@@ -962,34 +888,7 @@
         window.open(checkout, '_blank', 'noopener,noreferrer');
       });
 
-      const chatWidget = document.getElementById('chatWidget');
-      const chatToggle = document.getElementById('chatToggle');
-      const openChatSupport = document.getElementById('openChatSupport');
-      const chatLog = document.getElementById('chatLog');
-      const talkHuman = document.getElementById('talkHuman');
-
-      function toggleChat(force) {
-        const shouldShow = typeof force === 'boolean' ? force : !chatWidget.classList.contains('show');
-        chatWidget.classList.toggle('show', shouldShow);
-      }
-      chatToggle.addEventListener('click', () => toggleChat());
-      openChatSupport.addEventListener('click', () => toggleChat(true));
-      talkHuman.addEventListener('click', () => {
-        chatLog.insertAdjacentHTML('beforeend', '<div class="bubble user">Falar com um atendente</div>');
-        setTimeout(() => {
-          chatLog.insertAdjacentHTML('beforeend', '<div class="bubble ai">Perfeito. Um atendente entrará em contato com você por meio do chat em alguns instantes.</div>');
-          chatLog.scrollTop = chatLog.scrollHeight;
-        }, 600);
-      });
-    }
-
-    setupTheme();
-    renderTabs();
-    renderProducts();
-    updateCart();
-    setupReveal();
-    setupCounters();
-    setupEvents();
+      ;
   </script>
 </body>
 </html>
