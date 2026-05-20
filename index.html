@@ -96,6 +96,16 @@
       color: var(--color-primary); background: linear-gradient(180deg, color-mix(in srgb, var(--color-primary) 12%, var(--color-surface)), var(--color-surface));
       box-shadow: var(--shadow-glow);
     }
+    .brand-logo-img {
+      width: 44px;
+      height: 44px;
+      object-fit: cover;
+      border-radius: .9rem;
+      box-shadow: var(--shadow-glow);
+      border: 1px solid color-mix(in srgb, var(--color-primary) 28%, var(--color-border));
+      flex-shrink: 0;
+    }
+    .nav-toggle { display: none; }
     .brand strong, h1, h2, h3, .stat-number, .catalog-tab { font-family: var(--font-display); letter-spacing: .02em; }
     .main-nav { display: flex; align-items: center; gap: 1.1rem; flex-wrap: wrap; }
     .main-nav a { color: var(--color-text-muted); font-size: var(--text-sm); }
@@ -172,6 +182,7 @@
 
     .product-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.2rem; }
     .product-card {
+      overflow: hidden;
       position: relative; display: flex; flex-direction: column; gap: 1rem; padding: 1.2rem; min-height: 100%;
       border-radius: 1.35rem; background: linear-gradient(180deg, var(--color-surface), var(--color-surface-2)); border: 1px solid var(--color-border);
       box-shadow: var(--shadow-sm); overflow: hidden;
@@ -179,6 +190,24 @@
     .product-card::before {
       content: ""; position: absolute; inset: auto -20% -40% auto; width: 180px; height: 180px; border-radius: 50%;
       background: radial-gradient(circle, rgba(44,255,129,.14), transparent 72%); pointer-events: none;
+    }
+    .product-thumb {
+      position: relative;
+      aspect-ratio: 4 / 3;
+      width: 100%;
+      overflow: hidden;
+      border-radius: 1rem;
+      margin-bottom: 1rem;
+      border: 1px solid var(--color-border);
+      background: linear-gradient(180deg, var(--color-surface-2), var(--color-surface-offset));
+      display: grid;
+      place-items: center;
+    }
+    .product-thumb img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      background: #fff;
     }
     .product-head { display: flex; align-items: start; justify-content: space-between; gap: .8rem; }
     .badge-row { display: flex; flex-wrap: wrap; gap: .5rem; }
@@ -326,10 +355,7 @@
   <header class="site-header">
     <div class="container header-inner">
       <a href="#home" class="brand" aria-label="Mystic Shop, início">
-        <svg class="brand-logo" viewBox="0 0 64 64" role="img" aria-label="Logo Mystic Shop" fill="none">
-          <path d="M10 32 32 10l22 22-22 22L10 32Z" stroke="currentColor" stroke-width="3"/>
-          <path d="M20 32h24M32 20v24" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
-        </svg>
+        <img src="./assets/logo-mystic.jpg" alt="Logo Mystic Shop" class="brand-logo-img" width="44" height="44" loading="lazy">
         <span><strong>Mystic</strong> Shop</span>
       </a>
 
@@ -482,7 +508,7 @@
           <p class="muted">Você consegue manter tudo sem custo usando botão direto para Telegram, email clicável e um chat ao vivo local no próprio site para triagem inicial.</p>
           <div class="support-cta">
             <a class="btn btn-primary" id="telegramLink" href="https://t.me/phzsupport" target="_blank" rel="noopener noreferrer">Telegram</a>
-            <a class="btn btn-secondary" href="mysticsuporte1@gmail.com">Email</a>
+            <a class="btn btn-secondary" href="mailto:mysticsuporte1@gmail.com">Email</a>
             <button class="btn btn-ghost" id="openChatSupport">Chat ao vivo</button>
           </div>
           <p class="footer-note">https://t.me/phzsupport</p>
@@ -612,6 +638,7 @@
         description: `O Picsart Pro é uma das ferramentas mais completas para edição de fotos, criação de artes e produção de conteúdos visuais com acabamento profissional. Com ele, você desbloqueia recursos premium que deixam suas edições muito mais rápidas, práticas e criativas.\n\nEste anúncio é referente à licença de 12 meses, com ativação feita por chave enviada após a compra. A chave é inserida diretamente na conta da própria pessoa, garantindo acesso ao plano Pro durante todo o período contratado.\n\nIMPORTANTE\n• Plano válido por 12 meses\n• Ativação por chave na sua própria conta\n• Verifique a compatibilidade antes da compra\n• Suporte para dúvidas sobre ativação\n\nENTREGA\nApós a confirmação do pagamento, a chave será enviada conforme as instruções de ativação.`,
         features: ['Plano válido por 12 meses', 'Ativação por chave na própria conta', 'Suporte para dúvidas sobre ativação', 'Entrega digital após confirmação'],
         badges: ['Entrega Imediata', 'Garantido'],
+        image: './assets/picsart-pro.jpg',
         checkout: 'https://mpago.la/22ZM6kk'
       },
       {
@@ -623,6 +650,7 @@
         description: `Produto digital com plano válido por 12 meses, com ativação por chave na sua própria conta.\n\nIMPORTANTE\n• Plano válido por 12 meses\n• Ativação por chave na sua própria conta\n• Suporte para dúvidas sobre ativação\n• Compatível com Windows, Android e iOS\n\nENTREGA\nApós a confirmação do pagamento, a chave será enviada conforme as instruções de ativação.`,
         features: ['1 dispositivo', '12 meses de validade', 'Compatível com Windows, Android e iOS', 'Suporte para ativação'],
         badges: ['Entrega Imediata', 'Garantido'],
+        image: './assets/avg-ultimate.jpg',
         checkout: 'https://mpago.la/1YjhKRa'
       },
       {
@@ -634,6 +662,7 @@
         description: `Produto digital com foco em proteção, uso individual e ativação clara.\n\nIMPORTANTE\n• Plano válido por 12 meses\n• Ativação por chave na sua própria conta\n• Suporte para dúvidas sobre ativação\n• Compatível com Windows, Linux e Mac\n\nENTREGA\nApós a confirmação do pagamento, a chave será enviada conforme as instruções de ativação.`,
         features: ['1 dispositivo', 'Compatível com Windows, Linux e Mac', 'Licença de 12 meses', 'Suporte para ativação'],
         badges: ['Entrega Imediata', 'Garantido'],
+        image: './assets/avast-ultimate.jpg',
         checkout: 'https://mpago.la/22G8EuH'
       },
       {
@@ -645,6 +674,7 @@
         description: `O CCleaner Professional é uma solução completa para manter seu computador mais rápido, organizado e protegido. Ideal para quem deseja melhorar o desempenho do PC com praticidade, ele faz a limpeza de arquivos desnecessários, otimiza o sistema e ajuda a manter sua privacidade ao navegar.\n\nIMPORTANTE\n• Licença digital com ativação\n• Uso em 1 dispositivo\n• Compatível com Windows\n• Produto enviado de forma online\n• Verifique a compatibilidade antes da compra\n\nENTREGA\nApós a confirmação do pagamento, você recebe sua licença digital com as orientações para ativação.`,
         features: ['1 dispositivo', 'Compatível com Windows', 'Licença digital com ativação', 'Entrega online com instruções'],
         badges: ['Entrega Imediata', 'Garantido'],
+        image: './assets/ccleaner-pro.jpg',
         checkout: 'https://mpago.la/33onW89'
       },
       {
@@ -656,6 +686,7 @@
         description: `Serviços disponíveis:\n\n✅ Gemini 3.1 + Veo 3.1\n✅ DeepResearch\n✅ NotebookLM\n✅ Armazenamento de 5TB\n✅ Google Home Premium\n✅ Fitbit Premium\n\nO que vem incluso:\n✅ Suporte antigravidade\n✅ 1000 créditos mensais de vídeo VEO AI\n✅ Para uso pessoal\n✅ 30 dias de garantia\n\nENTREGA\nApós a confirmação do pagamento, você recebe sua licença digital com as orientações para ativação.`,
         features: ['Gemini 3.1 + Veo 3.1', '5TB de armazenamento', 'NotebookLM e DeepResearch', '30 dias de garantia'],
         badges: ['Entrega Imediata', 'Garantido'],
+        image: './assets/gemini-pro.jpg',
         checkout: 'https://mpago.la/2igiQVA'
       },
       {
@@ -667,6 +698,7 @@
         description: `É código de ativação para sua própria conta.\n\nVantagens premium que você desbloqueia:\n- Perplexity Labs para criar relatórios completos, planilhas, painéis e miniaplicativos da web\n- Acesso a modelos avançados de IA, incluindo GPT-5.4, Gemini 3.1 Pro, Claude 4.6 Sonnet, Grok 3 Beta, Kimi K2.6 e Nemotron 3 Super\n- Análise de arquivos para PDFs, imagens e CSVs\n- Suporte prioritário e canais exclusivos\n- 300+ Buscas Pro por dia além de pesquisas básicas ilimitadas\n\nENTREGA\nApós a confirmação do pagamento, a ativação é orientada com suporte correspondente.`,
         features: ['Código para conta própria', 'Perplexity Labs', 'Modelos avançados de IA', 'Análise de PDFs, imagens e CSVs'],
         badges: ['Entrega Imediata', 'Garantido'],
+        image: './assets/perplexity-pro.jpg',
         checkout: 'https://mpago.la/1HoQTr7'
       }
     ];
@@ -687,6 +719,8 @@
     const modalBackdrop = document.getElementById('modalBackdrop');
     const themeToggle = document.querySelector('[data-theme-toggle]');
     const root = document.documentElement;
+    const navToggle = document.getElementById('navToggle');
+    const mainNav = document.getElementById('mainNav');
 
     function formatBRL(value) {
       return value.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
@@ -718,6 +752,9 @@
 
       productGrid.innerHTML = filtered.map(product => `
         <article class="product-card reveal visible">
+          <div class="product-thumb">
+            <img src="${product.image}" alt="${product.name}" width="640" height="480" loading="lazy">
+          </div>
           <div class="product-head">
             <div>
               <div class="badge-row">${product.badges.map(b => `<span class="badge">${b}</span>`).join('')}</div>
@@ -790,7 +827,8 @@
       selectedProduct = product;
       document.getElementById('modalTitle').textContent = product.name;
       document.getElementById('modalCategory').textContent = categories.find(c => c.id === product.category)?.name || '';
-      document.getElementById('modalVisualTitle').textContent = product.name;
+      document.getElementById('modalImage').src = product.image;
+      document.getElementById('modalImage').alt = product.name;
       document.getElementById('modalChip').textContent = 'Produto digital';
       document.getElementById('modalPrice').textContent = formatBRL(product.price);
       document.getElementById('modalDescription').textContent = product.description;
@@ -808,6 +846,22 @@
       const product = products.find(item => item.id === productId);
       if (!product) return;
       window.open(product.checkout || defaultCheckout, '_blank', 'noopener,noreferrer');
+    }
+
+    function setupNavMobile() {
+      if (!navToggle || !mainNav) return;
+      navToggle.addEventListener('click', () => {
+        const open = mainNav.classList.toggle('open');
+        navToggle.setAttribute('aria-expanded', String(open));
+        navToggle.textContent = open ? '✕' : '☰';
+      });
+      mainNav.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => {
+          mainNav.classList.remove('open');
+          navToggle.setAttribute('aria-expanded', 'false');
+          navToggle.textContent = '☰';
+        });
+      });
     }
 
     function setupTheme() {
