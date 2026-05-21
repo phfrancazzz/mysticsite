@@ -96,6 +96,16 @@
       color: var(--color-primary); background: linear-gradient(180deg, color-mix(in srgb, var(--color-primary) 12%, var(--color-surface)), var(--color-surface));
       box-shadow: var(--shadow-glow);
     }
+    .brand-logo-img {
+      width: 44px;
+      height: 44px;
+      object-fit: cover;
+      border-radius: .9rem;
+      box-shadow: var(--shadow-glow);
+      border: 1px solid color-mix(in srgb, var(--color-primary) 28%, var(--color-border));
+      flex-shrink: 0;
+    }
+    .nav-toggle { display: none; }
     .brand strong, h1, h2, h3, .stat-number, .catalog-tab { font-family: var(--font-display); letter-spacing: .02em; }
     .main-nav { display: flex; align-items: center; gap: 1.1rem; flex-wrap: wrap; }
     .main-nav a { color: var(--color-text-muted); font-size: var(--text-sm); }
@@ -172,6 +182,7 @@
 
     .product-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.2rem; }
     .product-card {
+      overflow: hidden;
       position: relative; display: flex; flex-direction: column; gap: 1rem; padding: 1.2rem; min-height: 100%;
       border-radius: 1.35rem; background: linear-gradient(180deg, var(--color-surface), var(--color-surface-2)); border: 1px solid var(--color-border);
       box-shadow: var(--shadow-sm); overflow: hidden;
@@ -179,6 +190,24 @@
     .product-card::before {
       content: ""; position: absolute; inset: auto -20% -40% auto; width: 180px; height: 180px; border-radius: 50%;
       background: radial-gradient(circle, rgba(44,255,129,.14), transparent 72%); pointer-events: none;
+    }
+    .product-thumb {
+      position: relative;
+      aspect-ratio: 4 / 3;
+      width: 100%;
+      overflow: hidden;
+      border-radius: 1rem;
+      margin-bottom: 1rem;
+      border: 1px solid var(--color-border);
+      background: linear-gradient(180deg, var(--color-surface-2), var(--color-surface-offset));
+      display: grid;
+      place-items: center;
+    }
+    .product-thumb img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      background: #fff;
     }
     .product-head { display: flex; align-items: start; justify-content: space-between; gap: .8rem; }
     .badge-row { display: flex; flex-wrap: wrap; gap: .5rem; }
@@ -419,7 +448,7 @@
           <p class="muted">A Mystic Shop atua com produtos digitais selecionados para clientes que buscam preço competitivo, ativação clara e suporte rápido. O foco do site é passar confiança, facilitar a escolha por categoria e conduzir o cliente até a compra com menos atrito.</p>
           <ul class="list-clean" style="margin-top:1rem;">
             <li><strong>Entrega online:</strong> envio de licença, link, código ou orientação após a confirmação.</li>
-            <li><strong>Atendimento profissional:</strong> suporte por Telegram e email.</li>
+            <li><strong>Atendimento profissional:</strong> suporte por Telegram, email e chat ao vivo.</li>
             <li><strong>Estrutura de venda:</strong> catálogo dinâmico, carrinho funcional e compra direta.</li>
           </ul>
         </article>
@@ -476,10 +505,10 @@
               <h2>Contato e suporte</h2>
             </div>
           </div>
-          <p class="muted">Você consegue manter tudo sem custo usando botão direto para Telegram, email clicável e contato direto por Telegram e email.</p>
+          <p class="muted">Você consegue manter tudo sem custo usando botão direto para Telegram, email clicável e um chat ao vivo local no próprio site para triagem inicial.</p>
           <div class="support-cta">
             <a class="btn btn-primary" id="telegramLink" href="https://t.me/phzsupport" target="_blank" rel="noopener noreferrer">Telegram</a>
-            <a class="btn btn-secondary" href="mysticsuporte1@gmail.com">Email</a>
+            <a class="btn btn-secondary" href="mailto:mysticsuporte1@gmail.com">Email</a>
             <button class="btn btn-ghost" id="openChatSupport">Chat ao vivo</button>
           </div>
           <p class="footer-note">https://t.me/phzsupport</p>
@@ -487,8 +516,8 @@
         <article class="panel reveal">
           <h3 style="margin-bottom:.8rem;">Formulário rápido</h3>
           <form class="contact-form" onsubmit="event.preventDefault(); alert('Mensagem registrada. Você pode integrar este formulário a Formsubmit ou Basin depois.');">
-            <label class="field"><span>Nome</span><input type="text" placeholder="Paulo" required></label>
-            <label class="field"><span>Email</span><input type="email" placeholder="mysticsuporte1@email.com" required></label>
+            <label class="field"><span>Nome</span><input type="text" placeholder="Seu Nome" required></label>
+            <label class="field"><span>Email</span><input type="email" placeholder="Seu email" required></label>
             <label class="field"><span>Mensagem</span><textarea placeholder="Explique o suporte desejado" required></textarea></label>
             <button class="btn btn-primary" type="submit">Enviar solicitação</button>
           </form>
@@ -573,6 +602,20 @@
       </div>
     </div>
   </section>
+
+  <button class="chat-toggle" id="chatToggle" aria-label="Abrir chat">💬</button>
+  <aside class="chat-widget" id="chatWidget" aria-label="Chat ao vivo">
+    <div class="chat-header">
+      <strong>Chat ao vivo</strong>
+      <p class="muted" style="font-size:.9rem;">Triagem automática inicial</p>
+    </div>
+    <div class="chat-log" id="chatLog">
+      <div class="bubble ai">Olá. Bem-vindo à Mystic Shop. Informe o que deseja no atendimento.</div>
+    </div>
+    <div class="chat-options">
+      <button class="chat-option" id="talkHuman">1. Falar com um atendente</button>
+    </div>
+  </aside>
 
   <script>
     const categories = [
@@ -676,6 +719,8 @@
     const modalBackdrop = document.getElementById('modalBackdrop');
     const themeToggle = document.querySelector('[data-theme-toggle]');
     const root = document.documentElement;
+    const navToggle = document.getElementById('navToggle');
+    const mainNav = document.getElementById('mainNav');
 
     function formatBRL(value) {
       return value.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
@@ -707,6 +752,9 @@
 
       productGrid.innerHTML = filtered.map(product => `
         <article class="product-card reveal visible">
+          <div class="product-thumb">
+            <img src="${product.image}" alt="${product.name}" width="640" height="480" loading="lazy">
+          </div>
           <div class="product-head">
             <div>
               <div class="badge-row">${product.badges.map(b => `<span class="badge">${b}</span>`).join('')}</div>
@@ -779,7 +827,8 @@
       selectedProduct = product;
       document.getElementById('modalTitle').textContent = product.name;
       document.getElementById('modalCategory').textContent = categories.find(c => c.id === product.category)?.name || '';
-      document.getElementById('modalVisualTitle').textContent = product.name;
+      document.getElementById('modalImage').src = product.image;
+      document.getElementById('modalImage').alt = product.name;
       document.getElementById('modalChip').textContent = 'Produto digital';
       document.getElementById('modalPrice').textContent = formatBRL(product.price);
       document.getElementById('modalDescription').textContent = product.description;
@@ -797,6 +846,22 @@
       const product = products.find(item => item.id === productId);
       if (!product) return;
       window.open(product.checkout || defaultCheckout, '_blank', 'noopener,noreferrer');
+    }
+
+    function setupNavMobile() {
+      if (!navToggle || !mainNav) return;
+      navToggle.addEventListener('click', () => {
+        const open = mainNav.classList.toggle('open');
+        navToggle.setAttribute('aria-expanded', String(open));
+        navToggle.textContent = open ? '✕' : '☰';
+      });
+      mainNav.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => {
+          mainNav.classList.remove('open');
+          navToggle.setAttribute('aria-expanded', 'false');
+          navToggle.textContent = '☰';
+        });
+      });
     }
 
     function setupTheme() {
