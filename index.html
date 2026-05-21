@@ -224,7 +224,7 @@
       border: 1px solid var(--color-border); color: var(--color-text-muted);
     }
     .product-copy::before {
-      content: "DATA SHEET"; position: absolute; top: .75rem; right: .85rem; font-size: .72rem; letter-spacing: .18em; color: var(--color-text-faint);
+      content: ""; position: absolute; top: .75rem; right: .85rem; font-size: .72rem; letter-spacing: .18em; color: var(--color-text-faint);
     }
     .product-features { display: grid; gap: .55rem; }
     .product-features li { list-style: none; color: var(--color-text); font-size: var(--text-sm); }
@@ -591,7 +591,7 @@
       <div>
         <div class="badge-row" id="modalBadges" style="margin-bottom:.8rem;"></div>
         <div class="product-price" id="modalPrice"></div>
-        <p class="product-description" id="modalDescription"></p>
+        <p class="product-description" id="modalDescription"></p><p class="product-meta" id="modalStock"></p>
         <ul class="product-features" id="modalFeatures" style="margin:1rem 0 1.1rem;"></ul>
         <div class="product-actions">
           <button class="btn btn-secondary" id="modalAddCart">Adicionar ao carrinho</button>
@@ -619,7 +619,7 @@
         category: 'assinaturas-softwares',
         name: 'PicsArt Pro 12 Meses',
         price: 37.90,
-        short: 'Licença digital de 12 meses com ativação por chave na própria conta.',
+        stock: 80, short: 'Licença digital de 12 meses com ativação por chave na própria conta.',
         description: `O Picsart Pro é uma das ferramentas mais completas para edição de fotos, criação de artes e produção de conteúdos visuais com acabamento profissional. Com ele, você desbloqueia recursos premium que deixam suas edições muito mais rápidas, práticas e criativas.\n\nEste anúncio é referente à licença de 12 meses, com ativação feita por chave enviada após a compra. A chave é inserida diretamente na conta da própria pessoa, garantindo acesso ao plano Pro durante todo o período contratado.\n\nIMPORTANTE\n• Plano válido por 12 meses\n• Ativação por chave na sua própria conta\n• Verifique a compatibilidade antes da compra\n• Suporte para dúvidas sobre ativação\n\nENTREGA\nApós a confirmação do pagamento, a chave será enviada conforme as instruções de ativação.`,
         features: ['Plano válido por 12 meses', 'Ativação por chave na própria conta', 'Suporte para dúvidas sobre ativação', 'Entrega digital após confirmação'],
         badges: ['Entrega Imediata', 'Garantido'],
@@ -631,7 +631,7 @@
         category: 'assinaturas-softwares',
         name: 'AVG Ultimate Antivírus — 1 Dispositivo / 1 Ano',
         price: 55.90,
-        short: 'Licença digital com ativação por chave e uso em 1 dispositivo.',
+        stock: 80, short: 'Licença digital com ativação por chave e uso em 1 dispositivo.',
         description: `Produto digital com plano válido por 12 meses, com ativação por chave na sua própria conta.\n\nIMPORTANTE\n• Plano válido por 12 meses\n• Ativação por chave na sua própria conta\n• Suporte para dúvidas sobre ativação\n• Compatível com Windows, Android e iOS\n\nENTREGA\nApós a confirmação do pagamento, a chave será enviada conforme as instruções de ativação.`,
         features: ['1 dispositivo', '12 meses de validade', 'Compatível com Windows, Android e iOS', 'Suporte para ativação'],
         badges: ['Entrega Imediata', 'Garantido'],
@@ -643,7 +643,7 @@
         category: 'assinaturas-softwares',
         name: 'Avast Ultimate Antivírus — 1 Dispositivo / 1 Ano',
         price: 47.00,
-        short: 'Proteção digital para uso em Windows, Linux e Mac.',
+        stock: 80, short: 'Proteção digital para uso em Windows, Linux e Mac.',
         description: `Produto digital com foco em proteção, uso individual e ativação clara.\n\nIMPORTANTE\n• Plano válido por 12 meses\n• Ativação por chave na sua própria conta\n• Suporte para dúvidas sobre ativação\n• Compatível com Windows, Linux e Mac\n\nENTREGA\nApós a confirmação do pagamento, a chave será enviada conforme as instruções de ativação.`,
         features: ['1 dispositivo', 'Compatível com Windows, Linux e Mac', 'Licença de 12 meses', 'Suporte para ativação'],
         badges: ['Entrega Imediata', 'Garantido'],
@@ -655,7 +655,7 @@
         category: 'assinaturas-softwares',
         name: 'CCleaner Professional — 1 Dispositivo / 1 Ano',
         price: 52.90,
-        short: 'Solução para otimização, limpeza e privacidade do computador.',
+        stock: 80, short: 'Solução para otimização, limpeza e privacidade do computador.',
         description: `O CCleaner Professional é uma solução completa para manter seu computador mais rápido, organizado e protegido. Ideal para quem deseja melhorar o desempenho do PC com praticidade, ele faz a limpeza de arquivos desnecessários, otimiza o sistema e ajuda a manter sua privacidade ao navegar.\n\nIMPORTANTE\n• Licença digital com ativação\n• Uso em 1 dispositivo\n• Compatível com Windows\n• Produto enviado de forma online\n• Verifique a compatibilidade antes da compra\n\nENTREGA\nApós a confirmação do pagamento, você recebe sua licença digital com as orientações para ativação.`,
         features: ['1 dispositivo', 'Compatível com Windows', 'Licença digital com ativação', 'Entrega online com instruções'],
         badges: ['Entrega Imediata', 'Garantido'],
@@ -667,7 +667,7 @@
         category: 'codigos-ativacao-ia',
         name: 'Google One AI Pro / Gemini 3.1 — 12 Meses (Link/Código)',
         price: 48.90,
-        short: 'Acesso com link ou código para recursos avançados do ecossistema Google AI.',
+        stock: 80, short: 'Acesso com link ou código para recursos avançados do ecossistema Google AI.',
         description: `Serviços disponíveis:\n\n✅ Gemini 3.1 + Veo 3.1\n✅ DeepResearch\n✅ NotebookLM\n✅ Armazenamento de 5TB\n✅ Google Home Premium\n✅ Fitbit Premium\n\nO que vem incluso:\n✅ Suporte antigravidade\n✅ 1000 créditos mensais de vídeo VEO AI\n✅ Para uso pessoal\n✅ 30 dias de garantia\n\nENTREGA\nApós a confirmação do pagamento, você recebe sua licença digital com as orientações para ativação.`,
         features: ['Gemini 3.1 + Veo 3.1', '5TB de armazenamento', 'NotebookLM e DeepResearch', '30 dias de garantia'],
         badges: ['Entrega Imediata', 'Garantido'],
@@ -679,7 +679,7 @@
         category: 'codigos-ativacao-ia',
         name: 'Perplexity AI Pro — 12 Meses (Código)',
         price: 199.90,
-        short: 'Código de ativação para sua própria conta com recursos premium desbloqueados.',
+        stock: 80, short: 'Código de ativação para sua própria conta com recursos premium desbloqueados.',
         description: `É código de ativação para sua própria conta.\n\nVantagens premium que você desbloqueia:\n- Perplexity Labs para criar relatórios completos, planilhas, painéis e miniaplicativos da web\n- Acesso a modelos avançados de IA, incluindo GPT-5.4, Gemini 3.1 Pro, Claude 4.6 Sonnet, Grok 3 Beta, Kimi K2.6 e Nemotron 3 Super\n- Análise de arquivos para PDFs, imagens e CSVs\n- Suporte prioritário e canais exclusivos\n- 300+ Buscas Pro por dia além de pesquisas básicas ilimitadas\n\nENTREGA\nApós a confirmação do pagamento, a ativação é orientada com suporte correspondente.`,
         features: ['Código para conta própria', 'Perplexity Labs', 'Modelos avançados de IA', 'Análise de PDFs, imagens e CSVs'],
         badges: ['Entrega Imediata', 'Garantido'],
@@ -792,7 +792,7 @@
       if (!product) return;
       const existing = cart.find(item => item.id === productId);
       if (existing) existing.qty += 1;
-      else cart.push({ id: product.id, name: product.name, price: product.price, qty: 1, checkout: product.checkout });
+      else cart.push({ id: product.id, name: product.name, price: product.price, stock: 80, qty: 1, checkout: product.checkout });
       updateCart();
       openCart();
     }
@@ -815,7 +815,7 @@
       document.getElementById('modalImage').src = product.image;
       document.getElementById('modalImage').alt = product.name;
       document.getElementById('modalChip').textContent = 'Produto digital';
-      document.getElementById('modalPrice').textContent = formatBRL(product.price);
+      document.getElementById('modalPrice').textContent = formatBRL(product.price); document.getElementById('modalStock').textContent = 'Estoque: ' + (product.stock ?? 80);
       document.getElementById('modalDescription').textContent = product.description;
       document.getElementById('modalBadges').innerHTML = product.badges.map(b => `<span class="badge">${b}</span>`).join('');
       document.getElementById('modalFeatures').innerHTML = product.features.map(item => `<li>${item}</li>`).join('');
