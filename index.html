@@ -366,7 +366,14 @@
         <a href="#pagamentos">Pagamentos</a>
         <a href="#compras">Compras</a>
         <a href="#contato">Suporte</a>
-      </nav>
+      
+    <div style="display:flex;align-items:center;gap:10px;margin-left:auto;">
+      <span id="userInfo" style="color:#00ff88;font-size:13px;max-width:160px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;"></span>
+      <button id="btnAuth" onclick="abrirAuth()" style="padding:8px 18px;border-radius:20px;border:1.5px solid #00ff88;background:transparent;color:#00ff88;font-weight:700;cursor:pointer;font-size:14px;">Entrar / Cadastrar</button>
+      <button id="btnLogout" onclick="fazerLogout()" style="display:none;padding:8px 18px;border-radius:20px;border:1.5px solid #ff4444;background:transparent;color:#ff4444;font-weight:700;cursor:pointer;font-size:14px;">Sair</button>
+    </div>
+
+</nav>
 
       <div class="header-actions">
         <button class="theme-toggle" data-theme-toggle aria-label="Alternar tema">🌗</button>
@@ -974,19 +981,148 @@
     updateCart();
     setupReveal();
     setupCounters();
-    
-
-const firebaseConfig = {
-  apiKey: "AIzaSyA7G-pblF11hDVWJnEJSuv5-EAkhaEEoEU",
-  authDomain: "mystic-shop-web1.firebaseapp.com",
-  projectId: "mystic-shop-web1",
-  storageBucket: "mystic-shop-web1.firebasestorage.app",
-  messagingSenderId: "974486035293",
-  appId: "1:974486035293:web:22ada543b7eb0401cc26b4",
-  measurementId: "G-1W63JP8XVX"
-};
-
-  setupEvents();
+    setupEvents();
   </script>
+
+<!-- MODAL LOGIN/CADASTRO -->
+<div id="authModal" style="display:none;position:fixed;inset:0;z-index:9999;align-items:center;justify-content:center;padding:20px;background:rgba(3,6,18,0.72);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);">
+  <div style="position:relative;width:100%;max-width:430px;border-radius:28px;padding:1px;background:linear-gradient(135deg, rgba(0,255,136,0.95), rgba(0,200,255,0.55), rgba(120,80,255,0.65));box-shadow:0 20px 80px rgba(0,0,0,0.55);">
+    <div style="border-radius:27px;background:linear-gradient(180deg, rgba(9,12,28,0.98), rgba(12,16,34,0.98));border:1px solid rgba(255,255,255,0.08);overflow:hidden;position:relative;">
+      <div style="position:absolute;inset:-2px;background:radial-gradient(circle at top left, rgba(0,255,136,0.14), transparent 35%), radial-gradient(circle at top right, rgba(0,195,255,0.12), transparent 30%), radial-gradient(circle at bottom, rgba(120,80,255,0.12), transparent 38%);pointer-events:none;"></div>
+      <button onclick="document.getElementById('authModal').style.display='none'" style="position:absolute;top:16px;right:16px;width:40px;height:40px;border-radius:999px;border:1px solid rgba(255,255,255,0.12);background:rgba(255,255,255,0.04);color:#fff;font-size:18px;cursor:pointer;z-index:2;">✕</button>
+      <div style="padding:30px 28px 22px;position:relative;z-index:1;">
+        <div style="display:flex;align-items:center;gap:14px;margin-bottom:22px;">
+          <div style="width:52px;height:52px;border-radius:16px;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,#00ff88,#00c2ff);box-shadow:0 10px 30px rgba(0,255,136,0.22);font-size:24px;">✦</div>
+          <div>
+            <div style="color:#fff;font-size:22px;font-weight:800;letter-spacing:-0.02em;">Mystic Shop</div>
+            <div style="color:rgba(255,255,255,0.62);font-size:13px;margin-top:2px;">Entre ou crie sua conta em segundos</div>
+          </div>
+        </div>
+
+        <div style="display:flex;gap:10px;padding:6px;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.07);border-radius:18px;margin-bottom:20px;">
+          <button id="tabEntrar" onclick="switchTab('entrar')" style="flex:1;padding:12px 14px;border-radius:14px;border:none;background:linear-gradient(135deg,#00ff88,#00c2ff);color:#06111f;font-weight:800;cursor:pointer;box-shadow:0 8px 24px rgba(0,255,136,0.18);transition:transform .2s ease;">Entrar</button>
+          <button id="tabCadastrar" onclick="switchTab('cadastrar')" style="flex:1;padding:12px 14px;border-radius:14px;border:1px solid rgba(0,255,136,0.5);background:transparent;color:#79ffbf;font-weight:800;cursor:pointer;transition:transform .2s ease;">Cadastrar</button>
+        </div>
+
+        <div id="formEntrar">
+          <div style="margin-bottom:12px;">
+            <label style="display:block;color:rgba(255,255,255,0.7);font-size:12px;margin:0 0 8px 4px;">Email</label>
+            <input id="loginEmail" type="email" placeholder="seuemail@exemplo.com" style="width:100%;padding:14px 16px;border-radius:16px;border:1px solid rgba(255,255,255,0.09);background:rgba(255,255,255,0.04);color:#fff;box-sizing:border-box;outline:none;box-shadow:inset 0 1px 0 rgba(255,255,255,0.03);"/>
+          </div>
+          <div style="margin-bottom:16px;">
+            <label style="display:block;color:rgba(255,255,255,0.7);font-size:12px;margin:0 0 8px 4px;">Senha</label>
+            <input id="loginSenha" type="password" placeholder="••••••••" style="width:100%;padding:14px 16px;border-radius:16px;border:1px solid rgba(255,255,255,0.09);background:rgba(255,255,255,0.04);color:#fff;box-sizing:border-box;outline:none;"/>
+          </div>
+          <button onclick="fazerLogin()" style="width:100%;padding:14px 16px;border-radius:16px;border:none;background:linear-gradient(135deg,#00ff88,#00c2ff);color:#05111f;font-weight:900;font-size:16px;cursor:pointer;box-shadow:0 12px 30px rgba(0,255,136,0.2);">Entrar agora</button>
+        </div>
+
+        <div id="formCadastrar" style="display:none;">
+          <div style="margin-bottom:12px;">
+            <label style="display:block;color:rgba(255,255,255,0.7);font-size:12px;margin:0 0 8px 4px;">Nome completo</label>
+            <input id="cadNome" type="text" placeholder="Seu nome" style="width:100%;padding:14px 16px;border-radius:16px;border:1px solid rgba(255,255,255,0.09);background:rgba(255,255,255,0.04);color:#fff;box-sizing:border-box;outline:none;"/>
+          </div>
+          <div style="margin-bottom:12px;">
+            <label style="display:block;color:rgba(255,255,255,0.7);font-size:12px;margin:0 0 8px 4px;">Email</label>
+            <input id="cadEmail" type="email" placeholder="seuemail@exemplo.com" style="width:100%;padding:14px 16px;border-radius:16px;border:1px solid rgba(255,255,255,0.09);background:rgba(255,255,255,0.04);color:#fff;box-sizing:border-box;outline:none;"/>
+          </div>
+          <div style="margin-bottom:16px;">
+            <label style="display:block;color:rgba(255,255,255,0.7);font-size:12px;margin:0 0 8px 4px;">Senha</label>
+            <input id="cadSenha" type="password" placeholder="mín. 6 caracteres" style="width:100%;padding:14px 16px;border-radius:16px;border:1px solid rgba(255,255,255,0.09);background:rgba(255,255,255,0.04);color:#fff;box-sizing:border-box;outline:none;"/>
+          </div>
+          <button onclick="fazerCadastro()" style="width:100%;padding:14px 16px;border-radius:16px;border:none;background:linear-gradient(135deg,#7f5cff,#00c2ff);color:#fff;font-weight:900;font-size:16px;cursor:pointer;box-shadow:0 12px 30px rgba(127,92,255,0.24);">Criar conta</button>
+        </div>
+
+        <p id="authMsg" style="min-height:20px;color:#ff6b7d;margin:16px 4px 0;text-align:center;font-size:13px;"></p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- FIREBASE SDK CDN -->
+<script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
+  import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
+  import { getFirestore, collection, addDoc, query, where, getDocs, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
+
+  const firebaseConfig = {
+    apiKey: "AIzaSyA7G-pblF11hDVWJnEJSuv5-EAkhaEEoEU",
+    authDomain: "mystic-shop-web1.firebaseapp.com",
+    projectId: "mystic-shop-web1",
+    storageBucket: "mystic-shop-web1.firebasestorage.app",
+    messagingSenderId: "974486035293",
+    appId: "1:974486035293:web:22ada543b7eb0401cc26b4",
+    measurementId: "G-1W63JP8XVX"
+  };
+
+  const app = initializeApp(firebaseConfig);
+  const auth = getAuth(app);
+  const db = getFirestore(app);
+
+  // expor funções para o HTML
+  window.abrirAuth = () => {
+    document.getElementById('authModal').style.display = 'flex';
+  };
+
+  window.switchTab = (tab) => {
+    document.getElementById('formEntrar').style.display = tab === 'entrar' ? 'block' : 'none';
+    document.getElementById('formCadastrar').style.display = tab === 'cadastrar' ? 'block' : 'none';
+    document.getElementById('tabEntrar').style.background = tab === 'entrar' ? '#00ff88' : 'transparent';
+    document.getElementById('tabEntrar').style.color = tab === 'entrar' ? '#000' : '#00ff88';
+    document.getElementById('tabCadastrar').style.background = tab === 'cadastrar' ? '#00ff88' : 'transparent';
+    document.getElementById('tabCadastrar').style.color = tab === 'cadastrar' ? '#000' : '#00ff88';
+    document.getElementById('authMsg').textContent = '';
+  };
+
+  window.fazerLogin = async () => {
+    const email = document.getElementById('loginEmail').value;
+    const senha = document.getElementById('loginSenha').value;
+    const msg = document.getElementById('authMsg');
+    try {
+      await signInWithEmailAndPassword(auth, email, senha);
+      document.getElementById('authModal').style.display = 'none';
+      msg.textContent = '';
+    } catch(e) {
+      msg.textContent = 'Email ou senha incorretos.';
+    }
+  };
+
+  window.fazerCadastro = async () => {
+    const nome = document.getElementById('cadNome').value;
+    const email = document.getElementById('cadEmail').value;
+    const senha = document.getElementById('cadSenha').value;
+    const msg = document.getElementById('authMsg');
+    if (!nome || !email || !senha) { msg.textContent = 'Preencha todos os campos.'; return; }
+    try {
+      await createUserWithEmailAndPassword(auth, email, senha);
+      document.getElementById('authModal').style.display = 'none';
+      msg.textContent = '';
+    } catch(e) {
+      if (e.code === 'auth/email-already-in-use') msg.textContent = 'Email já cadastrado.';
+      else if (e.code === 'auth/weak-password') msg.textContent = 'Senha muito curta.';
+      else msg.textContent = 'Erro ao criar conta.';
+    }
+  };
+
+  window.fazerLogout = async () => {
+    await signOut(auth);
+  };
+
+  // atualizar header com estado do usuário
+  onAuthStateChanged(auth, (user) => {
+    const btnAuth = document.getElementById('btnAuth');
+    const btnLogout = document.getElementById('btnLogout');
+    const userInfo = document.getElementById('userInfo');
+    if (user) {
+      if (btnAuth) btnAuth.style.display = 'none';
+      if (btnLogout) btnLogout.style.display = 'inline-flex';
+      if (userInfo) userInfo.textContent = user.email;
+    } else {
+      if (btnAuth) btnAuth.style.display = 'inline-flex';
+      if (btnLogout) btnLogout.style.display = 'none';
+      if (userInfo) userInfo.textContent = '';
+    }
+  });
+</script>
+
 </body>
 </html>
