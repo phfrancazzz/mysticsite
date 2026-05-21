@@ -894,6 +894,7 @@
       }, { threshold: .45 });
       counters.forEach(c => obs.observe(c));
     }
+       
 
     function setupEvents() {
       categoryTabs.addEventListener('click', (event) => {
@@ -952,7 +953,6 @@
       const openChatSupport = document.getElementById('openChatSupport');
       const chatLog = document.getElementById('chatLog');
       const talkHuman = document.getElementById('talkHuman');
-
       function toggleChat(force) {
         const shouldShow = typeof force === 'boolean' ? force : !chatWidget.classList.contains('show');
         chatWidget.classList.toggle('show', shouldShow);
@@ -965,9 +965,25 @@
           chatLog.insertAdjacentHTML('beforeend', '<div class="bubble ai">Perfeito. Um atendente entrará em contato com você por meio do chat em alguns instantes.</div>');
           chatLog.scrollTop = chatLog.scrollHeight;
         }, 600);
+
+      
       });
     }
 
+       const firebaseConfig = {
+  apiKey: "AIzaSyA7G-pblF11hDVWJnEJSuv5-EAkhaEEoEU",
+  authDomain: "mystic-shop-web1.firebaseapp.com",
+  projectId: "mystic-shop-web1",
+  storageBucket: "mystic-shop-web1.firebasestorage.app",
+  messagingSenderId: "974486035293",
+  appId: "1:974486035293:web:22ada543b7eb0401cc26b4",
+  measurementId: "G-1W63JP8XVX"
+};
+
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+const analytics = getAnalytics(app);
+ 
     setupTheme();
     renderTabs();
     renderProducts();
