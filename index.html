@@ -252,7 +252,9 @@
     }
   </style>
 </head>
-<body>
+<body><script>document.documentElement.setAttribute('data-theme', localStorage.getItem('theme') || 'dark');</script>
+  <noscript><div style="padding:16px;background:#111;color:#fff;text-align:center">Ative o JavaScript para ver catálogo, tema e carrinho.</div></noscript>
+
   <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
   <header class="site-header">
     <div class="container header-inner">
@@ -462,7 +464,7 @@
     <div class="modal-grid">
       <div class="product-visual">
         <div class="visual-chip" id="modalChip">Produto digital</div>
-        <img id="modalImage" src="" alt="" width="640" height="640" loading="lazy">
+        <img id="modalImage" src="" alt="" width="640" height="640" loading="lazy" onerror="this.style.display='none'">
       </div>
       <div>
         <div class="badge-row" id="modalBadges" style="margin-bottom:.8rem;"></div>
@@ -498,7 +500,7 @@ IMPORTANTE
 • Suporte para dúvidas sobre ativação
 
 ENTREGA
-Após a confirmação do pagamento, a chave será enviada conforme as instruções de ativação.`, features: ['Plano válido por 12 meses', 'Ativação por chave na própria conta', 'Suporte para dúvidas sobre ativação', 'Entrega digital após confirmação'], badges: ['Entrega Imediata', 'Garantido'], image: './picsart-pro.jpg', checkout: 'https://mpago.la/22ZM6kk' },
+Após a confirmação do pagamento, a chave será enviada conforme as instruções de ativação.`, features: ['Plano válido por 12 meses', 'Ativação por chave na própria conta', 'Suporte para dúvidas sobre ativação', 'Entrega digital após confirmação'], badges: ['Entrega Imediata', 'Garantido'], image: 'D_NQ_NP_2X_950618-MLB110833649990_052026-F-picsart-pro-12-meses-envio-imediato.jpg', checkout: 'https://mpago.la/22ZM6kk' },
       { id: 'avg-ultimate-1-ano', category: 'assinaturas-softwares', name: 'AVG Ultimate Antivírus — 1 Dispositivo / 1 Ano', price: 55.90, short: 'Licença digital com ativação por chave e uso em 1 dispositivo.', description: `Produto digital com plano válido por 12 meses, com ativação por chave na sua própria conta.
 
 IMPORTANTE
@@ -508,7 +510,7 @@ IMPORTANTE
 • Compatível com Windows, Android e iOS
 
 ENTREGA
-Após a confirmação do pagamento, a chave será enviada conforme as instruções de ativação.`, features: ['1 dispositivo', '12 meses de validade', 'Compatível com Windows, Android e iOS', 'Suporte para ativação'], badges: ['Entrega Imediata', 'Garantido'], image: './avg-ultimate.jpg', checkout: 'https://mpago.la/1YjhKRa' },
+Após a confirmação do pagamento, a chave será enviada conforme as instruções de ativação.`, features: ['1 dispositivo', '12 meses de validade', 'Compatível com Windows, Android e iOS', 'Suporte para ativação'], badges: ['Entrega Imediata', 'Garantido'], image: 'D_NQ_NP_2X_917559-MLA109935861911_042026-F.jpg', checkout: 'https://mpago.la/1YjhKRa' },
       { id: 'avast-ultimate-1-ano', category: 'assinaturas-softwares', name: 'Avast Ultimate Antivírus — 1 Dispositivo / 1 Ano', price: 47.00, short: 'Proteção digital para uso em Windows, Linux e Mac.', description: `Produto digital com foco em proteção, uso individual e ativação clara.
 
 IMPORTANTE
@@ -518,7 +520,7 @@ IMPORTANTE
 • Compatível com Windows, Linux e Mac
 
 ENTREGA
-Após a confirmação do pagamento, a chave será enviada conforme as instruções de ativação.`, features: ['1 dispositivo', 'Compatível com Windows, Linux e Mac', 'Licença de 12 meses', 'Suporte para ativação'], badges: ['Entrega Imediata', 'Garantido'], image: './avast-ultimate.jpg', checkout: 'https://mpago.la/22G8EuH' },
+Após a confirmação do pagamento, a chave será enviada conforme as instruções de ativação.`, features: ['1 dispositivo', 'Compatível com Windows, Linux e Mac', 'Licença de 12 meses', 'Suporte para ativação'], badges: ['Entrega Imediata', 'Garantido'], image: 'D_NQ_NP_2X_759371-MLA110723854034_052026-F.jpg', checkout: 'https://mpago.la/22G8EuH' },
       { id: 'ccleaner-profissional-1-ano', category: 'assinaturas-softwares', name: 'CCleaner Professional — 1 Dispositivo / 1 Ano', price: 52.90, short: 'Solução para otimização, limpeza e privacidade do computador.', description: `O CCleaner Professional é uma solução completa para manter seu computador mais rápido, organizado e protegido. Ideal para quem deseja melhorar o desempenho do PC com praticidade, ele faz a limpeza de arquivos desnecessários, otimiza o sistema e ajuda a manter sua privacidade ao navegar.
 
 IMPORTANTE
@@ -529,7 +531,7 @@ IMPORTANTE
 • Verifique a compatibilidade antes da compra
 
 ENTREGA
-Após a confirmação do pagamento, você recebe sua licença digital com as orientações para ativação.`, features: ['1 dispositivo', 'Compatível com Windows', 'Licença digital com ativação', 'Entrega online com instruções'], badges: ['Entrega Imediata', 'Garantido'], image: './ccleaner-pro.jpg', checkout: 'https://mpago.la/33onW89' },
+Após a confirmação do pagamento, você recebe sua licença digital com as orientações para ativação.`, features: ['1 dispositivo', 'Compatível com Windows', 'Licença digital com ativação', 'Entrega online com instruções'], badges: ['Entrega Imediata', 'Garantido'], image: '941877016-ccleaner-professional-1-dispositivo-1-ano-pc-YUJN.jpg', checkout: 'https://mpago.la/33onW89' },
       { id: 'google-one-ai-pro-12m', category: 'codigos-ativacao-ia', name: 'Google One AI Pro / Gemini 3.1 — 12 Meses (Link/Código)', price: 48.90, short: 'Acesso com link ou código para recursos avançados do ecossistema Google AI.', description: `Serviços disponíveis:
 
 ✅ Gemini 3.1 + Veo 3.1
@@ -546,7 +548,7 @@ O que vem incluso:
 ✅ 30 dias de garantia
 
 ENTREGA
-Após a confirmação do pagamento, você recebe sua licença digital com as orientações para ativação.`, features: ['Gemini 3.1 + Veo 3.1', '5TB de armazenamento', 'NotebookLM e DeepResearch', '30 dias de garantia'], badges: ['Entrega Imediata', 'Garantido'], image: './gemini-pro.jpg', checkout: 'https://mpago.la/2igiQVA' },
+Após a confirmação do pagamento, você recebe sua licença digital com as orientações para ativação.`, features: ['Gemini 3.1 + Veo 3.1', '5TB de armazenamento', 'NotebookLM e DeepResearch', '30 dias de garantia'], badges: ['Entrega Imediata', 'Garantido'], image: '992512357-google-gemini-pro-conta-anual-12-meses-CKNC.jpg', checkout: 'https://mpago.la/2igiQVA' },
       { id: 'perplexity-ai-pro-12m', category: 'codigos-ativacao-ia', name: 'Perplexity AI Pro — 12 Meses (Código)', price: 199.90, short: 'Código de ativação para sua própria conta com recursos premium desbloqueados.', description: `É código de ativação para sua própria conta.
 
 Vantagens premium que você desbloqueia:
@@ -557,7 +559,7 @@ Vantagens premium que você desbloqueia:
 - 300+ Buscas Pro por dia além de pesquisas básicas ilimitadas
 
 ENTREGA
-Após a confirmação do pagamento, a ativação é orientada com suporte correspondente.`, features: ['Código para conta própria', 'Perplexity Labs', 'Modelos avançados de IA', 'Análise de PDFs, imagens e CSVs'], badges: ['Entrega Imediata', 'Garantido'], image: './perplexity-pro.jpg', checkout: 'https://mpago.la/1HoQTr7' }
+Após a confirmação do pagamento, a ativação é orientada com suporte correspondente.`, features: ['Código para conta própria', 'Perplexity Labs', 'Modelos avançados de IA', 'Análise de PDFs, imagens e CSVs'], badges: ['Entrega Imediata', 'Garantido'], image: 'D_NQ_NP_2X_685977-MLB111189962141_052026-F-perplexity-ai-pro-anual-1-ano-acesso-imediato.jpg', checkout: 'https://mpago.la/1HoQTr7' }
     ];
     let activeCategory = categories[0].id;
     let cart = [];
@@ -593,7 +595,7 @@ Após a confirmação do pagamento, a ativação é orientada com suporte corres
       }
       productGrid.innerHTML = filtered.map(product => `
         <article class="product-card">
-          <div class="product-thumb"><img src="${product.image}" alt="${product.name}" width="640" height="480" loading="lazy"></div>
+          <div class="product-thumb"><img src="${product.image}" alt="${product.name}" width="640" height="480" loading="lazy" onerror="this.style.display='none'; this.parentElement.insertAdjacentHTML('beforeend','<div style=\'padding:16px;color:#00ff88;text-align:center\'>Imagem não encontrada</div>');"></div>
           <div class="product-head">
             <div>
               <div class="badge-row">${product.badges.map(b => `<span class="badge">${b}</span>`).join('')}</div>
@@ -668,12 +670,14 @@ Após a confirmação do pagamento, a ativação é orientada com suporte corres
       window.open(product.checkout || defaultCheckout, '_blank', 'noopener,noreferrer');
     }
     function setupTheme() {
-      let currentTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+      let currentTheme = document.documentElement.getAttribute('data-theme') || 'dark';
+      try { try { localStorage.setItem('theme', currentTheme); } catch(e) {} } catch(e) {}
       root.setAttribute('data-theme', currentTheme);
       themeToggle.innerHTML = currentTheme === 'dark' ? '🌙' : '☀️';
       themeToggle.addEventListener('click', () => {
         currentTheme = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
         root.setAttribute('data-theme', currentTheme);
+        try { localStorage.setItem('theme', currentTheme); } catch(e) {}
         themeToggle.innerHTML = currentTheme === 'dark' ? '🌙' : '☀️';
       });
     }
