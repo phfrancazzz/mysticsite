@@ -64,14 +64,14 @@
     body::before {
       content: ""; position: fixed; inset: 0; pointer-events: none;
       background:
-        linear-gradient(rgba(44,255,129,.05) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(44,255,129,.05) 1px, transparent 1px);
-      background-size: 44px 44px; mask-image: linear-gradient(to bottom, rgba(0,0,0,.65), transparent 80%);
+        linear-gradient(rgba(44,255,129,.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(44,255,129,.04) 1px, transparent 1px);
+      background-size: 52px 52px; mask-image: linear-gradient(to bottom, rgba(0,0,0,.65), transparent 82%);
       z-index: -3;
     }
     body::after {
-      content: ""; position: fixed; inset: -10% auto auto -10%; width: 34rem; height: 34rem; border-radius: 50%;
-      background: radial-gradient(circle, rgba(44,255,129,.14), transparent 68%); filter: blur(20px); z-index: -2;
+      content: ""; position: fixed; inset: -12% auto auto -10%; width: 28rem; height: 28rem; border-radius: 50%;
+      background: radial-gradient(circle, rgba(44,255,129,.11), transparent 68%); filter: blur(24px); z-index: -2;
     }
     a { color: inherit; text-decoration: none; }
     img, svg { display: block; max-width: 100%; }
@@ -82,299 +82,196 @@
     .section { padding: clamp(var(--space-10), 8vw, var(--space-20)) 0; }
     .skip-link { position: absolute; left: -9999px; }
     .skip-link:focus { left: 1rem; top: 1rem; background: var(--color-surface); padding: .75rem 1rem; z-index: 99; border-radius: var(--radius-md); }
-
     .site-header {
-      position: sticky; top: 0; z-index: 50;
-      backdrop-filter: blur(18px);
-      background: color-mix(in srgb, var(--color-bg) 82%, transparent);
-      border-bottom: 1px solid var(--color-border);
+      position: sticky; top: 0; z-index: 50; backdrop-filter: blur(18px);
+      background: color-mix(in srgb, var(--color-bg) 82%, transparent); border-bottom: 1px solid var(--color-border);
     }
     .header-inner { display: flex; align-items: center; justify-content: space-between; gap: var(--space-4); min-height: 76px; }
     .brand { display: inline-flex; align-items: center; gap: .8rem; font-weight: 800; }
-    .brand-logo {
-      width: 44px; height: 44px; padding: .55rem; border-radius: .9rem;
-      color: var(--color-primary); background: linear-gradient(180deg, color-mix(in srgb, var(--color-primary) 12%, var(--color-surface)), var(--color-surface));
-      box-shadow: var(--shadow-glow);
-    }
     .brand-logo-img {
-      width: 44px;
-      height: 44px;
-      object-fit: cover;
-      border-radius: .9rem;
-      box-shadow: var(--shadow-glow);
-      border: 1px solid color-mix(in srgb, var(--color-primary) 28%, var(--color-border));
-      flex-shrink: 0;
+      width: 44px; height: 44px; object-fit: cover; border-radius: .9rem; box-shadow: var(--shadow-glow);
+      border: 1px solid color-mix(in srgb, var(--color-primary) 28%, var(--color-border)); flex-shrink: 0;
     }
-    .nav-toggle { display: none; }
-    .brand strong, h1, h2, h3, .stat-number, .catalog-tab { font-family: var(--font-display); letter-spacing: .02em; }
-    .main-nav { display: flex; align-items: center; gap: 1.1rem; flex-wrap: wrap; }
+    .brand strong, h1, h2, h3, .catalog-tab, .step-number { font-family: var(--font-display); letter-spacing: .02em; }
+    .main-nav { display: flex; align-items: center; gap: 1rem; flex-wrap: wrap; }
     .main-nav a { color: var(--color-text-muted); font-size: var(--text-sm); }
     .main-nav a:hover, .main-nav a.active { color: var(--color-primary); }
+    .header-inline-auth { display:flex;align-items:center;gap:10px;margin-left:auto; }
+    .auth-user { color:#00ff88;font-size:13px;max-width:160px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap; }
+    .auth-chip { padding:8px 18px;border-radius:20px;border:1.5px solid #00ff88;background:transparent;color:#00ff88;font-weight:700;cursor:pointer;font-size:14px; }
+    .auth-chip.logout { display:none;border-color:#ff4444;color:#ff4444; }
     .header-actions { display: flex; align-items: center; gap: .8rem; }
-
     .theme-toggle, .cart-button {
-      min-height: 46px; padding: .8rem 1rem; border: 1px solid var(--color-border);
-      border-radius: var(--radius-full); background: var(--color-surface); display: inline-flex; align-items: center; gap: .65rem;
-      box-shadow: var(--shadow-sm);
+      min-height: 46px; padding: .8rem 1rem; border: 1px solid var(--color-border); border-radius: var(--radius-full);
+      background: var(--color-surface); display: inline-flex; align-items: center; gap: .65rem; box-shadow: var(--shadow-sm);
     }
     .theme-toggle:hover, .cart-button:hover { box-shadow: var(--shadow-glow); border-color: color-mix(in srgb, var(--color-primary) 45%, var(--color-border)); }
     .cart-count {
       min-width: 24px; height: 24px; display: inline-grid; place-items: center; border-radius: 50%; background: var(--color-primary); color: var(--color-inverse); font-size: .8rem; font-weight: 800;
     }
-
-    .hero-grid { display: grid; grid-template-columns: 1.2fr .9fr; gap: clamp(1.5rem, 3vw, 4rem); align-items: center; }
+    .hero-grid { display: grid; grid-template-columns: 1.15fr .85fr; gap: clamp(1.5rem, 3vw, 4rem); align-items: center; }
     .eyebrow {
-      display: inline-flex; gap: .5rem; flex-wrap: wrap; align-items: center; padding: .45rem .8rem;
-      border: 1px solid var(--color-border); border-radius: var(--radius-full); background: var(--color-primary-ghost);
-      color: var(--color-primary); font-size: var(--text-xs); text-transform: uppercase; letter-spacing: .15em;
+      display: inline-flex; gap: .5rem; flex-wrap: wrap; align-items: center; padding: .45rem .8rem; border: 1px solid var(--color-border);
+      border-radius: var(--radius-full); background: var(--color-primary-ghost); color: var(--color-primary); font-size: var(--text-xs); text-transform: uppercase; letter-spacing: .15em;
     }
-    h1 { font-size: clamp(2.4rem, 5vw, 5.1rem); line-height: 1.02; margin: 1rem 0 1rem; max-width: 11ch; }
-    .hero-copy p { color: var(--color-text-muted); max-width: 62ch; }
+    h1 { font-size: clamp(2.35rem, 5vw, 4.8rem); line-height: 1.02; margin: 1rem 0 1rem; max-width: 11ch; }
+    .hero-copy p { color: var(--color-text-muted); max-width: 58ch; }
     .hero-actions { display: flex; flex-wrap: wrap; gap: .9rem; margin-top: 1.5rem; }
     .btn {
-      display: inline-flex; align-items: center; justify-content: center; gap: .6rem;
-      min-height: 50px; padding: .95rem 1.15rem; border-radius: var(--radius-full); font-weight: 700; font-size: var(--text-sm);
-      transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease, background .2s ease;
+      display: inline-flex; align-items: center; justify-content: center; gap: .6rem; min-height: 50px; padding: .95rem 1.15rem;
+      border-radius: var(--radius-full); font-weight: 700; font-size: var(--text-sm); transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease, background .2s ease;
     }
     .btn:hover { transform: translateY(-2px); }
     .btn-primary { background: var(--color-primary); color: var(--color-inverse); box-shadow: 0 0 0 1px rgba(44,255,129,.18), 0 0 26px rgba(44,255,129,.28); }
     .btn-primary:hover { background: var(--color-primary-hover); }
     .btn-secondary { background: var(--color-surface); border: 1px solid var(--color-border); }
-    .btn-secondary:hover { box-shadow: var(--shadow-glow); }
+    .btn-secondary:hover, .btn-ghost:hover { box-shadow: var(--shadow-glow); }
     .btn-ghost { background: transparent; border: 1px solid var(--color-border); }
-
-    .hero-panel {
-      position: relative; padding: 1.4rem; border-radius: 1.6rem; border: 1px solid var(--color-border);
+    .hero-panel, .panel {
+      position: relative; padding: 1.3rem; border-radius: 1.35rem; border: 1px solid var(--color-border);
       background: linear-gradient(180deg, color-mix(in srgb, var(--color-surface) 88%, transparent), var(--color-surface-2));
-      box-shadow: var(--shadow-md); overflow: hidden;
-    }
-    .hero-panel::before {
-      content: ""; position: absolute; inset: 1rem; border-radius: 1.25rem; border: 1px solid rgba(44,255,129,.18); pointer-events: none;
-    }
-    .terminal { padding: 1rem; border-radius: 1rem; background: #07110c; border: 1px solid rgba(44,255,129,.14); min-height: 320px; box-shadow: inset 0 0 0 1px rgba(44,255,129,.06); }
-    .terminal-top { display: flex; align-items: center; gap: .45rem; margin-bottom: 1rem; }
-    .dot { width: 10px; height: 10px; border-radius: 50%; background: rgba(255,255,255,.18); }
-    .dot:nth-child(1) { background: #18d962; } .dot:nth-child(2) { background: #42ff9a; } .dot:nth-child(3) { background: #87ffc0; }
-    .terminal-line { color: #97f1b7; font-size: .95rem; margin-bottom: .75rem; opacity: .95; }
-    .hero-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: .9rem; margin-top: 1rem; }
-    .stat-card { padding: 1rem; border-radius: 1rem; background: color-mix(in srgb, var(--color-surface-2) 82%, transparent); border: 1px solid var(--color-border); }
-    .stat-number { font-size: 1.55rem; color: var(--color-primary); }
-    .stat-label { font-size: var(--text-sm); color: var(--color-text-muted); }
-
-    .section-heading { display: flex; align-items: end; justify-content: space-between; gap: 1rem; margin-bottom: 1.4rem; }
-    .section-heading h2 { font-size: clamp(1.8rem, 2.6vw, 2.9rem); }
-    .section-heading p { color: var(--color-text-muted); max-width: 60ch; }
-
-    .category-switcher {
-      display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: .8rem; margin: 1.5rem 0 1.2rem;
-    }
-    .catalog-tab {
-      text-align: left; min-height: 84px; padding: 1rem; border-radius: 1rem; border: 1px solid var(--color-border);
-      background: linear-gradient(180deg, var(--color-surface), var(--color-surface-2)); color: var(--color-text); box-shadow: var(--shadow-sm);
-    }
-    .catalog-tab span { display: block; color: var(--color-text-muted); font-family: var(--font-body); font-size: var(--text-xs); margin-top: .35rem; letter-spacing: .04em; text-transform: uppercase; }
-    .catalog-tab.active, .catalog-tab:hover { border-color: rgba(44,255,129,.35); box-shadow: var(--shadow-glow); transform: translateY(-2px); }
-
-    .catalog-status {
-      display: inline-flex; align-items: center; gap: .6rem; padding: .65rem 1rem; border-radius: var(--radius-full);
-      background: var(--color-primary-ghost); color: var(--color-primary); margin-bottom: 1.2rem; border: 1px solid var(--color-border); font-size: var(--text-sm);
-    }
-
-    .product-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.2rem; }
-    .product-card {
-      overflow: hidden;
-      position: relative; display: flex; flex-direction: column; gap: 1rem; padding: 1.2rem; min-height: 100%;
-      border-radius: 1.35rem; background: linear-gradient(180deg, var(--color-surface), var(--color-surface-2)); border: 1px solid var(--color-border);
       box-shadow: var(--shadow-sm); overflow: hidden;
     }
+    .hero-panel::before {
+      content: ""; position: absolute; inset: 1rem; border-radius: 1.1rem; border: 1px solid rgba(44,255,129,.14); pointer-events: none;
+    }
+    .hero-summary { display: grid; gap: 1rem; position: relative; z-index: 2; }
+    .hero-box {
+      padding: 1rem; border-radius: 1rem; background: rgba(7,17,12,.88); border: 1px solid rgba(44,255,129,.12);
+      box-shadow: inset 0 0 0 1px rgba(44,255,129,.05);
+    }
+    .hero-box small { display:block; color:#8fd6aa; text-transform:uppercase; letter-spacing:.15em; font-size:.72rem; margin-bottom:.55rem; }
+    .hero-box p { color:#dfffee; font-size:var(--text-sm); }
+    .hero-mini-grid { display:grid; grid-template-columns:repeat(2, minmax(0,1fr)); gap:.8rem; }
+    .hero-mini-card { padding: .95rem; border-radius: 1rem; background: color-mix(in srgb, var(--color-surface-2) 82%, transparent); border: 1px solid var(--color-border); }
+    .hero-mini-card strong { display:block; color:var(--color-primary); margin-bottom:.3rem; }
+    .proof-strip { display:grid; grid-template-columns:repeat(4, minmax(0,1fr)); gap:.9rem; margin-top:1.4rem; }
+    .proof-card { padding: 1rem; border-radius: 1rem; border: 1px solid var(--color-border); background: color-mix(in srgb, var(--color-surface) 86%, transparent); }
+    .proof-card strong { display:block; color:var(--color-text); margin-bottom:.3rem; }
+    .section-heading { display:flex; align-items:end; justify-content:space-between; gap:1rem; margin-bottom:1.4rem; }
+    .section-heading h2 { font-size: clamp(1.8rem, 2.6vw, 2.9rem); }
+    .section-heading p, .muted { color: var(--color-text-muted); }
+    .quick-steps { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:1rem; }
+    .step-card { padding:1.15rem; border-radius:1.1rem; border:1px solid var(--color-border); background:linear-gradient(180deg,var(--color-surface),var(--color-surface-2)); }
+    .step-number { color:var(--color-primary); font-size:1.35rem; margin-bottom:.55rem; }
+    .category-switcher { display:grid; grid-template-columns:repeat(5,minmax(0,1fr)); gap:.8rem; margin:1.5rem 0 1.2rem; }
+    .catalog-tab {
+      text-align:left; min-height:84px; padding:1rem; border-radius:1rem; border:1px solid var(--color-border);
+      background: linear-gradient(180deg, var(--color-surface), var(--color-surface-2)); color: var(--color-text); box-shadow: var(--shadow-sm);
+    }
+    .catalog-tab span { display:block; color:var(--color-text-muted); font-family:var(--font-body); font-size:var(--text-xs); margin-top:.35rem; letter-spacing:.04em; text-transform:uppercase; }
+    .catalog-tab.active, .catalog-tab:hover { border-color: rgba(44,255,129,.35); box-shadow: var(--shadow-glow); transform: translateY(-2px); }
+    .catalog-status {
+      display:inline-flex; align-items:center; gap:.6rem; padding:.65rem 1rem; border-radius:var(--radius-full); background:var(--color-primary-ghost);
+      color:var(--color-primary); margin-bottom:1.2rem; border:1px solid var(--color-border); font-size:var(--text-sm);
+    }
+    .product-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:1.2rem; }
+    .product-card {
+      position:relative; display:flex; flex-direction:column; gap:1rem; padding:1.2rem; min-height:100%; border-radius:1.35rem;
+      background: linear-gradient(180deg, var(--color-surface), var(--color-surface-2)); border:1px solid var(--color-border); box-shadow: var(--shadow-sm); overflow:hidden;
+    }
     .product-card::before {
-      content: ""; position: absolute; inset: auto -20% -40% auto; width: 180px; height: 180px; border-radius: 50%;
-      background: radial-gradient(circle, rgba(44,255,129,.14), transparent 72%); pointer-events: none;
+      content:""; position:absolute; inset:auto -20% -40% auto; width:180px; height:180px; border-radius:50%; background: radial-gradient(circle, rgba(44,255,129,.12), transparent 72%); pointer-events:none;
     }
     .product-thumb {
-      position: relative;
-      aspect-ratio: 4 / 3;
-      width: 100%;
-      overflow: hidden;
-      border-radius: 1rem;
-      margin-bottom: 1rem;
-      border: 1px solid var(--color-border);
-      background: linear-gradient(180deg, var(--color-surface-2), var(--color-surface-offset));
-      display: grid;
-      place-items: center;
+      position:relative; aspect-ratio:4 / 3; width:100%; overflow:hidden; border-radius:1rem; margin-bottom:1rem; border:1px solid var(--color-border);
+      background: linear-gradient(180deg, var(--color-surface-2), var(--color-surface-offset)); display:grid; place-items:center;
     }
-    .product-thumb img {
-      width: 100%;
-      height: 100%;
-      object-fit: contain;
-      background: #fff;
-    }
-    .product-head { display: flex; align-items: start; justify-content: space-between; gap: .8rem; }
-    .badge-row { display: flex; flex-wrap: wrap; gap: .5rem; }
+    .product-thumb img { width:100%; height:100%; object-fit:contain; background:#fff; }
+    .product-head { display:flex; align-items:start; justify-content:space-between; gap:.8rem; }
+    .badge-row { display:flex; flex-wrap:wrap; gap:.5rem; }
     .badge {
-      display: inline-flex; align-items: center; gap: .4rem; padding: .35rem .65rem; border-radius: var(--radius-full);
-      font-size: .78rem; font-weight: 700; letter-spacing: .04em; text-transform: uppercase; border: 1px solid rgba(44,255,129,.18);
-      background: rgba(44,255,129,.08); color: var(--color-primary);
+      display:inline-flex; align-items:center; gap:.4rem; padding:.35rem .65rem; border-radius:var(--radius-full); font-size:.78rem; font-weight:700;
+      letter-spacing:.04em; text-transform:uppercase; border:1px solid rgba(44,255,129,.18); background:rgba(44,255,129,.08); color:var(--color-primary);
     }
-    .product-card h3 { font-size: 1.28rem; max-width: 18ch; }
+    .product-card h3 { font-size: 1.2rem; max-width: 18ch; }
     .product-price { font-size: 1.9rem; font-weight: 800; color: var(--color-primary); }
     .product-meta { color: var(--color-text-muted); font-size: var(--text-sm); }
-    .product-copy {
-      position: relative; padding: 1rem; border-radius: 1rem; background: color-mix(in srgb, var(--color-surface-offset) 88%, transparent);
-      border: 1px solid var(--color-border); color: var(--color-text-muted);
-    }
-    .product-copy::before {
-      content: ""; position: absolute; top: .75rem; right: .85rem; font-size: .72rem; letter-spacing: .18em; color: var(--color-text-faint);
-    }
-    .product-features { display: grid; gap: .55rem; }
-    .product-features li { list-style: none; color: var(--color-text); font-size: var(--text-sm); }
-    .product-features li::before { content: "▸ "; color: var(--color-primary); }
-    .product-actions { display: flex; flex-wrap: wrap; gap: .75rem; margin-top: auto; }
-
-    .support-grid, .about-grid, .payments-grid, .testimonials-grid, .footer-grid { display: grid; gap: 1.2rem; }
-    .about-grid { grid-template-columns: 1.1fr .9fr; }
-    .panel {
-      padding: 1.3rem; border-radius: 1.2rem; border: 1px solid var(--color-border); background: linear-gradient(180deg, var(--color-surface), var(--color-surface-2)); box-shadow: var(--shadow-sm);
-    }
-    .list-clean { display: grid; gap: .7rem; }
-    .list-clean li { list-style: none; color: var(--color-text-muted); }
-    .list-clean li strong { color: var(--color-text); }
-    .payments-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
-    .payment-card { text-align: left; }
-    .payment-icon { font-size: 1.6rem; margin-bottom: .8rem; color: var(--color-primary); }
-
-    .testimonials-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
-    .quote { color: var(--color-text-muted); }
-    .quote strong { display: block; margin-top: .75rem; color: var(--color-text); }
-
-    .support-grid { grid-template-columns: 1fr 1fr; }
-    .support-cta { display: flex; flex-wrap: wrap; gap: .75rem; margin-top: 1rem; }
-    .contact-form { display: grid; gap: .9rem; }
-    .field { display: grid; gap: .4rem; }
-    .field input, .field textarea {
-      width: 100%; border-radius: .95rem; padding: .95rem 1rem; border: 1px solid var(--color-border); background: var(--color-surface-offset);
-    }
-    .field textarea { min-height: 120px; resize: vertical; }
-
+    .product-copy { padding:1rem; border-radius:1rem; background: color-mix(in srgb, var(--color-surface-offset) 88%, transparent); border:1px solid var(--color-border); color:var(--color-text-muted); }
+    .product-features { display:grid; gap:.55rem; }
+    .product-features li { list-style:none; color:var(--color-text); font-size:var(--text-sm); }
+    .product-features li::before { content:"▸ "; color:var(--color-primary); }
+    .product-actions { display:flex; flex-wrap:wrap; gap:.75rem; margin-top:auto; }
+    .about-grid, .payments-grid, .support-grid, .footer-grid, .testimonials-grid { display:grid; gap:1.2rem; }
+    .about-grid { grid-template-columns:1.1fr .9fr; }
+    .list-clean { display:grid; gap:.7rem; }
+    .list-clean li { list-style:none; color:var(--color-text-muted); }
+    .list-clean li strong { color:var(--color-text); }
+    .payments-grid { grid-template-columns:repeat(4,minmax(0,1fr)); }
+    .payment-card { text-align:left; }
+    .payment-icon { font-size:1.6rem; margin-bottom:.8rem; color:var(--color-primary); }
+    .support-grid { grid-template-columns:1fr 1fr; }
+    .support-cta { display:flex; flex-wrap:wrap; gap:.75rem; margin-top:1rem; }
+    .contact-form { display:grid; gap:.9rem; }
+    .field { display:grid; gap:.4rem; }
+    .field input, .field textarea { width:100%; border-radius:.95rem; padding:.95rem 1rem; border:1px solid var(--color-border); background:var(--color-surface-offset); }
+    .field textarea { min-height:120px; resize:vertical; }
     .site-footer { padding: 2rem 0 3rem; border-top: 1px solid var(--color-border); }
     .footer-grid { grid-template-columns: 1.1fr .8fr .8fr; }
     .footer-note { color: var(--color-text-faint); margin-top: .8rem; font-size: var(--text-sm); }
-
-    .drawer, .modal, .chat-widget { position: fixed; z-index: 70; }
-    .drawer-backdrop, .modal-backdrop { position: fixed; inset: 0; background: rgba(2, 8, 5, .72); backdrop-filter: blur(10px); z-index: 65; display: none; }
-    .drawer {
-      top: 0; right: 0; width: min(420px, 100%); height: 100dvh; background: var(--color-surface);
-      border-left: 1px solid var(--color-border); transform: translateX(100%); transition: transform .28s ease; padding: 1rem; overflow-y: auto;
-    }
-    .drawer.open { transform: translateX(0); }
-    .drawer-backdrop.show, .modal-backdrop.show { display: block; }
-    .drawer-head, .modal-head { display: flex; align-items: center; justify-content: space-between; gap: 1rem; margin-bottom: 1rem; }
-    .cart-items { display: grid; gap: .8rem; }
-    .cart-item {
-      padding: .95rem; border-radius: 1rem; border: 1px solid var(--color-border); background: var(--color-surface-2); display: grid; gap: .6rem;
-    }
-    .cart-line { display: flex; justify-content: space-between; gap: .6rem; }
-    .qty-controls { display: flex; align-items: center; gap: .5rem; }
-    .qty-controls button { width: 32px; height: 32px; border-radius: 50%; background: var(--color-primary-ghost); }
-    .cart-summary { margin-top: 1rem; padding-top: 1rem; border-top: 1px solid var(--color-border); display: grid; gap: .8rem; }
-
-    .modal {
-      left: 50%; top: 50%; transform: translate(-50%, -50%) scale(.96); width: min(860px, calc(100% - 1.4rem)); max-height: 88dvh; overflow: auto;
-      background: var(--color-surface); border: 1px solid var(--color-border); border-radius: 1.4rem; padding: 1.2rem; box-shadow: var(--shadow-md); display: none;
-    }
-    .modal.show { display: block; transform: translate(-50%, -50%) scale(1); }
-    .modal-grid { display: grid; grid-template-columns: .9fr 1.1fr; gap: 1.1rem; }
-    .product-visual {
-      min-height: 320px; border-radius: 1.2rem; border: 1px solid var(--color-border); background:
-        radial-gradient(circle at top right, rgba(44,255,129,.18), transparent 30%),
-        linear-gradient(160deg, #08140d, #0f1f17 60%, #0b120f);
-      position: relative; overflow: hidden;
-    }
-    .product-visual::before, .product-visual::after {
-      content: ""; position: absolute; border-radius: 50%; border: 1px solid rgba(44,255,129,.18);
-    }
-    .product-visual::before { width: 220px; height: 220px; top: 18%; left: 14%; }
-    .product-visual::after { width: 120px; height: 120px; bottom: 12%; right: 14%; }
-    .visual-chip {
-      position: absolute; left: 1rem; top: 1rem; padding: .45rem .7rem; border-radius: var(--radius-full); background: rgba(44,255,129,.13); color: #a8ffc8; border: 1px solid rgba(44,255,129,.22); font-size: .8rem; letter-spacing: .08em; text-transform: uppercase;
-    }
-    .visual-title {
-      position: absolute; left: 1rem; right: 1rem; bottom: 1rem; font-family: var(--font-display); font-size: clamp(1.6rem, 3vw, 2.6rem); line-height: 1.05;
-    }
-    .product-description { color: var(--color-text-muted); white-space: pre-line; }
-
-    .chat-toggle {
-      position: fixed; right: 1rem; bottom: 1rem; z-index: 75; width: 60px; height: 60px; border-radius: 50%; background: var(--color-primary);
-      color: var(--color-inverse); box-shadow: 0 0 28px rgba(44,255,129,.35); font-size: 1.3rem;
-    }
-    .chat-widget {
-      right: 1rem; bottom: 5.5rem; width: min(360px, calc(100% - 1rem)); border-radius: 1.25rem; border: 1px solid var(--color-border);
-      background: var(--color-surface); box-shadow: var(--shadow-md); overflow: hidden; display: none;
-    }
-    .chat-widget.show { display: block; }
-    .chat-header { padding: .95rem 1rem; background: linear-gradient(180deg, var(--color-surface-offset), var(--color-surface)); border-bottom: 1px solid var(--color-border); }
-    .chat-log { padding: 1rem; display: grid; gap: .75rem; max-height: 330px; overflow: auto; }
-    .bubble { padding: .8rem .9rem; border-radius: 1rem; max-width: 88%; }
-    .bubble.ai { background: var(--color-surface-offset); color: var(--color-text); }
-    .bubble.user { margin-left: auto; background: var(--color-primary); color: var(--color-inverse); }
-    .chat-options, .chat-input-row { padding: 0 1rem 1rem; display: grid; gap: .7rem; }
-    .chat-option {
-      text-align: left; padding: .85rem .95rem; border-radius: .9rem; border: 1px solid var(--color-border); background: var(--color-surface-2);
-    }
-    .chat-option:hover { border-color: rgba(44,255,129,.35); box-shadow: var(--shadow-glow); }
-
-    .muted { color: var(--color-text-muted); }
-    .hidden { display: none !important; }
-    .reveal { opacity: 0; transform: translateY(24px); transition: opacity .65s ease, transform .65s ease; }
-    .reveal.visible { opacity: 1; transform: translateY(0); }
-
+    .drawer, .modal { position:fixed; z-index:70; }
+    .drawer-backdrop, .modal-backdrop { position:fixed; inset:0; background:rgba(2,8,5,.72); backdrop-filter:blur(10px); z-index:65; display:none; }
+    .drawer { top:0; right:0; width:min(420px,100%); height:100dvh; background:var(--color-surface); border-left:1px solid var(--color-border); transform:translateX(100%); transition:transform .28s ease; padding:1rem; overflow-y:auto; }
+    .drawer.open { transform:translateX(0); }
+    .drawer-backdrop.show, .modal-backdrop.show { display:block; }
+    .drawer-head, .modal-head { display:flex; align-items:center; justify-content:space-between; gap:1rem; margin-bottom:1rem; }
+    .cart-items { display:grid; gap:.8rem; }
+    .cart-item { padding:.95rem; border-radius:1rem; border:1px solid var(--color-border); background:var(--color-surface-2); display:grid; gap:.6rem; }
+    .cart-line { display:flex; justify-content:space-between; gap:.6rem; }
+    .qty-controls { display:flex; align-items:center; gap:.5rem; }
+    .qty-controls button { width:32px; height:32px; border-radius:50%; background:var(--color-primary-ghost); }
+    .cart-summary { margin-top:1rem; padding-top:1rem; border-top:1px solid var(--color-border); display:grid; gap:.8rem; }
+    .modal { left:50%; top:50%; transform:translate(-50%,-50%) scale(.96); width:min(920px, calc(100% - 1.4rem)); max-height:88dvh; overflow:auto; background:var(--color-surface); border:1px solid var(--color-border); border-radius:1.4rem; padding:1.2rem; box-shadow:var(--shadow-md); display:none; }
+    .modal.show { display:block; transform:translate(-50%,-50%) scale(1); }
+    .modal-grid { display:grid; grid-template-columns:.9fr 1.1fr; gap:1.1rem; }
+    .product-visual { min-height:320px; border-radius:1.2rem; border:1px solid var(--color-border); background: radial-gradient(circle at top right, rgba(44,255,129,.18), transparent 30%), linear-gradient(160deg, #08140d, #0f1f17 60%, #0b120f); position:relative; overflow:hidden; display:grid; place-items:center; }
+    .product-visual img { width:100%; height:100%; object-fit:contain; padding:1.25rem; }
+    .visual-chip { position:absolute; left:1rem; top:1rem; padding:.45rem .7rem; border-radius:var(--radius-full); background:rgba(44,255,129,.13); color:#a8ffc8; border:1px solid rgba(44,255,129,.22); font-size:.8rem; letter-spacing:.08em; text-transform:uppercase; }
+    .product-description { color:var(--color-text-muted); white-space:pre-line; }
+    .empty-state { padding:1.4rem; border-radius:1rem; border:1px solid var(--color-border); background:linear-gradient(180deg, var(--color-surface), var(--color-surface-2)); }
+    .hidden { display:none !important; }
+    .reveal { opacity:0; transform:translateY(24px); transition:opacity .65s ease, transform .65s ease; }
+    .reveal.visible { opacity:1; transform:translateY(0); }
     @media (max-width: 1024px) {
-      .hero-grid, .about-grid, .support-grid, .modal-grid { grid-template-columns: 1fr; }
-      .payments-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-      .testimonials-grid { grid-template-columns: 1fr; }
-      .category-switcher { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-      .product-grid { grid-template-columns: 1fr; }
-      .footer-grid { grid-template-columns: 1fr; }
-      .main-nav { display: none; }
+      .hero-grid, .about-grid, .support-grid, .modal-grid { grid-template-columns:1fr; }
+      .proof-strip, .payments-grid { grid-template-columns:repeat(2,minmax(0,1fr)); }
+      .quick-steps, .category-switcher { grid-template-columns:repeat(2,minmax(0,1fr)); }
+      .product-grid, .footer-grid { grid-template-columns:1fr; }
+      .main-nav { display:none; }
+      .testimonials-grid { grid-template-columns:1fr; }
     }
     @media (max-width: 640px) {
-      .container { width: min(100% - 1rem, 1180px); }
-      .header-inner { min-height: 70px; }
-      .header-actions { gap: .5rem; }
-      .theme-toggle, .cart-button { padding: .75rem .9rem; }
-      .hero-stats { grid-template-columns: 1fr; }
-      .payments-grid, .category-switcher { grid-template-columns: 1fr; }
-      .btn { width: 100%; }
-      .product-actions { flex-direction: column; }
+      .container { width:min(100% - 1rem, 1180px); }
+      .header-inner { min-height:70px; flex-wrap:wrap; }
+      .header-inline-auth { order:3; width:100%; justify-content:flex-start; margin-left:0; }
+      .header-actions { margin-left:auto; }
+      .proof-strip, .hero-mini-grid, .payments-grid, .quick-steps, .category-switcher { grid-template-columns:1fr; }
+      .btn { width:100%; }
+      .product-actions { flex-direction:column; }
+      .cart-button span:first-child { display:none; }
     }
   </style>
 </head>
 <body>
   <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
-
   <header class="site-header">
     <div class="container header-inner">
       <a href="#home" class="brand" aria-label="Mystic Shop, início">
         <img src="./logo-mystic.jpg" alt="Logo Mystic Shop" class="brand-logo-img" width="44" height="44" loading="lazy">
         <span><strong>Mystic</strong> Shop</span>
       </a>
-
       <nav class="main-nav" aria-label="Principal">
         <a href="#home">Home</a>
+        <a href="#vantagens">Vantagens</a>
         <a href="#catalogo">Catálogo</a>
-        <a href="#sobre">Sobre</a>
         <a href="#pagamentos">Pagamentos</a>
-        <a href="#compras">Compras</a>
         <a href="#contato">Suporte</a>
-      
-    <div style="display:flex;align-items:center;gap:10px;margin-left:auto;">
-      <span id="userInfo" style="color:#00ff88;font-size:13px;max-width:160px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;"></span>
-      <button id="btnAuth" onclick="abrirAuth()" style="padding:8px 18px;border-radius:20px;border:1.5px solid #00ff88;background:transparent;color:#00ff88;font-weight:700;cursor:pointer;font-size:14px;">Entrar / Cadastrar</button>
-      <button id="btnLogout" onclick="fazerLogout()" style="display:none;padding:8px 18px;border-radius:20px;border:1.5px solid #ff4444;background:transparent;color:#ff4444;font-weight:700;cursor:pointer;font-size:14px;">Sair</button>
-    </div>
-
-</nav>
-
+      </nav>
+      <div class="header-inline-auth">
+        <span id="userInfo" class="auth-user"></span>
+        <button id="btnAuth" onclick="abrirAuth()" class="auth-chip">Entrar / Cadastrar</button>
+        <button id="btnLogout" onclick="fazerLogout()" class="auth-chip logout">Sair</button>
+      </div>
       <div class="header-actions">
         <button class="theme-toggle" data-theme-toggle aria-label="Alternar tema">🌗</button>
         <button class="cart-button" id="cartButton" aria-label="Abrir carrinho">
@@ -384,145 +281,123 @@
       </div>
     </div>
   </header>
-
   <main id="conteudo">
     <section class="section" id="home">
       <div class="container hero-grid">
-        <div class="hero-copy reveal">
-          <span class="eyebrow">Entrega em minutos • Garantia de funcionamento • Suporte 24h</span>
-          <h1>Produtos digitais premium com checkout rápido, visual tech e catálogo inteligente.</h1>
-          <p>
-            A Mystic Shop foi projetada para vender com mais clareza e mais autoridade. Escolha a categoria desejada, visualize os produtos corretos,
-            adicione ao carrinho e finalize o pedido com atendimento profissional e opções de pagamento flexíveis.
-          </p>
+        <div class="hero-copy reveal visible">
+          <span class="eyebrow">Produtos digitais • Pagamento rápido • Entrega online</span>
+          <h1>Compre assinaturas e licenças digitais com mais clareza e menos enrolação.</h1>
+          <p>Na Mystic Shop, o cliente entende rápido o que está comprando, como recebe e para onde vai no pagamento. O foco do index agora é facilitar a decisão, reduzir dúvida e levar mais gente até o checkout sem bagunça visual.</p>
           <div class="hero-actions">
             <a class="btn btn-primary" href="#catalogo">Ver catálogo</a>
-            <a class="btn btn-secondary" href="#contato">Falar com suporte</a>
+            <a class="btn btn-secondary" href="#pagamentos">Como pagar</a>
           </div>
-          <div class="hero-stats">
-            <article class="stat-card">
-              <div class="stat-number" data-counter="500">0+</div>
-              <div class="stat-label">Clientes satisfeitos</div>
-            </article>
-            <article class="stat-card">
-              <div class="stat-number" data-counter="1200">0+</div>
-              <div class="stat-label">Produtos entregues</div>
-            </article>
-            <article class="stat-card">
-              <div class="stat-number" data-counter="24">0h</div>
-              <div class="stat-label">Suporte contínuo</div>
-            </article>
+          <div class="proof-strip">
+            <article class="proof-card"><strong>Entrega digital</strong><span class="muted">Licença, código, link ou orientação após confirmação.</span></article>
+            <article class="proof-card"><strong>Checkout direto</strong><span class="muted">Cada produto mantém seu próprio link de pagamento.</span></article>
+            <article class="proof-card"><strong>Suporte rápido</strong><span class="muted">Contato direto por Telegram e email.</span></article>
+            <article class="proof-card"><strong>Catálogo simples</strong><span class="muted">Categorias, preço e ação principal visíveis.</span></article>
           </div>
         </div>
-
-        <div class="hero-panel reveal">
-          <div class="terminal" aria-hidden="true">
-            <div class="terminal-top"><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
-            <div class="terminal-line">&gt; inicializando catálogo inteligente</div>
-            <div class="terminal-line">&gt; gateways ativos: PIX, Cartão, Boleto, Cripto</div>
-            <div class="terminal-line">&gt; suporte pronto via Telegram, email e chat ao vivo</div>
-            <div class="terminal-line">&gt; categoria atual: Assinaturas e Softwares</div>
-            <div class="terminal-line">&gt; status: produtos digitais com entrega online</div>
-            <div class="terminal-line">&gt; comando: selecione sua categoria e ative agora</div>
+        <aside class="hero-panel reveal visible" aria-label="Resumo da loja">
+          <div class="hero-summary">
+            <div class="hero-box">
+              <small>Como funciona</small>
+              <p>Escolha a categoria, abra o produto, confira os detalhes e clique em <strong>Comprar agora</strong> para ir ao pagamento.</p>
+            </div>
+            <div class="hero-mini-grid">
+              <div class="hero-mini-card"><strong>PIX</strong><span class="muted">Pagamento rápido com checkout externo.</span></div>
+              <div class="hero-mini-card"><strong>Cartão</strong><span class="muted">Opção disponível pelo Mercado Pago.</span></div>
+              <div class="hero-mini-card"><strong>Produtos reais</strong><span class="muted">Imagens e preços já conectados ao catálogo.</span></div>
+              <div class="hero-mini-card"><strong>Suporte</strong><span class="muted">Canal direto para dúvidas antes e depois.</span></div>
+            </div>
           </div>
+        </aside>
+      </div>
+    </section>
+    <section class="section" id="vantagens">
+      <div class="container">
+        <div class="section-heading reveal visible">
+          <div>
+            <h2>Compra mais simples</h2>
+            <p>Eu tirei o excesso de texto genérico do topo e deixei o index mais direto para conversão: menos distração, mais clareza e caminho de compra mais visível.</p>
+          </div>
+        </div>
+        <div class="quick-steps">
+          <article class="step-card reveal visible"><div class="step-number">01</div><h3>Escolha rápido</h3><p class="muted">Categorias visíveis e catálogo com foco no que realmente está à venda.</p></article>
+          <article class="step-card reveal visible"><div class="step-number">02</div><h3>Veja o produto</h3><p class="muted">Preço, imagem, descrição curta e vantagens aparecem sem poluir a tela.</p></article>
+          <article class="step-card reveal visible"><div class="step-number">03</div><h3>Pague sem travar</h3><p class="muted">Botão de compra segue levando para o mesmo link individual de checkout.</p></article>
         </div>
       </div>
     </section>
-
     <section class="section" id="catalogo">
       <div class="container">
-        <div class="section-heading reveal">
+        <div class="section-heading reveal visible">
           <div>
             <h2>Catálogo por categoria</h2>
-            <p>Selecione a categoria desejada para trocar instantaneamente os produtos exibidos. As categorias sem itens no momento permanecem visíveis para preparar a expansão futura da loja.</p>
+            <p>As imagens dos produtos, os nomes da loja e os links de pagamento foram mantidos. O que mudou foi a organização visual para ficar mais profissional e mais limpa.</p>
           </div>
         </div>
-
-        <div class="category-switcher reveal" id="categoryTabs"></div>
-        <div class="catalog-status reveal" id="catalogStatus">Categoria ativa: Assinaturas e Softwares</div>
+        <div class="category-switcher reveal visible" id="categoryTabs"></div>
+        <div class="catalog-status reveal visible" id="catalogStatus">Categoria ativa: Assinaturas e Softwares</div>
         <div class="product-grid" id="productGrid"></div>
       </div>
     </section>
-
     <section class="section" id="sobre">
       <div class="container about-grid">
-        <article class="panel reveal">
+        <article class="panel reveal visible">
           <div class="section-heading" style="margin-bottom:1rem;">
-            <div>
-              <h2>Sobre a Mystic Shop</h2>
-            </div>
+            <div><h2>Sobre a Mystic Shop</h2></div>
           </div>
-          <p class="muted">A Mystic Shop atua com produtos digitais selecionados para clientes que buscam preço competitivo, ativação clara e suporte rápido. O foco do site é passar confiança, facilitar a escolha por categoria e conduzir o cliente até a compra com menos atrito.</p>
+          <p class="muted">A Mystic Shop atua com produtos digitais selecionados para quem quer comprar de forma mais rápida e com orientação clara. Em vez de promessas exageradas, o index agora destaca o que o cliente precisa saber para confiar e finalizar.</p>
           <ul class="list-clean" style="margin-top:1rem;">
             <li><strong>Entrega online:</strong> envio de licença, link, código ou orientação após a confirmação.</li>
-            <li><strong>Atendimento profissional:</strong> suporte por Telegram, email e chat ao vivo.</li>
-            <li><strong>Estrutura de venda:</strong> catálogo dinâmico, carrinho funcional e compra direta.</li>
+            <li><strong>Atendimento direto:</strong> suporte por Telegram e email.</li>
+            <li><strong>Navegação melhor:</strong> página inicial mais limpa, foco maior no catálogo.</li>
           </ul>
         </article>
-        <article class="panel reveal" id="compras">
+        <article class="panel reveal visible">
           <h3 style="margin-bottom:.8rem;">Fluxo de compra</h3>
           <ul class="list-clean">
-            <li><strong>1.</strong> Selecione a categoria e abra o produto desejado.</li>
-            <li><strong>2.</strong> Adicione ao carrinho ou clique em Comprar Agora.</li>
-            <li><strong>3.</strong> Finalize com o checkout do Mercado Pago ou fale com suporte.</li>
-            <li><strong>4.</strong> Receba a ativação digital com instruções correspondentes.</li>
+            <li><strong>1.</strong> Escolha a categoria que deseja ver.</li>
+            <li><strong>2.</strong> Abra o produto e confira os detalhes.</li>
+            <li><strong>3.</strong> Clique em Comprar agora ou adicione ao carrinho.</li>
+            <li><strong>4.</strong> Finalize no link de pagamento já configurado.</li>
           </ul>
         </article>
       </div>
     </section>
-
     <section class="section" id="pagamentos">
       <div class="container">
-        <div class="section-heading reveal">
+        <div class="section-heading reveal visible">
           <div>
             <h2>Formas de pagamento</h2>
-            <p>Você pode deixar o site sem gastar nada usando links de pagamento do Mercado Pago, além de botões de contato para suporte e confirmação manual quando necessário.</p>
+            <p>Os links individuais de pagamento foram preservados no catálogo. Esta área serve só para explicar as opções de forma clara e passar mais segurança ao cliente.</p>
           </div>
         </div>
         <div class="payments-grid">
-          <article class="panel payment-card reveal"><div class="payment-icon">◉</div><h3>PIX</h3><p class="muted">Pagamento instantâneo com confirmação rápida.</p></article>
-          <article class="panel payment-card reveal"><div class="payment-icon">▣</div><h3>Cartão</h3><p class="muted">Pagamento por crédito via checkout do Mercado Pago.</p></article>
-          <article class="panel payment-card reveal"><div class="payment-icon">◫</div><h3>Boleto</h3><p class="muted">Opção tradicional para clientes que preferem compensação bancária.</p></article>
-          <article class="panel payment-card reveal"><div class="payment-icon">₿</div><h3>Criptomoedas</h3><p class="muted">Atendimento manual por suporte para combinar pagamento em cripto.</p></article>
+          <article class="panel payment-card reveal visible"><div class="payment-icon">◉</div><h3>PIX</h3><p class="muted">Pagamento instantâneo com confirmação rápida.</p></article>
+          <article class="panel payment-card reveal visible"><div class="payment-icon">▣</div><h3>Cartão</h3><p class="muted">Pagamento por crédito via checkout do Mercado Pago.</p></article>
+          <article class="panel payment-card reveal visible"><div class="payment-icon">◫</div><h3>Boleto</h3><p class="muted">Opção tradicional para clientes que preferem compensação bancária.</p></article>
+          <article class="panel payment-card reveal visible"><div class="payment-icon">₿</div><h3>Criptomoedas</h3><p class="muted">Atendimento manual por suporte para combinar pagamento em cripto.</p></article>
         </div>
       </div>
     </section>
-
-    <section class="section">
-      <div class="container">
-        <div class="section-heading reveal">
-          <div>
-            <h2>Depoimentos</h2>
-            <p>Os textos abaixo são exemplos visuais para fortalecer a confiança da página até você substituir por feedbacks reais.</p>
-          </div>
-        </div>
-        <div class="testimonials-grid">
-          <article class="panel reveal"><p class="quote">“Recebi a ativação muito rápido e o suporte respondeu com clareza no processo.” <strong>Cliente verificado</strong></p></article>
-          <article class="panel reveal"><p class="quote">“Layout profissional, compra simples e instruções organizadas no pós-venda.” <strong>Comprador recorrente</strong></p></article>
-          <article class="panel reveal"><p class="quote">“Gostei da separação por categorias, ficou fácil encontrar exatamente o produto que eu queria.” <strong>Usuário atendido</strong></p></article>
-        </div>
-      </div>
-    </section>
-
     <section class="section" id="contato">
       <div class="container support-grid">
-        <article class="panel reveal">
-          <div class="section-heading" style="margin-bottom:1rem;">
-            <div>
-              <h2>Contato e suporte</h2>
-            </div>
-          </div>
-          <p class="muted">Você consegue manter tudo sem custo usando botão direto para Telegram, email clicável e um chat ao vivo local no próprio site para triagem inicial.</p>
+        <article class="panel reveal visible">
+          <div class="section-heading" style="margin-bottom:1rem;"><div><h2>Contato e suporte</h2></div></div>
+          <p class="muted">Mantive seus canais e deixei a área de suporte mais simples. Isso ajuda o cliente a encontrar ajuda sem desviar da compra.</p>
           <div class="support-cta">
             <a class="btn btn-primary" id="telegramLink" href="https://t.me/phzsupport" target="_blank" rel="noopener noreferrer">Telegram</a>
             <a class="btn btn-secondary" href="mailto:mysticsuporte1@gmail.com">Email</a>
-            </div>
+          </div>
           <p class="footer-note">https://t.me/phzsupport</p>
         </article>
-        <article class="panel reveal">
+        <article class="panel reveal visible">
           <h3 style="margin-bottom:.8rem;">Formulário rápido</h3>
           <form class="contact-form" onsubmit="event.preventDefault(); alert('Mensagem registrada. Você pode integrar este formulário a Formsubmit ou Basin depois.');">
-            <label class="field"><span>Nome</span><input type="text" placeholder="Seu Nome" required></label>
+            <label class="field"><span>Nome</span><input type="text" placeholder="Seu nome" required></label>
             <label class="field"><span>Email</span><input type="email" placeholder="Seu email" required></label>
             <label class="field"><span>Mensagem</span><textarea placeholder="Explique o suporte desejado" required></textarea></label>
             <button class="btn btn-primary" type="submit">Enviar solicitação</button>
@@ -531,15 +406,11 @@
       </div>
     </section>
   </main>
-
   <footer class="site-footer">
     <div class="container footer-grid">
       <div>
         <a href="#home" class="brand" aria-label="Mystic Shop, início">
-          <svg class="brand-logo" viewBox="0 0 64 64" role="img" aria-label="Logo Mystic Shop" fill="none">
-            <path d="M10 32 32 10l22 22-22 22L10 32Z" stroke="currentColor" stroke-width="3"/>
-            <path d="M20 32h24M32 20v24" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
-          </svg>
+          <img src="./logo-mystic.jpg" alt="Logo Mystic Shop" class="brand-logo-img" width="44" height="44" loading="lazy">
           <span><strong>Mystic</strong> Shop</span>
         </a>
         <p class="footer-note">Todos os produtos são digitais. Ativações, códigos, links ou instruções são enviados após a confirmação do pagamento.</p>
@@ -562,7 +433,6 @@
       </div>
     </div>
   </footer>
-
   <div class="drawer-backdrop" id="drawerBackdrop"></div>
   <aside class="drawer" id="cartDrawer" aria-label="Carrinho">
     <div class="drawer-head">
@@ -577,10 +447,9 @@
       <div class="cart-line"><strong>Total</strong><strong id="cartTotal">R$0,00</strong></div>
       <button class="btn btn-primary" id="checkoutCart">Finalizar no Mercado Pago</button>
       <button class="btn btn-secondary" id="clearCart">Limpar carrinho</button>
-      <p class="footer-note">Você pode usar um link geral de pagamento do Mercado Pago ou criar links individuais por produto.</p>
+      <p class="footer-note">O carrinho mantém o mesmo fluxo: ao finalizar, ele usa o link do primeiro item adicionado.</p>
     </div>
   </aside>
-
   <div class="modal-backdrop" id="modalBackdrop"></div>
   <section class="modal" id="productModal" aria-label="Detalhes do produto">
     <div class="modal-head">
@@ -592,8 +461,8 @@
     </div>
     <div class="modal-grid">
       <div class="product-visual">
-        <div class="visual-chip" id="modalChip">Digital</div>
-        <div class="visual-title" id="modalVisualTitle"></div>
+        <div class="visual-chip" id="modalChip">Produto digital</div>
+        <img id="modalImage" src="" alt="" width="640" height="640" loading="lazy">
       </div>
       <div>
         <div class="badge-row" id="modalBadges" style="margin-bottom:.8rem;"></div>
@@ -604,11 +473,10 @@
           <button class="btn btn-secondary" id="modalAddCart">Adicionar ao carrinho</button>
           <button class="btn btn-primary" id="modalBuyNow">Comprar agora</button>
         </div>
-        <p class="footer-note">Para o botão Comprar Agora funcionar no pagamento real, substitua o link padrão pelo seu link individual do Mercado Pago.</p>
+        <p class="footer-note">Os links de compra individuais foram preservados.</p>
       </div>
     </div>
   </section>
-
   <script>
     const categories = [
       { id: 'assinaturas-softwares', name: 'Assinaturas e Softwares', note: 'Produtos ativos nesta categoria.' },
@@ -617,88 +485,83 @@
       { id: 'conta-jogos-fa', name: 'Conta de Jogos FA', note: 'Categoria visível, sem itens cadastrados no momento.' },
       { id: 'streaming', name: 'Streaming', note: 'Categoria visível, sem itens por enquanto.' }
     ];
-
     const defaultCheckout = 'https://www.mercadopago.com.br/';
-
     const products = [
-      {
-        id: 'picsart-pro-12m',
-        category: 'assinaturas-softwares',
-        name: 'PicsArt Pro 12 Meses',
-        price: 37.90,
-        short: 'Licença digital de 12 meses com ativação por chave na própria conta.',
-        description: `O Picsart Pro é uma das ferramentas mais completas para edição de fotos, criação de artes e produção de conteúdos visuais com acabamento profissional. Com ele, você desbloqueia recursos premium que deixam suas edições muito mais rápidas, práticas e criativas.\n\nEste anúncio é referente à licença de 12 meses, com ativação feita por chave enviada após a compra. A chave é inserida diretamente na conta da própria pessoa, garantindo acesso ao plano Pro durante todo o período contratado.\n\nIMPORTANTE\n• Plano válido por 12 meses\n• Ativação por chave na sua própria conta\n• Verifique a compatibilidade antes da compra\n• Suporte para dúvidas sobre ativação\n\nENTREGA\nApós a confirmação do pagamento, a chave será enviada conforme as instruções de ativação.`,
-        features: ['Plano válido por 12 meses', 'Ativação por chave na própria conta', 'Suporte para dúvidas sobre ativação', 'Entrega digital após confirmação'],
-        badges: ['Entrega Imediata', 'Garantido'],
-        image: './picsart-pro.jpg',
-        checkout: 'https://mpago.la/22ZM6kk'
-      },
-      {
-        id: 'avg-ultimate-1-ano',
-        category: 'assinaturas-softwares',
-        name: 'AVG Ultimate Antivírus — 1 Dispositivo / 1 Ano',
-        price: 55.90,
-        short: 'Licença digital com ativação por chave e uso em 1 dispositivo.',
-        description: `Produto digital com plano válido por 12 meses, com ativação por chave na sua própria conta.\n\nIMPORTANTE\n• Plano válido por 12 meses\n• Ativação por chave na sua própria conta\n• Suporte para dúvidas sobre ativação\n• Compatível com Windows, Android e iOS\n\nENTREGA\nApós a confirmação do pagamento, a chave será enviada conforme as instruções de ativação.`,
-        features: ['1 dispositivo', '12 meses de validade', 'Compatível com Windows, Android e iOS', 'Suporte para ativação'],
-        badges: ['Entrega Imediata', 'Garantido'],
-        image: './avg-ultimate.jpg',
-        checkout: 'https://mpago.la/1YjhKRa'
-      },
-      {
-        id: 'avast-ultimate-1-ano',
-        category: 'assinaturas-softwares',
-        name: 'Avast Ultimate Antivírus — 1 Dispositivo / 1 Ano',
-        price: 47.00,
-        short: 'Proteção digital para uso em Windows, Linux e Mac.',
-        description: `Produto digital com foco em proteção, uso individual e ativação clara.\n\nIMPORTANTE\n• Plano válido por 12 meses\n• Ativação por chave na sua própria conta\n• Suporte para dúvidas sobre ativação\n• Compatível com Windows, Linux e Mac\n\nENTREGA\nApós a confirmação do pagamento, a chave será enviada conforme as instruções de ativação.`,
-        features: ['1 dispositivo', 'Compatível com Windows, Linux e Mac', 'Licença de 12 meses', 'Suporte para ativação'],
-        badges: ['Entrega Imediata', 'Garantido'],
-        image: './avast-ultimate.jpg',
-        checkout: 'https://mpago.la/22G8EuH'
-      },
-      {
-        id: 'ccleaner-profissional-1-ano',
-        category: 'assinaturas-softwares',
-        name: 'CCleaner Professional — 1 Dispositivo / 1 Ano',
-        price: 52.90,
-        short: 'Solução para otimização, limpeza e privacidade do computador.',
-        description: `O CCleaner Professional é uma solução completa para manter seu computador mais rápido, organizado e protegido. Ideal para quem deseja melhorar o desempenho do PC com praticidade, ele faz a limpeza de arquivos desnecessários, otimiza o sistema e ajuda a manter sua privacidade ao navegar.\n\nIMPORTANTE\n• Licença digital com ativação\n• Uso em 1 dispositivo\n• Compatível com Windows\n• Produto enviado de forma online\n• Verifique a compatibilidade antes da compra\n\nENTREGA\nApós a confirmação do pagamento, você recebe sua licença digital com as orientações para ativação.`,
-        features: ['1 dispositivo', 'Compatível com Windows', 'Licença digital com ativação', 'Entrega online com instruções'],
-        badges: ['Entrega Imediata', 'Garantido'],
-        image: './ccleaner-pro.jpg',
-        checkout: 'https://mpago.la/33onW89'
-      },
-      {
-        id: 'google-one-ai-pro-12m',
-        category: 'codigos-ativacao-ia',
-        name: 'Google One AI Pro / Gemini 3.1 — 12 Meses (Link/Código)',
-        price: 48.90,
-        short: 'Acesso com link ou código para recursos avançados do ecossistema Google AI.',
-        description: `Serviços disponíveis:\n\n✅ Gemini 3.1 + Veo 3.1\n✅ DeepResearch\n✅ NotebookLM\n✅ Armazenamento de 5TB\n✅ Google Home Premium\n✅ Fitbit Premium\n\nO que vem incluso:\n✅ Suporte antigravidade\n✅ 1000 créditos mensais de vídeo VEO AI\n✅ Para uso pessoal\n✅ 30 dias de garantia\n\nENTREGA\nApós a confirmação do pagamento, você recebe sua licença digital com as orientações para ativação.`,
-        features: ['Gemini 3.1 + Veo 3.1', '5TB de armazenamento', 'NotebookLM e DeepResearch', '30 dias de garantia'],
-        badges: ['Entrega Imediata', 'Garantido'],
-        image: './gemini-pro.jpg',
-        checkout: 'https://mpago.la/2igiQVA'
-      },
-      {
-        id: 'perplexity-ai-pro-12m',
-        category: 'codigos-ativacao-ia',
-        name: 'Perplexity AI Pro — 12 Meses (Código)',
-        price: 199.90,
-        short: 'Código de ativação para sua própria conta com recursos premium desbloqueados.',
-        description: `É código de ativação para sua própria conta.\n\nVantagens premium que você desbloqueia:\n- Perplexity Labs para criar relatórios completos, planilhas, painéis e miniaplicativos da web\n- Acesso a modelos avançados de IA, incluindo GPT-5.4, Gemini 3.1 Pro, Claude 4.6 Sonnet, Grok 3 Beta, Kimi K2.6 e Nemotron 3 Super\n- Análise de arquivos para PDFs, imagens e CSVs\n- Suporte prioritário e canais exclusivos\n- 300+ Buscas Pro por dia além de pesquisas básicas ilimitadas\n\nENTREGA\nApós a confirmação do pagamento, a ativação é orientada com suporte correspondente.`,
-        features: ['Código para conta própria', 'Perplexity Labs', 'Modelos avançados de IA', 'Análise de PDFs, imagens e CSVs'],
-        badges: ['Entrega Imediata', 'Garantido'],
-        image: './perplexity-pro.jpg',
-        checkout: 'https://mpago.la/1HoQTr7'
-      }
-    ];
+      { id: 'picsart-pro-12m', category: 'assinaturas-softwares', name: 'PicsArt Pro 12 Meses', price: 37.90, short: 'Licença digital de 12 meses com ativação por chave na própria conta.', description: `O Picsart Pro é uma das ferramentas mais completas para edição de fotos, criação de artes e produção de conteúdos visuais com acabamento profissional. Com ele, você desbloqueia recursos premium que deixam suas edições muito mais rápidas, práticas e criativas.
 
+Este anúncio é referente à licença de 12 meses, com ativação feita por chave enviada após a compra. A chave é inserida diretamente na conta da própria pessoa, garantindo acesso ao plano Pro durante todo o período contratado.
+
+IMPORTANTE
+• Plano válido por 12 meses
+• Ativação por chave na sua própria conta
+• Verifique a compatibilidade antes da compra
+• Suporte para dúvidas sobre ativação
+
+ENTREGA
+Após a confirmação do pagamento, a chave será enviada conforme as instruções de ativação.`, features: ['Plano válido por 12 meses', 'Ativação por chave na própria conta', 'Suporte para dúvidas sobre ativação', 'Entrega digital após confirmação'], badges: ['Entrega Imediata', 'Garantido'], image: './picsart-pro.jpg', checkout: 'https://mpago.la/22ZM6kk' },
+      { id: 'avg-ultimate-1-ano', category: 'assinaturas-softwares', name: 'AVG Ultimate Antivírus — 1 Dispositivo / 1 Ano', price: 55.90, short: 'Licença digital com ativação por chave e uso em 1 dispositivo.', description: `Produto digital com plano válido por 12 meses, com ativação por chave na sua própria conta.
+
+IMPORTANTE
+• Plano válido por 12 meses
+• Ativação por chave na sua própria conta
+• Suporte para dúvidas sobre ativação
+• Compatível com Windows, Android e iOS
+
+ENTREGA
+Após a confirmação do pagamento, a chave será enviada conforme as instruções de ativação.`, features: ['1 dispositivo', '12 meses de validade', 'Compatível com Windows, Android e iOS', 'Suporte para ativação'], badges: ['Entrega Imediata', 'Garantido'], image: './avg-ultimate.jpg', checkout: 'https://mpago.la/1YjhKRa' },
+      { id: 'avast-ultimate-1-ano', category: 'assinaturas-softwares', name: 'Avast Ultimate Antivírus — 1 Dispositivo / 1 Ano', price: 47.00, short: 'Proteção digital para uso em Windows, Linux e Mac.', description: `Produto digital com foco em proteção, uso individual e ativação clara.
+
+IMPORTANTE
+• Plano válido por 12 meses
+• Ativação por chave na sua própria conta
+• Suporte para dúvidas sobre ativação
+• Compatível com Windows, Linux e Mac
+
+ENTREGA
+Após a confirmação do pagamento, a chave será enviada conforme as instruções de ativação.`, features: ['1 dispositivo', 'Compatível com Windows, Linux e Mac', 'Licença de 12 meses', 'Suporte para ativação'], badges: ['Entrega Imediata', 'Garantido'], image: './avast-ultimate.jpg', checkout: 'https://mpago.la/22G8EuH' },
+      { id: 'ccleaner-profissional-1-ano', category: 'assinaturas-softwares', name: 'CCleaner Professional — 1 Dispositivo / 1 Ano', price: 52.90, short: 'Solução para otimização, limpeza e privacidade do computador.', description: `O CCleaner Professional é uma solução completa para manter seu computador mais rápido, organizado e protegido. Ideal para quem deseja melhorar o desempenho do PC com praticidade, ele faz a limpeza de arquivos desnecessários, otimiza o sistema e ajuda a manter sua privacidade ao navegar.
+
+IMPORTANTE
+• Licença digital com ativação
+• Uso em 1 dispositivo
+• Compatível com Windows
+• Produto enviado de forma online
+• Verifique a compatibilidade antes da compra
+
+ENTREGA
+Após a confirmação do pagamento, você recebe sua licença digital com as orientações para ativação.`, features: ['1 dispositivo', 'Compatível com Windows', 'Licença digital com ativação', 'Entrega online com instruções'], badges: ['Entrega Imediata', 'Garantido'], image: './ccleaner-pro.jpg', checkout: 'https://mpago.la/33onW89' },
+      { id: 'google-one-ai-pro-12m', category: 'codigos-ativacao-ia', name: 'Google One AI Pro / Gemini 3.1 — 12 Meses (Link/Código)', price: 48.90, short: 'Acesso com link ou código para recursos avançados do ecossistema Google AI.', description: `Serviços disponíveis:
+
+✅ Gemini 3.1 + Veo 3.1
+✅ DeepResearch
+✅ NotebookLM
+✅ Armazenamento de 5TB
+✅ Google Home Premium
+✅ Fitbit Premium
+
+O que vem incluso:
+✅ Suporte antigravidade
+✅ 1000 créditos mensais de vídeo VEO AI
+✅ Para uso pessoal
+✅ 30 dias de garantia
+
+ENTREGA
+Após a confirmação do pagamento, você recebe sua licença digital com as orientações para ativação.`, features: ['Gemini 3.1 + Veo 3.1', '5TB de armazenamento', 'NotebookLM e DeepResearch', '30 dias de garantia'], badges: ['Entrega Imediata', 'Garantido'], image: './gemini-pro.jpg', checkout: 'https://mpago.la/2igiQVA' },
+      { id: 'perplexity-ai-pro-12m', category: 'codigos-ativacao-ia', name: 'Perplexity AI Pro — 12 Meses (Código)', price: 199.90, short: 'Código de ativação para sua própria conta com recursos premium desbloqueados.', description: `É código de ativação para sua própria conta.
+
+Vantagens premium que você desbloqueia:
+- Perplexity Labs para criar relatórios completos, planilhas, painéis e miniaplicativos da web
+- Acesso a modelos avançados de IA, incluindo GPT-5.4, Gemini 3.1 Pro, Claude 4.6 Sonnet, Grok 3 Beta, Kimi K2.6 e Nemotron 3 Super
+- Análise de arquivos para PDFs, imagens e CSVs
+- Suporte prioritário e canais exclusivos
+- 300+ Buscas Pro por dia além de pesquisas básicas ilimitadas
+
+ENTREGA
+Após a confirmação do pagamento, a ativação é orientada com suporte correspondente.`, features: ['Código para conta própria', 'Perplexity Labs', 'Modelos avançados de IA', 'Análise de PDFs, imagens e CSVs'], badges: ['Entrega Imediata', 'Garantido'], image: './perplexity-pro.jpg', checkout: 'https://mpago.la/1HoQTr7' }
+    ];
     let activeCategory = categories[0].id;
     let cart = [];
     let selectedProduct = null;
-
     const categoryTabs = document.getElementById('categoryTabs');
     const productGrid = document.getElementById('productGrid');
     const catalogStatus = document.getElementById('catalogStatus');
@@ -711,13 +574,7 @@
     const modalBackdrop = document.getElementById('modalBackdrop');
     const themeToggle = document.querySelector('[data-theme-toggle]');
     const root = document.documentElement;
-    const navToggle = document.getElementById('navToggle');
-    const mainNav = document.getElementById('mainNav');
-
-    function formatBRL(value) {
-      return value.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
-    }
-
+    function formatBRL(value) { return value.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' }); }
     function renderTabs() {
       categoryTabs.innerHTML = categories.map(cat => `
         <button class="catalog-tab ${cat.id === activeCategory ? 'active' : ''}" data-category="${cat.id}">
@@ -726,27 +583,17 @@
         </button>
       `).join('');
     }
-
     function renderProducts() {
       const currentCategory = categories.find(cat => cat.id === activeCategory);
       const filtered = products.filter(product => product.category === activeCategory);
       catalogStatus.textContent = `Categoria ativa: ${currentCategory.name} — ${currentCategory.note}`;
-
       if (!filtered.length) {
-        productGrid.innerHTML = `
-          <article class="panel reveal visible">
-            <h3>Categoria preparada</h3>
-            <p class="muted">Ainda não existem produtos publicados nesta seção. A estrutura já está pronta para você inserir novos itens futuramente sem refazer o layout.</p>
-          </article>
-        `;
+        productGrid.innerHTML = `<article class="empty-state"><h3>Categoria preparada</h3><p class="muted">Ainda não existem produtos publicados nesta seção. A estrutura já está pronta para você inserir novos itens depois sem refazer o layout.</p></article>`;
         return;
       }
-
       productGrid.innerHTML = filtered.map(product => `
-        <article class="product-card reveal visible">
-          <div class="product-thumb">
-            <img src="${product.image}" alt="${product.name}" width="640" height="480" loading="lazy">
-          </div>
+        <article class="product-card">
+          <div class="product-thumb"><img src="${product.image}" alt="${product.name}" width="640" height="480" loading="lazy"></div>
           <div class="product-head">
             <div>
               <div class="badge-row">${product.badges.map(b => `<span class="badge">${b}</span>`).join('')}</div>
@@ -755,12 +602,10 @@
             <div class="product-price">${formatBRL(product.price)}</div>
           </div>
           <p class="product-meta">${product.short}</p>
-          <div class="product-copy">
-            <p>${product.description.split('\n\n')[0]}</p>
-          </div>
-          <ul class="product-features">
-            ${product.features.slice(0, 4).map(item => `<li>${item}</li>`).join('')}
-          </ul>
+          <div class="product-copy"><p>${product.description.split('
+
+')[0]}</p></div>
+          <ul class="product-features">${product.features.slice(0, 4).map(item => `<li>${item}</li>`).join('')}</ul>
           <div class="product-actions">
             <button class="btn btn-secondary" data-view="${product.id}">Ver produto</button>
             <button class="btn btn-ghost" data-add="${product.id}">Carrinho</button>
@@ -769,7 +614,6 @@
         </article>
       `).join('');
     }
-
     function updateCart() {
       cartCount.textContent = cart.reduce((sum, item) => sum + item.qty, 0);
       if (!cart.length) {
@@ -777,7 +621,6 @@
         cartTotal.textContent = formatBRL(0);
         return;
       }
-
       cartItems.innerHTML = cart.map(item => `
         <article class="cart-item">
           <div class="cart-line"><strong>${item.name}</strong><button data-remove="${item.id}">Remover</button></div>
@@ -789,30 +632,19 @@
           </div>
         </article>
       `).join('');
-
       const total = cart.reduce((sum, item) => sum + item.price * item.qty, 0);
       cartTotal.textContent = formatBRL(total);
     }
-
     function addToCart(productId) {
       const product = products.find(item => item.id === productId);
       if (!product) return;
       const existing = cart.find(item => item.id === productId);
-      if (existing) existing.qty += 1;
-      else cart.push({ id: product.id, name: product.name, price: product.price, qty: 1, checkout: product.checkout });
+      if (existing) existing.qty += 1; else cart.push({ id: product.id, name: product.name, price: product.price, qty: 1, checkout: product.checkout });
       updateCart();
       openCart();
     }
-
-    function openCart() {
-      cartDrawer.classList.add('open');
-      drawerBackdrop.classList.add('show');
-    }
-    function closeCart() {
-      cartDrawer.classList.remove('open');
-      drawerBackdrop.classList.remove('show');
-    }
-
+    function openCart() { cartDrawer.classList.add('open'); drawerBackdrop.classList.add('show'); }
+    function closeCart() { cartDrawer.classList.remove('open'); drawerBackdrop.classList.remove('show'); }
     function openModal(productId) {
       const product = products.find(item => item.id === productId);
       if (!product) return;
@@ -829,79 +661,22 @@
       productModal.classList.add('show');
       modalBackdrop.classList.add('show');
     }
-    function closeModal() {
-      productModal.classList.remove('show');
-      modalBackdrop.classList.remove('show');
-    }
-
+    function closeModal() { productModal.classList.remove('show'); modalBackdrop.classList.remove('show'); }
     function triggerBuyNow(productId) {
       const product = products.find(item => item.id === productId);
       if (!product) return;
       window.open(product.checkout || defaultCheckout, '_blank', 'noopener,noreferrer');
     }
-
-    function setupNavMobile() {
-      if (!navToggle || !mainNav) return;
-      navToggle.addEventListener('click', () => {
-        const open = mainNav.classList.toggle('open');
-        navToggle.setAttribute('aria-expanded', String(open));
-        navToggle.textContent = open ? '✕' : '☰';
-      });
-      mainNav.querySelectorAll('a').forEach(link => {
-        link.addEventListener('click', () => {
-          mainNav.classList.remove('open');
-          navToggle.setAttribute('aria-expanded', 'false');
-          navToggle.textContent = '☰';
-        });
-      });
-    }
-
     function setupTheme() {
       let currentTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
       root.setAttribute('data-theme', currentTheme);
       themeToggle.innerHTML = currentTheme === 'dark' ? '🌙' : '☀️';
-      themeToggle.setAttribute('aria-label', currentTheme === 'dark' ? 'Alternar para tema claro' : 'Alternar para tema escuro');
       themeToggle.addEventListener('click', () => {
         currentTheme = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
         root.setAttribute('data-theme', currentTheme);
         themeToggle.innerHTML = currentTheme === 'dark' ? '🌙' : '☀️';
-        themeToggle.setAttribute('aria-label', currentTheme === 'dark' ? 'Alternar para tema claro' : 'Alternar para tema escuro');
       });
     }
-
-    function setupReveal() {
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) entry.target.classList.add('visible');
-        });
-      }, { threshold: 0.12 });
-      document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
-    }
-
-    function setupCounters() {
-      const counters = document.querySelectorAll('[data-counter]');
-      const obs = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          if (!entry.isIntersecting) return;
-          const el = entry.target;
-          const target = Number(el.dataset.counter);
-          const suffix = el.textContent.includes('h') ? 'h' : '+';
-          let value = 0;
-          const step = Math.max(1, Math.ceil(target / 40));
-          const timer = setInterval(() => {
-            value += step;
-            if (value >= target) {
-              value = target;
-              clearInterval(timer);
-            }
-            el.textContent = value + suffix;
-          }, 30);
-          obs.unobserve(el);
-        });
-      }, { threshold: .45 });
-      counters.forEach(c => obs.observe(c));
-    }
-
     function setupEvents() {
       categoryTabs.addEventListener('click', (event) => {
         const button = event.target.closest('[data-category]');
@@ -910,7 +685,6 @@
         renderTabs();
         renderProducts();
       });
-
       productGrid.addEventListener('click', (event) => {
         const view = event.target.closest('[data-view]');
         const add = event.target.closest('[data-add]');
@@ -919,7 +693,6 @@
         if (add) addToCart(add.dataset.add);
         if (buy) triggerBuyNow(buy.dataset.buy);
       });
-
       document.getElementById('cartButton').addEventListener('click', openCart);
       document.getElementById('closeCart').addEventListener('click', closeCart);
       drawerBackdrop.addEventListener('click', closeCart);
@@ -927,60 +700,25 @@
       modalBackdrop.addEventListener('click', closeModal);
       document.getElementById('modalAddCart').addEventListener('click', () => selectedProduct && addToCart(selectedProduct.id));
       document.getElementById('modalBuyNow').addEventListener('click', () => selectedProduct && triggerBuyNow(selectedProduct.id));
-
       cartItems.addEventListener('click', (event) => {
         const plus = event.target.closest('[data-plus]');
         const minus = event.target.closest('[data-minus]');
         const remove = event.target.closest('[data-remove]');
-        if (plus) {
-          const item = cart.find(i => i.id === plus.dataset.plus);
-          if (item) item.qty += 1;
-        }
-        if (minus) {
-          const item = cart.find(i => i.id === minus.dataset.minus);
-          if (item) item.qty = Math.max(1, item.qty - 1);
-        }
+        if (plus) { const item = cart.find(i => i.id === plus.dataset.plus); if (item) item.qty += 1; }
+        if (minus) { const item = cart.find(i => i.id === minus.dataset.minus); if (item) item.qty = Math.max(1, item.qty - 1); }
         if (remove) cart = cart.filter(i => i.id !== remove.dataset.remove);
         updateCart();
       });
-
-      document.getElementById('clearCart').addEventListener('click', () => {
-        cart = [];
-        updateCart();
-      });
-
+      document.getElementById('clearCart').addEventListener('click', () => { cart = []; updateCart(); });
       document.getElementById('checkoutCart').addEventListener('click', () => {
         const checkout = cart[0]?.checkout || defaultCheckout;
         window.open(checkout, '_blank', 'noopener,noreferrer');
       });
-
-      const chatWidget = document.getElementById('chatWidget');
-      const chatToggle = document.getElementById('chatToggle');
-      const openChatSupport = document.getElementById('openChatSupport');
-      const chatLog = document.getElementById('chatLog');
-      const talkHuman = document.getElementById('talkHuman');
-
-      function toggleChat(force) {
-        const shouldShow = typeof force === 'boolean' ? force : !chatWidget.classList.contains('show');
-        chatWidget.classList.toggle('show', shouldShow);
-      }
-      chatToggle.addEventListener('click', () => toggleChat());
-      openChatSupport.addEventListener('click', () => toggleChat(true));
-      talkHuman.addEventListener('click', () => {
-        chatLog.insertAdjacentHTML('beforeend', '<div class="bubble user">Falar com um atendente</div>');
-        setTimeout(() => {
-          chatLog.insertAdjacentHTML('beforeend', '<div class="bubble ai">Perfeito. Um atendente entrará em contato com você por meio do chat em alguns instantes.</div>');
-          chatLog.scrollTop = chatLog.scrollHeight;
-        }, 600);
-      });
     }
-
     setupTheme();
     renderTabs();
     renderProducts();
     updateCart();
-    setupReveal();
-    setupCounters();
     setupEvents();
   </script>
 
